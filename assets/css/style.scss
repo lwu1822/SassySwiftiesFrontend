@@ -14,3 +14,98 @@
     flex: 33.33%;
     padding: 5px;
   }
+
+// matching starts here
+// Kudos to https://marina-ferreira.github.io/tutorials/js/memory-game/. We wouldn't have gotten far without a tutorial.
+
+.board{
+   margin: auto;
+   display: flex;
+   flex-wrap: wrap;
+   perspective: 1000px;
+}
+
+.box{
+   height: 16.60%;
+   width: 20%;
+   position: relative;
+   margin: auto; 
+   flex-wrap: wrap;
+   transform: scale(1);
+   transform-style: preserve-3d;
+   transition: transform .25s;
+}
+
+.box.flip {
+   transform: rotateY(180deg);
+ }
+
+%matchingButton {
+   width: 8em;
+   height: 4em;
+   color: #ffffff;
+   background: #95cce8;
+}
+
+%matchingButton:hover {
+   background: #85b9d4;
+}
+
+.Flipped {
+   width: 8em;
+   height: 4em;
+   transform: rotateY(180deg);
+}
+
+.Swift {
+   @extend %matchingButton;
+   position: absolute;
+}
+
+.Swift,
+.Flipped {
+   backface-visibility: hidden;
+}
+
+// matching ends here
+
+@keyframes slideInLeft {
+   from {
+      transform: translateX(-300px);
+   }
+
+   to{
+      transform: translateX(0);
+   }
+}
+
+@keyframes slideInRight {
+   from {
+      transform: translateX(300px);
+   }
+
+   to{
+      transform: translateX(0);
+   }
+}
+
+.slideInLeft {
+   animation-name: slideInLeft;
+   animation-duration: 2s;
+   animation-timing-function: ease;
+   animation-iteration-count: 1;
+   animation-direction: normal;
+   animation-fill-mode: both;
+}
+
+.slideInRight {
+   animation-name: slideInRight;
+   animation-duration: 2s;
+   animation-timing-function: ease;
+   animation-iteration-count: 1;
+   animation-direction: normal;
+   animation-fill-mode: both;
+}
+
+
+// matching ends here
