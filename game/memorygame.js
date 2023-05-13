@@ -7,17 +7,19 @@ let lockdown = false;
 let firstCard, secondCard;
 
 function noFlip() {
+    console.log("event listener removed!");
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
 }
 
 function reject() {
     lockdown = true;
-    console.log("failure to match detected!");        
+    console.log("failure to match detected! Locking board...");        
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
-        lockdown = false;f
+        lockdown = false;
+        console.log("board unlocked");
     }, 500); // this is lower than the tutorial because this will be a fast-paced game
 }
 
@@ -32,7 +34,10 @@ function checkMatching() {
 
 function flipCard() {
     if (lockdown) return;
-    if (this === firstCard) return;
+    if (this === firstCard) {
+        console.log("Stop cheating!");
+        return;
+    }
     console.log("clickity time!");
   
     this.classList.add('flip');
