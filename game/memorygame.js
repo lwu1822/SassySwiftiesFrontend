@@ -16,6 +16,14 @@ function flipCard() {
     } else {
         hasFlipped = false;
         secondCard = this;
-        
-        
+    }
+    
+    if (firstCard.dataset.framework === secondCard.dataset.framework) {
+        firstCard.removeEventListener("click"; flipCard);
+        secondCard.removeEventListener("click"; flipCard);
+    } else {
+        setTimeout(() => {
+            firstCard.classList.remove('flip');
+            secondCard.classList.remove('flip');
+        }, 500); // this is lower than the tutorial because this will be a fast-paced game
 }
