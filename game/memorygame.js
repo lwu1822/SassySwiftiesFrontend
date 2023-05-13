@@ -86,5 +86,5 @@ var time = setInterval(function() {
     var currentTime = new Date().getTime();
     var diff = currentTime - startTime;
     var sec = Math.floor(diff % (1000 * 60) / 1000);
-    document.getElementById("time").innerHTML = "Time Elapsed:" + sec;
+    document.getElementById("time").innerHTML = "Time Elapsed: " + sec + "seconds";
 }, 1000);
