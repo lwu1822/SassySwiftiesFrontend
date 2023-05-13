@@ -1,3 +1,5 @@
+// Kudos to https://marina-ferreira.github.io/tutorials/js/memory-game/ for the help!!!
+
 const cards = document.querySelectorAll('.box');
 
 cards.forEach(card => card.addEventListener('click', flipCard));
