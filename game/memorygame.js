@@ -6,10 +6,16 @@ let hasFlipped = false;
 let lockdown = false;
 let firstCard, secondCard;
 
+function clearVar() {
+    [hasFlipped, lockdown] = [false, false];
+    [firstCard, secondCard] = [null, null];
+}
+
 function noFlip() {
     console.log("event listener removed!");
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
+    clearVar();
 }
 
 function reject() {
@@ -18,7 +24,7 @@ function reject() {
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
-        lockdown = false;
+        clearVar();
         console.log("board unlocked");
     }, 500); // this is lower than the tutorial because this will be a fast-paced game
 }
@@ -48,7 +54,6 @@ function flipCard() {
         console.log("first card detected! This card is ");
         console.log(firstCard);
     } else {
-        hasFlipped = false;
         secondCard = this;
         console.log("second card detected! This card is");
         console.log(secondCard);
