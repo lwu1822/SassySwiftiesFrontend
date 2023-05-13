@@ -92,4 +92,6 @@ Kudos to this [guide](https://marina-ferreira.github.io/tutorials/js/memory-game
     </div>
   </section>
 
+  <script src="memorygame.js"></script>
+  
 </body>
