@@ -3,6 +3,7 @@ const cards = document.querySelectorAll('.box');
 cards.forEach(card => card.addEventListener('click', flipCard));
 
 let hasFlipped = false;
+let lockdown = false;
 let firstCard, secondCard;
 
 function noFlip() {
@@ -11,10 +12,12 @@ function noFlip() {
 }
 
 function reject() {
+    lockdown = true;
     console.log("failure to match detected!");        
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
+        lockdown = false;f
     }, 500); // this is lower than the tutorial because this will be a fast-paced game
 }
 
@@ -28,7 +31,9 @@ function checkMatching() {
 }
 
 function flipCard() {
-    console.log("clickity time!")
+    if (lockdown) return;
+    if (this === firstCard) return;
+    console.log("clickity time!");
   
     this.classList.add('flip');
   
