@@ -5,6 +5,8 @@
 
 Kudos to this [guide](https://marina-ferreira.github.io/tutorials/js/memory-game/). We wouldn't have gotten far without it.
 
+<p id="time"></p>
+
 
 
 <body class="MemBoard">
