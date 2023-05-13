@@ -11,84 +11,84 @@ Kudos to this [guide](https://marina-ferreira.github.io/tutorials/js/memory-game
   <section class="board">
 
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color1.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color1.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color1.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color1.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color2.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color2.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color2.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color2.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color3.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color3.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color3.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color3.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color4.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color4.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color4.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color4.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color5.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color5.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color5.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color5.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color6.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color6.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color6.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color6.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color7.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color7.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color7.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color7.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color8.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color8.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color8.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color8.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color9.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color9.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color9.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color9.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color10.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color10.PNG">
     </div>
     <div class="box">
-      <img class="Swift" src="img/cover.png">
-      <img class="Flipped" src="img/color10.PNG">
+      <img class="Swift" src="images/cover.png">
+      <img class="Flipped" src="images/color10.PNG">
     </div>
   </section>
 
