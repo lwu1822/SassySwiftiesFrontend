@@ -8,7 +8,7 @@ let firstCard, secondCard;
 function flipCard() {
     console.log("clickity time!")
   
-    this.classList.toggle('flip');
+    this.classList.add('flip');
   
     if (!hasFlipped) {
         hasFlipped = true;
