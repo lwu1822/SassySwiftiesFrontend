@@ -13,15 +13,19 @@ function flipCard() {
     if (!hasFlipped) {
         hasFlipped = true;
         firstCard = this;
+        console.log("first card detected!");
     } else {
         hasFlipped = false;
         secondCard = this;
+        console.log("second card detected!");
     }
     
     if (firstCard.dataset.framework === secondCard.dataset.framework) {
         firstCard.removeEventListener("click", flipCard);
         secondCard.removeEventListener("click", flipCard);
+        console.log("match detected!");
     } else {
+        console.log("failure to match detected!");
         setTimeout(() => {
             firstCard.classList.remove('flip');
             secondCard.classList.remove('flip');
