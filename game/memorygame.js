@@ -27,3 +27,4 @@ function flipCard() {
             secondCard.classList.remove('flip');
         }, 500); // this is lower than the tutorial because this will be a fast-paced game
 }
+// JS giving me problems so I have to put a comment here
