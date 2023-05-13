@@ -8,6 +8,16 @@ let hasFlipped = false;
 let lockdown = false;
 let firstCard, secondCard;
 
+// functions wrapped in parenthesis are called immediately
+
+(function randomize() {
+    cards.forEach(card => {
+        let Position = Math.floor(Math.random() * 20);
+        card.style.order = Position;
+    });
+})();
+
+
 function clearVar() {
     [hasFlipped, lockdown] = [false, false];
     [firstCard, secondCard] = [null, null];
