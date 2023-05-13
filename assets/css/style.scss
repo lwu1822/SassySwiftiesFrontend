@@ -18,18 +18,23 @@
 // matching starts here
 // Kudos to https://marina-ferreira.github.io/tutorials/js/memory-game/. We wouldn't have gotten far without a tutorial.
 
+%nomargins {
+    margin: 0;
+    padding: 0;
+}
+
 .board{
-   margin: auto;
+   @extend nomargins;
    display: flex;
    flex-wrap: wrap;
    perspective: 1000px;
 }
 
 .box{
+   @extend nomargins;
    height: 25%;
    width: 20%;
    position: relative;
-   margin: auto; 
    flex-wrap: wrap;
    transform: scale(1);
    transform-style: preserve-3d;
@@ -65,6 +70,7 @@
 .Swift,
 .Flipped {
     backface-visibility: hidden;
+    @extend nomargins;
 }
 
 // matching ends here
