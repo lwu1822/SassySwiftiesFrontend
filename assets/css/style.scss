@@ -27,7 +27,7 @@
 // may need to adjust board size later for cross-compatibility purposes
 .board{
    @extend %nomargin;
-   height: 500px;
+   height: 587px;
    width: 650px;
    display: flex;
    flex-wrap: wrap;
@@ -73,6 +73,8 @@
 
 .Swift,
 .Flipped {
+    height: 100%;
+    width: 100%;
     backface-visibility: hidden;
 }
 
