@@ -3,6 +3,7 @@ const cards = document.queryselectorAll('.box');
 cards.forEach(card => card.addEventListener('click', flipCard));
 
 function flipCard() {
+    console.log("clickity time!")
     //if (lockBoard) return;
     //if (this === firstCard) return;
   
