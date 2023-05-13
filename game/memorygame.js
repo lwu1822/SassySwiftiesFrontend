@@ -1,9 +1,15 @@
 // Kudos to https://marina-ferreira.github.io/tutorials/js/memory-game/ for the help!!!
 // This part is for the cards and the memory game
+// Kudos to the W3Schools countdown timer lesson!
+// I thought it would be more convenient to have it count up
+// https://www.w3schools.com/howto/howto_js_countdown.asp
+
+
 const cards = document.querySelectorAll('.box');
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
+let gameInactive = true;
 let hasFlipped = false;
 let lockdown = false;
 let firstCard, secondCard;
@@ -50,6 +56,13 @@ function checkMatching() {
         }
 }
 
+function timer() {
+    var currentTime = new Date().getTime();
+    var diff = currentTime - startTime;
+    var sec = Math.floor(diff % (1000 * 60) / 1000);
+    document.getElementById("time").innerHTML = "Time Elapsed: " + sec + "seconds";
+}
+
 function flipCard() {
     if (lockdown) return;
     if (this === firstCard) {
@@ -61,6 +74,10 @@ function flipCard() {
     this.classList.add('flip');
   
     if (!hasFlipped) {
+        if (gameInactive) {
+            gameInactive = false;
+            startTime = new Date().getTime();
+        }
         hasFlipped = true;
         firstCard = this;
         console.log("first card detected! This card is ");
@@ -73,18 +90,4 @@ function flipCard() {
     }
 }
 
-
-
-
-// Kudos to the W3Schools countdown timer lesson!
-// I thought it would be more convenient to have it count up
-// https://www.w3schools.com/howto/howto_js_countdown.asp
-
-var startTime = new Date().getTime();
-
-var time = setInterval(function() {
-    var currentTime = new Date().getTime();
-    var diff = currentTime - startTime;
-    var sec = Math.floor(diff % (1000 * 60) / 1000);
-    document.getElementById("time").innerHTML = "Time Elapsed: " + sec + "seconds";
-}, 1000);
+var time = setInterval(timer, 1000);
