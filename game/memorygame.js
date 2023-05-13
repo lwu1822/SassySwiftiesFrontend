@@ -1,4 +1,4 @@
-const cards = document.queryselectorAll('.box');
+const cards = document.querySelectorAll('.box');
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
