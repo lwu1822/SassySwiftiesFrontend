@@ -19,6 +19,8 @@
 // Kudos to https://marina-ferreira.github.io/tutorials/js/memory-game/. We wouldn't have gotten far without a tutorial.
 
 .board{
+   height: 100%;
+   width: 100%;
    margin: auto;
    display: flex;
    flex-wrap: wrap;
@@ -26,8 +28,8 @@
 }
 
 .box{
-   height: 25%;
-   width: 20%;
+   height: 24%;
+   width: 19%;
    position: relative;
    margin: auto; 
    flex-wrap: wrap;
