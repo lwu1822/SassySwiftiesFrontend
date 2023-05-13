@@ -58,12 +58,12 @@
 
 .Swift {
    @extend %matchingButton;
-   position: absolute;
 }
 
 .Swift,
 .Flipped {
-   backface-visibility: hidden;
+    position: absolute;
+    backface-visibility: hidden;
 }
 
 // matching ends here
