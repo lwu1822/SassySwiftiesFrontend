@@ -58,7 +58,7 @@ Kudos to this [guide](https://marina-ferreira.github.io/tutorials/js/memory-game
       <img class="Swift" src="images/cover.png">
       <img class="Flipped" src="images/color6.PNG">
     </div>
-    <div class="box" data-framework = "album 7>
+    <div class="box" data-framework = "album 7">
       <img class="Swift" src="images/cover.png">
       <img class="Flipped" src="images/color7.PNG">
     </div>
