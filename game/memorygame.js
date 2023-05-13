@@ -1,5 +1,5 @@
 // Kudos to https://marina-ferreira.github.io/tutorials/js/memory-game/ for the help!!!
-
+// This part is for the cards and the memory game
 const cards = document.querySelectorAll('.box');
 
 cards.forEach(card => card.addEventListener('click', flipCard));
@@ -72,3 +72,19 @@ function flipCard() {
         checkMatching()
     }
 }
+
+
+
+
+// Kudos to the W3Schools countdown timer lesson!
+// I thought it would be more convenient to have it count up
+// https://www.w3schools.com/howto/howto_js_countdown.asp
+
+var startTime = new Date().getTime();
+
+var time = setInterval(function() {
+    var currentTime = new Date().getTime();
+    var diff = currentTime - startTime;
+    var sec = Math.floor(distance % (1000 * 60) / 1000);
+    document.getElementById("time").innerHTML = "Time Elapsed:" + sec;
+}, 1000);
