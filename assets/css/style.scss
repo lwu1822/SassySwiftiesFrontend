@@ -18,9 +18,11 @@
 // matching starts here
 // Kudos to https://marina-ferreira.github.io/tutorials/js/memory-game/. We wouldn't have gotten far without a tutorial.
 
+
+// may need to adjust board size later for cross-compatibility purposes
 .board{
-   height: 100%;
-   width: 100%;
+   height: 400px;
+   width: 800px;
    margin: auto;
    display: flex;
    flex-wrap: wrap;
