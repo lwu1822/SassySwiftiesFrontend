@@ -9,6 +9,7 @@ const cards = document.querySelectorAll('.box');
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
+let sec = 0;
 let gameInactive = true;
 let hasFlipped = false;
 let lockdown = false;
