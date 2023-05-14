@@ -11,6 +11,7 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 
 let sec = 0;
 let gameInactive = true;
+let gameOver = false;
 let timeUp = false;
 let hasFlipped = false;
 let lockdown = false;
