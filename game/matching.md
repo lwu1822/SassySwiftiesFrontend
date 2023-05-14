@@ -9,6 +9,8 @@ If the board size doesn't fit to your screen, try zooming in or out.
 
 <p id="time">Time Elapsed: 0 seconds</p>
 
+<p id="swifties">Swifties Earned: 0 Swifties</p>
+
 
 <body class="MemBoard">
   <section class="board">
