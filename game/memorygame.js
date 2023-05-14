@@ -52,6 +52,7 @@ function reject() {
 }
 
 function updateMoney() {
+    console.log(sec);
     if (sec < 10) {
         money += 3;
     } elseif (sec < 20) {
@@ -75,6 +76,7 @@ function timer() {
     var diff = currentTime - startTime;
     sec = Math.floor(diff % (1000 * 60) / 1000);
     document.getElementById("time").innerHTML = "Time Elapsed: " + sec + " seconds";
+    return sec;
 }
 
 setInterval(timer, 1000);
