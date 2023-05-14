@@ -9,7 +9,8 @@ const cards = document.querySelectorAll('.box');
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
-let sec = 0;
+var sec = 0;
+console.log(sec)
 let gameInactive = true;
 let gameOver = false;
 let hasFlipped = false;
