@@ -5,7 +5,15 @@
 
 Kudos to this [guide](https://marina-ferreira.github.io/tutorials/js/memory-game/). We wouldn't have gotten far without it.
 
-If the board size doesn't fit to your screen, try zooming in or out.
+Your 30 seconds will begin when you flip the first card. If the board size doesn't fit to your screen, try zooming in or out.
+
+
+| Time Interval | Swifties Earned per Match |
+|-|-|
+| 0-9 seconds | 3 Swifties per match |
+| 10-19 seconds | 2 Swifties per match |
+| 20-29 seconds | 1 Swifty per match |
+
 
 <p id="time">Time Elapsed: 0 seconds</p>
 
