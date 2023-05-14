@@ -10,6 +10,7 @@ const cards = document.querySelectorAll('.box');
 cards.forEach(card => card.addEventListener('click', flipCard));
 
 var sec = 0;
+var money = 0;
 console.log(sec)
 let gameInactive = true;
 let gameOver = false;
@@ -50,13 +51,16 @@ function reject() {
     }, 500); // this is lower than the tutorial because this will be a fast-paced game
 }
 
-function checkMatching() {
-     if (firstCard.dataset.framework === secondCard.dataset.framework) {
-            noFlip()
-            console.log("match detected!");
-        } else {
-            reject()
-        }
+function updateMoney() {
+    if (sec < 10) {
+        money += 3;
+    } elseif (sec < 20) {
+        money += 2;
+    } else {
+        money += 1
+    }
+    console.log(money);
+    document.getElementById("swifties").innerHTML = "Swifties Earned: " + money + " Swifties";
 }
 
 function timer() {
@@ -74,6 +78,16 @@ function timer() {
 }
 
 setInterval(timer, 1000);
+
+function checkMatching() {
+     if (firstCard.dataset.framework === secondCard.dataset.framework) {
+            noFlip();
+            updateMoney();
+            console.log("match detected!");
+        } else {
+            reject()
+        }
+}
 
 function flipCard() {
     if (lockdown) return;
