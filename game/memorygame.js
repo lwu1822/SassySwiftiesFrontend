@@ -61,7 +61,7 @@ function checkMatching() {
 function timer() {
     if (gameInactive) return;
     if (sec = 29) {
-        sec = 30
+        document.getElementById("time").innerHTML = "Time's up!";
         gameOver = true;
     }
     if (gameOver) return;
