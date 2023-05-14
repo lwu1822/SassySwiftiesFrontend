@@ -11,6 +11,7 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 
 let sec = 0;
 let gameInactive = true;
+let timeUp = false;
 let hasFlipped = false;
 let lockdown = false;
 let firstCard, secondCard;
@@ -59,6 +60,11 @@ function checkMatching() {
 
 function timer() {
     if (gameInactive) return;
+    if (sec = 29) {
+        sec = 30
+        gameOver = true;
+    }
+    if (gameOver) return;
     var currentTime = new Date().getTime();
     var diff = currentTime - startTime;
     var sec = Math.floor(diff % (1000 * 60) / 1000);
@@ -67,7 +73,7 @@ function timer() {
 
 function flipCard() {
     if (lockdown) return;
-    if (sec > 59) return;
+    if (gameOver) return;
     if (this === firstCard) {
         console.log("Stop cheating!");
         return;
