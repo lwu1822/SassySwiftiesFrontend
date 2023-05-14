@@ -59,8 +59,9 @@ function checkMatching() {
 }
 
 function timer() {
+    console.log(sec);
     if (gameInactive) return;
-    if (sec = 29) {
+    if (sec == 29) {
         document.getElementById("time").innerHTML = "Time's up!";
         gameOver = true;
     }
@@ -68,7 +69,6 @@ function timer() {
     var currentTime = new Date().getTime();
     var diff = currentTime - startTime;
     var sec = Math.floor(diff % (1000 * 60) / 1000);
-    console.log(sec);
     document.getElementById("time").innerHTML = "Time Elapsed: " + sec + " seconds";
 }
 
