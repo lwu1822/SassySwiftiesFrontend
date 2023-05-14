@@ -52,10 +52,10 @@ function reject() {
 }
 
 function updateMoney() {
-    console.log(sec);
+    console.log("Timecheck: " +sec);
     if (sec < 10) {
         money += 3;
-    } elseif (sec < 20) {
+    } else if (sec < 20) {
         money += 2;
     } else {
         money += 1
