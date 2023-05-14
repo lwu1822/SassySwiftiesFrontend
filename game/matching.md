@@ -1,12 +1,13 @@
 # Matching!!!
 
-##### Make as many matches as you can in 1 minute!!
+##### Make as many matches as you can in 30 seconds!
 
 
 Kudos to this [guide](https://marina-ferreira.github.io/tutorials/js/memory-game/). We wouldn't have gotten far without it.
 
-<p id="time">Time Elapsed: 0 seconds</p>
+If the board size doesn't fit to your screen, try zooming in or out.
 
+<p id="time">Time Elapsed: 0 seconds</p>
 
 
 <body class="MemBoard">
