@@ -12,7 +12,6 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 let sec = 0;
 let gameInactive = true;
 let gameOver = false;
-let timeUp = false;
 let hasFlipped = false;
 let lockdown = false;
 let firstCard, secondCard;
@@ -69,8 +68,11 @@ function timer() {
     var currentTime = new Date().getTime();
     var diff = currentTime - startTime;
     var sec = Math.floor(diff % (1000 * 60) / 1000);
+    console.log(sec);
     document.getElementById("time").innerHTML = "Time Elapsed: " + sec + " seconds";
 }
+
+setInterval(timer, 1000);
 
 function flipCard() {
     if (lockdown) return;
@@ -99,5 +101,3 @@ function flipCard() {
         checkMatching()
     }
 }
-
-var time = setInterval(timer, 1000);
