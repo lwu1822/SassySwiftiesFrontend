@@ -1,0 +1,110 @@
+.row {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.col {
+  padding: 20px;
+  border: 1px solid gray;
+  margin: 5px;
+  order: 3;
+  }
+span{
+    float: right;
+    color: gray;
+    font-size: 11px;
+}
+form {
+  justify-content: flex-start;
+  margin: 5px;
+}
+
+
+body {
+  background-color: rgb(30, 30, 30);
+}
+.link {
+  color: rgb(94, 147, 240);
+}
+h1 {
+  font-family: "Oxygen", sans-serif;
+  font-size: 40px;
+  color: rgb(94, 147, 240);
+}
+h2 {
+  font-family: "Oxygen", sans-serif;
+  font-size: 36px;
+  color: rgb(94, 147, 240);
+}
+h4 {
+  font-family: "Oxygen", sans-serif;
+  font-size: 32px;
+  margin: 5px;
+  color: rgb(200, 200, 200);
+}
+
+/* Text areas */
+
+textarea {
+  resize: none;
+  font-family: "Oxygen", sans-serif;
+  font-size: 16px;
+  background-color: #4f4f4f2f;
+  border-radius: 10px;
+  border: 1px solid rgb(0, 0, 0);
+  transition: transform .2s;
+  padding: 8px;
+}
+textarea:hover {
+  transform: scale(1.005);
+}
+.textarea-title {
+  width: 50%;
+  height: 40px;
+  color: rgb(200, 200, 200);
+}
+.textarea-text {
+  width: 50%;
+  height: 140px;
+  color: rgb(200, 200, 200);
+}
+button {
+  resize: none;
+  font-family: "Oxygen", sans-serif;
+  font-size: 20px;
+  color: rgb(200, 200, 200);
+  background-color: #4f4f4f2f;
+  border-radius: 8px;
+  border: 1px solid rgb(0, 0, 0);
+  transition: transform .2s;
+  padding: 10px;
+  margin: 10px 0px;
+}
+button:hover {
+  transform: scale(1.025);
+}
+
+/* Containers */
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #4f4f4f2f;
+  border-radius: 8px;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 16px;
+  padding: 20px;
+  margin: 5px;
+  order: 3;
+  transition: transform .2s;
+}
+.container:hover {
+  transform: scale(1.003);
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}

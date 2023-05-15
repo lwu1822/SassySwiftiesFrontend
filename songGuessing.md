@@ -1,11 +1,15 @@
 <html>
 
+<head>
+    <link rel="stylesheet" href="songGuessing.css">
+</head>
+
 <div id='content'>
-<p id = "randomWord"> </p>
+<p id = "randomWord" style="color:white;font-size:25px;"> </p>
 <form id='songGuessingForm'>
 <div class='form-uname'>
-    <label id='guess' for='guess'>Enter Your Guess:</label>
-    <input id='guessText' type='text' maxlength='30'>
+    <label id='guess' for='guess' style="color:white;font-size:20px;">Enter Your Guess:</label>
+    <input id='guessText' type='text' maxlength='100'>
 </div>
 <div class='form-sub'>
     <button id='subButton' type='button' onclick = "checkAnswer()">Guess!</button>
@@ -14,9 +18,9 @@
 </form>
 
 <div id="text">
-  <p id = "attemptsText"> Attempts: 0</p>
-  <p id = "correctText"> Songs Guessed Correctly: 0</p>
-  <p id = "resultText"> </p>
+  <p id = "attemptsText" style="color:white;font-size:15px;"> Attempts: 0</p>
+  <p id = "correctText" style="color:white;font-size:15px;"> Songs Guessed Correctly: 0</p>
+  <p id = "resultText" style="color:white;font-size:14px;"> </p>
 </div>
 
 <script type="text/javascript">
