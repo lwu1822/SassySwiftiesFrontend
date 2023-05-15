@@ -9,12 +9,13 @@
 </div>
 <div class='form-sub'>
     <button id='subButton' type='button' onclick = "checkAnswer()">Guess!</button>
-    <button onclick = "startGame()" >Reset Game</button>
+    <button onclick = "startGame(0,0)" >Reset Game</button>
 </div>
 </form>
 
 <div id="text">
   <p id = "attemptsText"> Attempts: 0</p>
+  <p id = "correctText"> Songs Guessed Correctly: 0</p>
   <p id = "resultText"> </p>
 </div>
 
@@ -24,6 +25,7 @@ const songList = ["Blank Space", "Shake it Off", "Bad Blood", "Love Story", "Ant
 
 let answer = ""
 let attempts = 0
+let correct = 0
 
 function chooseSong() {
     return songList[Math.floor(Math.random() * songList.length)];
@@ -41,8 +43,9 @@ function chooseSong() {
 //   // Returns the list of characters
 //   return characters;
 // }
-function startGame() {
-    attempts = 0
+function startGame(attempts, correct) {
+    // attempts = 0
+    // correct = 0
     answer = chooseSong()
     const newList = [...answer];
 
@@ -71,14 +74,17 @@ function checkAnswer() {
     attempts++
     if (guess.toLowerCase() === answer.toLowerCase()) {
         document.getElementById("resultText").innerHTML = "'" + answer + "'" + " is the correct answer!"
+        correct++
+        startGame(attempts, correct)
     }
     else {
         document.getElementById("resultText").innerHTML = "'" + guess + "'" + " is incorrect. Try again."
     }
     document.getElementById("attemptsText").innerHTML = "Attempts: " + attempts
+    document.getElementById("correctText").innerHTML = "Songs Guessed Correctly: " + correct
 }
 
-startGame()
+startGame(0,0)
 
 
 </script>
