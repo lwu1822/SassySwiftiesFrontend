@@ -1,6 +1,20 @@
 # Matching!!!
 
-##### Make as many matches as you can in 30 seconds!
+First, credits. These album covers are copyrighted... so attribution is key.
+
+| Album Cover | Source |
+|-|-|
+| Red | https://en.wikipedia.org/wiki/File:Taylor_Swift_-_Red.png |
+| 1989 | https://en.wikipedia.org/wiki/File:Taylor_Swift_-_1989.png|
+| Reputation | https://en.wikipedia.org/wiki/File:Taylor_Swift_-_Reputation.png |
+| Lover | https://en.wikipedia.org/wiki/File:Taylor_Swift_-_Lover.png |
+| Folklore | https://en.wikipedia.org/wiki/File:Taylor_Swift_-_Folklore.png |
+| Evermore | https://en.wikipedia.org/wiki/File:Taylor_Swift_-_Evermore.png | 
+| Midnights | https://en.wikipedia.org/wiki/File:Midnights_-_Taylor_Swift.png |
+
+
+
+# Make as many matches as you can in 30 seconds!
 
 
 Kudos to this [guide](https://marina-ferreira.github.io/tutorials/js/memory-game/). We wouldn't have gotten far without it.
@@ -108,3 +122,7 @@ Your 30 seconds will begin when you flip the first card. If the board size doesn
   <script src="memorygame.js"></script>
   
 </body>
+
+
+
+
