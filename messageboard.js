@@ -33,7 +33,7 @@ $(document).ready(function() {
   
     // Function to delete a post
     function remove(id) {
-      var url = "http://127.0.0.1:8012/fd/delete?id=" + id;
+      var url = "http://127.0.0.1:8012/api/messageboard/delete?id=" + id;
       fetch(url, {
       method: "DELETE"
       })
@@ -43,7 +43,7 @@ $(document).ready(function() {
   
     // Function to like a post
     function like(id, likeChange) {
-      var url = "http://127.0.0.1:8012/fd/update?id=" + id;
+      var url = "http://127.0.0.1:8012/api/messageboard/update?id=" + id;
       fetch(url, {
       method: "PUT",
       headers: {
@@ -60,7 +60,7 @@ $(document).ready(function() {
   
     // Function to get all posts from API
     function getPosts() {
-      var url = "http://127.0.0.1:8012/api/fd";
+      var url = "http://127.0.0.1:8012/api/messageboard";
       let request = new XMLHttpRequest();
       request.open("GET", url);
       request.send();
@@ -110,7 +110,7 @@ $(document).ready(function() {
           var imageURL = data.data[0].url;*/
   
           // Send all data
-    var url = "http://127.0.0.1:8012/fd/post";
+    var url = "http://127.0.0.1:8012/api/messageboard/post";
     fetch(url, {
       method: "POST",
       headers: {
