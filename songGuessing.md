@@ -27,7 +27,7 @@
 
 <script type="text/javascript">
 
-const songList = ["Blank Space", "Shake it Off", "Bad Blood", "Love Story", "Anti-Hero", "All Too Well", "Look What You Made Me Do", "I Knew You Were Trouble", "ME!", "Style", "We Are Never Ever Getting Back Together", "Lover", "Delicate"];
+const songList = ["Blank Space", "Shake it Off", "Bad Blood", "Love Story", "Anti-Hero", "All Too Well", "Look What You Made Me Do", "I Knew You Were Trouble", "ME!", "Style", "We Are Never Ever Getting Back Together", "Lover", "Delicate", "Gorgeous", "The Great War", "Back to December", "Karma", "Enchanted", "You Belong With Me", "Bejeweled", "You Need to Calm Down"];
 
 let answer = ""
 let attempts = 0
@@ -70,7 +70,8 @@ function startGame(attempts, correct) {
     for (let i = 0; i < newList.length; i++) {
     joined += newList[i];
     }
-    document.getElementById("randomWord").innerHTML = joined
+    songQuestion = "Song: " + joined 
+    document.getElementById("randomWord").innerHTML = songQuestion
 }
 
 function checkAnswer() {
