@@ -13,7 +13,8 @@
 </div>
 <div class='form-sub'>
     <button id='subButton' type='button' onclick = "checkAnswer()">Guess!</button>
-    <button onclick = "startGame(0,0)" >Reset Game</button>
+    <button  type='button' onclick = "startGame(0,0)" >Reset Game</button>
+    <button type='button' onclick = "skipQuestion()" >Skip Question</button>
 </div>
 </form>
 
@@ -49,8 +50,6 @@ function chooseSong() {
 //   return characters;
 // }
 function startGame(attempts, correct) {
-    // attempts = 0
-    // correct = 0
     answer = chooseSong()
     const newList = [...answer];
 
@@ -92,7 +91,9 @@ function checkAnswer() {
     document.getElementById("correctText").innerHTML = "Songs Guessed Correctly: " + correct
 }
 
+function skipQuestion() {
+    startGame(attempts, correct)
+}
 startGame(0,0)
-
 
 </script>
