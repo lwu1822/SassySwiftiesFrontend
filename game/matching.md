@@ -11,6 +11,7 @@ First, credits. These album covers are copyrighted... so attribution is key.
 | Folklore | https://en.wikipedia.org/wiki/File:Taylor_Swift_-_Folklore.png |
 | Evermore | https://en.wikipedia.org/wiki/File:Taylor_Swift_-_Evermore.png | 
 | Midnights | https://en.wikipedia.org/wiki/File:Midnights_-_Taylor_Swift.png |
+| Lover (live from Paris) | https://en.wikipedia.org/wiki/File:Taylor_Swift_-_Lover_(Live_from_Paris).png | 
 
 
 
