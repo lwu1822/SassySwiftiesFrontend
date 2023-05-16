@@ -21,6 +21,7 @@
   <p id = "attemptsText" style="color:white;font-size:15px;"> Attempts: 0</p>
   <p id = "correctText" style="color:white;font-size:15px;"> Songs Guessed Correctly: 0</p>
   <p id = "resultText" style="color:white;font-size:14px;"> </p>
+
 </div>
 
 <script type="text/javascript">
@@ -76,13 +77,16 @@ function startGame(attempts, correct) {
 function checkAnswer() {
     let guess = document.getElementById("guessText").value
     attempts++
+    let elem = document.getElementById('resultText')
     if (guess.toLowerCase() === answer.toLowerCase()) {
-        document.getElementById("resultText").innerHTML = "'" + answer + "'" + " is the correct answer!"
+        elem.style.color = '#00ff00'
+        elem.innerHTML = "'" + answer + "'" + " is the correct answer!"
         correct++
         startGame(attempts, correct)
     }
     else {
-        document.getElementById("resultText").innerHTML = "'" + guess + "'" + " is incorrect. Try again."
+        elem.style.color = '#ff0000'
+        elem.innerHTML = "'" + guess + "'" + " is incorrect. Try again."
     }
     document.getElementById("attemptsText").innerHTML = "Attempts: " + attempts
     document.getElementById("correctText").innerHTML = "Songs Guessed Correctly: " + correct
