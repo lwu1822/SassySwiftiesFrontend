@@ -125,21 +125,10 @@ function flipCard() {
 // From https://github.com/Leonard514/FastPage/blob/master/_layouts/home.html
 
   document.onkeydown = (e) => {
-    if (
-      event.keyCode === 123 ||
-      ctrlShiftKey(e, 'I') ||
-      ctrlShiftKey(e, 'J') ||
-      ctrlShiftKey(e, 'C') ||
-      //(e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
-      (e.ctrlKey && e.keyCode === 'S'.charCodeAt(0))
-      //(e.ctrlKey && e.keyCode === 'C'.charCodeAt(0))
-      //(e.ctrlKey && e.keyCode === 'X'.charCodeAt(0))
-      //(e.ctrlKey && e.keyCode === 'P'.charCodeAt(0))
-    )
-    {
+    if (event.keyCode === 123 || ctrlShiftKey(e, 'I') || ctrlShiftKey(e, 'J') || ctrlShiftKey(e, 'C') || (e.ctrlKey && e.keyCode === 'S'.charCodeAt(0))) {
         console.log("You are a CHEATER!!!")
         document.getElementById("time").innerHTML = "Stop Cheating!"
         gameOver = true;
         return gameOver;
-    } 
+    }
   };
