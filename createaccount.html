@@ -23,7 +23,6 @@
     function signup_user(){
 
         // URL for deployment
-        // var url = "https://lwu1822.github.io/SassySwiftiesFrontend"
         // Comment out next line for local testing
         url = "http://localhost:8086"
         // Authenticate endpoint
@@ -62,7 +61,7 @@
             // Valid response will contain json data
 
             response.json().then(data => {
-                const message = 'Account creation success: ' + data.name;
+                const message = 'Account creation success: ' + data.username;
                 document.getElementById("message").innerHTML = message;
                 localStorage.setItem("username", data.username);
                 localStorage.setItem("password", data.password)
