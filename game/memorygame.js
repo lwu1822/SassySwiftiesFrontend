@@ -135,9 +135,11 @@ function flipCard() {
       //(e.ctrlKey && e.keyCode === 'C'.charCodeAt(0))
       //(e.ctrlKey && e.keyCode === 'X'.charCodeAt(0))
       //(e.ctrlKey && e.keyCode === 'P'.charCodeAt(0))
-    ) {
+    )
+    {
         console.log("You are a CHEATER!!!")
         document.getElementById("time").innerHTML = "Stop Cheating!"
         gameOver = true;
         return gameOver;
+    } 
   };
