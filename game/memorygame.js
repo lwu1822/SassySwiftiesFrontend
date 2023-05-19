@@ -44,9 +44,6 @@ function detectCheating() {
     }
 }
 
-// run the function every ___ milliseconds according to second argument
-
-setInterval(detectCheating(), 1000);
 
 
 function clearVar() {
@@ -100,7 +97,16 @@ function timer() {
     return sec;
 }
 
-setInterval(timer, 1000);
+function timedExecutables() {
+    detectCheating(); 
+    timer();
+}
+
+// run the function every ___ milliseconds according to second argument
+// For some reason you can only have one setInterval running
+// so I lapped the two functions into a parent
+
+setInterval(timedExecutables, 1000);
 
 function checkMatching() {
      if (firstCard.dataset.framework === secondCard.dataset.framework) {
