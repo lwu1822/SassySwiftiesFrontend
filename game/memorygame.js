@@ -11,6 +11,8 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 
 var sec = 0;
 var money = 0;
+var beforeTime = 0;
+var afterTime = 0;
 console.log(sec)
 let gameInactive = true;
 let gameOver = false;
@@ -32,9 +34,9 @@ let firstCard, secondCard;
 // match before starting
 
 function detectCheating() {
-    var beforeTime = new Date().getTime();
+    beforeTime = new Date().getTime();
     debugger;
-    var afterTime = new Date().getTime();
+    afterTime = new Date().getTime();
     if (afterTime - beforeTime > 100) {
         gameOver = true;
         document.getElementById("time").innerHTML = "You have been caught cheating! Please reload the page without inspect element open before playing.";
