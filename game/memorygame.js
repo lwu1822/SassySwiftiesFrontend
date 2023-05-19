@@ -9,6 +9,7 @@ const cards = document.querySelectorAll('.box');
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
+var matches = 0;
 var sec = 0;
 var money = 0;
 var beforeTime = 0;
@@ -76,8 +77,12 @@ function updateMoney() {
     } else if (sec < 20) {
         money += 2;
     } else {
-        money += 1
+        money += 1;
     }
+    if (matches == 8) {
+        money += 1;
+        document.getElementById("time").innerHTML = "Congrats on Finishing! Play again to see how close you can get to 25 Swifties!";
+        gameOver = true;
     // console.log(money);
     document.getElementById("swifties").innerHTML = "Swifties Earned: " + money + " Swifties";
 }
@@ -112,6 +117,7 @@ setInterval(timedExecutables, 1000);
 function checkMatching() {
      if (firstCard.dataset.framework === secondCard.dataset.framework) {
             noFlip();
+            matches += 1;
             updateMoney();
             // console.log("match detected!");
         } else {
