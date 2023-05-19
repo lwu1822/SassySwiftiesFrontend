@@ -4,6 +4,8 @@
 - [Google Maps 14251 Coram Rd, Shasta Lake, California 96089](https://www.google.com/maps/place/14251+Coram+Rd,+Shasta+Lake,+CA+96019/@40.707988,-122.44701,16z/data=!4m5!3m4!1s0x54d28be161c895ef:0xca3b8805b9b6a5ec!8m2!3d40.7079882!4d-122.4470104?hl=en)
 - ***NO PETS***
 
+<html style="height: 100%;"><head><meta name="viewport" content="width=device-width, minimum-scale=0.1"><title>ACB-R5RnpvBuoOg3kAAY5UcM_FGg5vUvHprEnKEAKzbk=s340-p-k-rw-no (340×340)</title></head><body style="margin: 0px; background: #0e0e0e; height: 100%" data-new-gr-c-s-check-loaded="14.1110.0" data-gr-ext-installed=""><img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://lh3.googleusercontent.com/a-/ACB-R5RnpvBuoOg3kAAY5UcM_FGg5vUvHprEnKEAKzbk=s340-p-k-rw-no"></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+
 ## Schedule
 
 | Date | Day | Time | Event | Meet At | Coordinator |
@@ -48,3 +50,4 @@
 | --- | --- | 9am | Pack car lunches | Ride Home | As Needed |
 | --- | --- | 10am | Cleanup Move out | Each House | All |
 | --- | --- | 11am | Check Out | Travel Home | Your it |
+
