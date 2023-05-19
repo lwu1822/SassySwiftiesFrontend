@@ -20,6 +20,8 @@ First, credits. These album covers are copyrighted... so attribution is key.
 
 Kudos to this [guide](https://marina-ferreira.github.io/tutorials/js/memory-game/). We wouldn't have gotten far without it.
 
+Make matches to earn Swifties! Be sure to make as many matches as early as you can, because earlier matches will earn more Swifties. You will have 30 seconds to make as many matches as you can, and if you finish you will be awarded with a bonus Swifty. Try to shoot for the maximum of 25 Swifties!
+
 Your 30 seconds will begin when you flip the first card. If the board size doesn't fit to your screen, try zooming in or out.
 
 
