@@ -34,6 +34,7 @@ let firstCard, secondCard;
 // match before starting
 
 function detectCheating() {
+    console.log("Checked for cheating")
     beforeTime = new Date().getTime();
     debugger;
     afterTime = new Date().getTime();
