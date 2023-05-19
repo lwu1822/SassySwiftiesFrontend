@@ -27,6 +27,24 @@ let firstCard, secondCard;
     });
 })();
 
+// anti-cheating mechanism. Will detect use of inspect element.
+// Inspect element can be used to cheat by seeing which pairs
+// match before starting
+
+function detectCheating() {
+    var beforeTime = new Date().getTime();
+    debugger;
+    var afterTime = new Date().getTime();
+    if (afterTime - beforeTime > 100) {
+        gameOver = true;
+        document.getElementById("time").innerHTML = "You have been caught cheating! Please reload the page without inspect element open before playing.";
+    }
+}
+
+// run the function every ___ milliseconds according to second argument
+
+setInterval(detectCheating(), 1000);
+
 
 function clearVar() {
     [hasFlipped, lockdown] = [false, false];
@@ -95,7 +113,7 @@ function flipCard() {
     if (lockdown) return;
     if (gameOver) return;
     if (this === firstCard) {
-        console.log("Stop cheating!");
+        console.log("Select another card");
         return;
     }
     console.log("clickity time!");
@@ -118,17 +136,3 @@ function flipCard() {
         checkMatching()
     }
 }
-
-
-
-// anti-cheating mechanism. Will shut down the game on F12, opening inspect element, trying to save as HTML. Note that opening inspect element
-// From https://github.com/Leonard514/FastPage/blob/master/_layouts/home.html
-
-  document.onkeydown = (e) => {
-    if (event.keyCode === 123 || ctrlShiftKey(e, 'I') || ctrlShiftKey(e, 'J') || ctrlShiftKey(e, 'C') || (e.ctrlKey && e.keyCode === 'S'.charCodeAt(0))) {
-        console.log("You are a CHEATER!!!")
-        document.getElementById("time").innerHTML = "Stop Cheating!"
-        gameOver = true;
-        return gameOver;
-    }
-  };
