@@ -2,13 +2,13 @@
 <html>
 <head>
   <title>MP3 Upload</title>
-  <link rel="stylesheet" type="text/css" href="uploadstyles.css>
+  <link rel="stylesheet" type="text/css" href="uploadstyles.css">
 </head>
 <body>
   <h2>Upload MP3 File</h2>
   
   <form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" id="mp3File" accept=".mp3"><br>
+    <input type="file" id="mp3File" accept=".mp3">
     <button type="submit">Upload</button>
   </form>
 
@@ -23,15 +23,21 @@
         var reader = new FileReader();
         reader.onload = function(e) {
           var mp3Data = e.target.result;
-          // Here, you can send the `mp3Data` to your server for database storage using AJAX or any other method
-          // Example: You can use the fetch API to send the data to your server
-          fetch('/store-mp3', {
+          // Send the data to the server using fetch API
+          fetch('http://your-domain.com/store-mp3', {
             method: 'POST',
-            body: mp3Data
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ mp3Data: mp3Data })
           })
           .then(function(response) {
             // Handle the server response
-            console.log('MP3 file uploaded successfully');
+            if (response.ok) {
+              console.log('MP3 file uploaded successfully');
+            } else {
+              console.error('Failed to upload MP3 file. Status:', response.status);
+            }
           })
           .catch(function(error) {
             // Handle errors
