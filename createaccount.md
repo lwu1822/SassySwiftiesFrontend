@@ -63,7 +63,7 @@
             // Valid response will contain json data
 
             response.json().then(data => {
-                const message = 'Account creation success: ' + data.name;
+                const message = 'Account creation success: ' + document.getElementById("username");
                 document.getElementById("message").innerHTML = message;
                 localStorage.setItem("username", data.username);
                 localStorage.setItem("password", data.password)
