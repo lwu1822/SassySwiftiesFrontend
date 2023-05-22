@@ -1,8 +1,48 @@
-<html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<head>
-    <link rel="stylesheet" href="songGuessing.css">
-</head>
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sassy Swifties - The Official Del Norte Taylor Swift Fan Club | A community with love and support for Taylor Swift</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Sassy Swifties - The Official Del Norte Taylor Swift Fan Club" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A community with love and support for Taylor Swift" />
+<meta property="og:description" content="A community with love and support for Taylor Swift" />
+<link rel="canonical" href="http://localhost:4000/login.html" />
+<meta property="og:url" content="http://localhost:4000/login.html" />
+<meta property="og:site_name" content="Sassy Swifties - The Official Del Norte Taylor Swift Fan Club" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sassy Swifties - The Official Del Norte Taylor Swift Fan Club" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A community with love and support for Taylor Swift","headline":"Sassy Swifties - The Official Del Norte Taylor Swift Fan Club","url":"http://localhost:4000/login.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link rel="stylesheet" href="/assets/css/style.css?v=b1dc66176689dcb290cf9d2d0cd46b8ab1096a5e">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="/assets/js/respond.js"></script>
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel="stylesheet" href="/assets/css/ie.css">
+<![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup theme-color -->
+<!-- start theme color meta headers -->
+<meta name="theme-color" content="#353535">
+<meta name="msapplication-navbutton-color" content="#353535">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- end theme color meta headers -->
+
+  </head>
+  <body> 
+    <div class="wrapper">
+    </div>
 
 <!-- HTML table fragment for page -->
 <table>
@@ -29,7 +69,7 @@
   const DISLIKES = "dislike";
 
   // prepare fetch urls
-  const url = "http://localhost:8086/api/songs/";
+  const url = "http://localhost:8036/api/songs/";
   const like_url = url + "/like/";  // haha reaction
   const dislike_url = url + "/dislike/";  // boohoo reaction
 

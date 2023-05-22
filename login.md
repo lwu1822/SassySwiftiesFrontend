@@ -1,16 +1,68 @@
-<div class="wrapper">
-  <form class="login">
-    <p class="title">Log in</p>
-    <input type="text" placeholder="Username" autofocus/>
-    <i class="fa fa-user"></i>
-    <input type="password" placeholder="Password" />
-    <i class="fa fa-key"></i>
-    <a href="#">Forgot your password?</a>
-    <button>
-      <i class="spinner"></i>
-      <span class="state">Log in</span>
-    </button>
-  </form>
-  <footer><a target="blank" href="http://boudra.me/">Credit: boudra.me</a></footer>
-  </p>
-</div>
+<form method="POST" action="javascript:login_user()">
+    <center>
+        <p><label>
+            Username:
+            <input type="text" name="username" id="username" required>
+        </label></p>
+        <p><label>
+            Password:
+            <input type="password" name="password" id="password" required>
+        </label></p>
+        <p><button>Login</button></p>
+        <p id="message"></p>
+     </center>
+</form>
+
+<script>
+
+        // URL for deployment
+        var url = "http://localhost:8036"
+        // Comment out next line for local testing
+        // url = "http://192.168.1.20:8731/"
+        // Authenticate endpoint
+        const login_url = url + '/api/users/login';
+
+        function login_user(){
+
+        // Set body to include login data
+            const body = {
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value,
+            };    
+
+        // Set Headers to support cross origin
+            const requestOptions = {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                // credentials: 'include', // include, *same-origin, omit
+                body: JSON.stringify(body),
+                headers: {
+                    "content-type": "application/json",
+                },
+            };
+
+        // Fetch JWT
+            fetch(login_url, requestOptions)
+            .then(response => {
+                // trap error response from Web API
+                if (response.status !== 200) {
+                    const message = 'Login error: ' + response.status + " " + response.statusText;
+                    document.getElementById("message").innerHTML = message;
+                    localStorage.removeItem("username");
+                    localStorage.removeItem("visitor");
+                    return;
+                }
+
+                // Valid response will contain json data
+                response.json().then(data => {
+                    const message = 'Login success: ' + data.name;
+                    document.getElementById("message").innerHTML = message;
+                    localStorage.setItem("username", data.username);
+                    localStorage.setItem("visitor", data.name);
+                })
+            })
+        }
+
+
+</script>
