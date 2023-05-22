@@ -28,7 +28,7 @@
           var artistName = document.getElementById('artistName').value;
 
           // Store the MP3 data and additional data locally
-          localStorage.setItem('mp3File', mp3File);
+          localStorage.setItem('mp3File', mp3Data);
           localStorage.setItem('songTitle', songTitle);
           localStorage.setItem('artistName', artistName);
 
