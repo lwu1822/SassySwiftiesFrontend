@@ -26,7 +26,7 @@
         // URL for deployment
         // var url = "https://lwu1822.github.io/SassySwiftiesFrontend"
         // Comment out next line for local testing
-        url = "http://localhost:8086"
+        url = "http://localhost:8036"
         // Authenticate endpoint
         const signup_url = url + '/api/users/';
 
