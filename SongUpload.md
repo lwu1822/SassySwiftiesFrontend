@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>MP3 Upload</title>
