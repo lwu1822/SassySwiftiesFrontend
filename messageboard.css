@@ -152,6 +152,15 @@ button:hover {
   align-items: center;
   width: 100%;
   margin-top: 8px;
+  margin-left: 10px;
+}
+
+.title-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-top: 0px;
 }
 
 .like-button {
@@ -159,8 +168,8 @@ button:hover {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   border: none;
   margin: 5px;
 }
@@ -169,8 +178,8 @@ button:hover {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   border: none;
   margin: 5px;
 }
@@ -179,8 +188,8 @@ button:hover {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   border: none;
   margin: 5px;
 }
@@ -194,7 +203,7 @@ button:hover {
 }
 
 .text-subtitle {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
   margin-bottom: 8px;
   font-family: "Oxygen", sans-serif;
@@ -205,10 +214,31 @@ button:hover {
   font-size: 20px;
   color: #666;
   font-family: "Oxygen", sans-serif;
+  margin-top: 10px;
 }
+
+.text-details {
+  font-size: 15px;
+  color: #b0b0b0;
+  font-family: "Oxygen", sans-serif;
+  font-style: italic;
+}
+
 .text-likes {
   font-size: 32px;
   font-family: "Oxygen", sans-serif;
   margin: 5px;
   color:rgb(0, 0, 0);
+}
+
+.profile {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border: none;
+  margin-right: 5px;
+  border-radius: 8px;
+  border: 1px solid rgb(0, 0, 0);
 }
