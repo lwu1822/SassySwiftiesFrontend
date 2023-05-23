@@ -12,20 +12,33 @@
   </div>-->
 
   <h1>Discussion Board<h1></h1>
-  <div class="postmaker">
-    <h2>Create a Post</h2>
-    <form class="post-form">
-        <h4>Title</h4>
-        <textarea id="post-title" class="textarea-title"></textarea> 
-        <h4>Text Content</h4>
-        <textarea id="post-text" class="textarea-text"></textarea> <br>
-        <!--Triggers the creation of a post-->
-        <button type="button", id="Submit Button">Add Post</button>
-    </form>
-  </div>
-  <h2>Posts</h2>
+  <form class="post-form">
+      <h4>Title</h4>
+      <textarea id="post-title" class="textarea-title"></textarea> 
+      <div id="title-char-count" class="charcounter">0/50</div>
+      <h4>Text Content</h4>
+      <textarea id="post-text" class="textarea-text"></textarea>
+      <div id="text-char-count" class="charcounter">0/300</div><br>
+      <!--Triggers the creation of a post-->
+      <button type="button", id="Submit Button">Add Post</button>
+  </form>
   <!--Empty object for jquery to fill-->
+  <br><br><br>
+  <div class="container" id="post.id">
+    <div class="text-column">
+     <div class="text-subtitle">post.title</div>
+     <div class="text-description">post.note</div>
+    </div>
+    <div class="likes-row">
+     <div class="like-button" data-liked="post.liked"></div>
+     <div class="dislike-button"></div>
+     <div class="text-likes">post.likes upvotes</div>
+     <div class="report-button"></div>
+    </div>
+   </div>
+   
   <div id="posts"></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="messageboard.js"></script>
+  <script src="messageboard_posts.js"></script>
+  <script src="messageboard_charcounter.js"></script>

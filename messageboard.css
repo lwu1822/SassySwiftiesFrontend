@@ -54,19 +54,21 @@ textarea {
   border: 1px solid rgb(0, 0, 0);
   transition: transform .2s;
   padding: 8px;
+  width: 100%;
 }
 textarea:hover {
   transform: scale(1.005);
 }
 .textarea-title {
-  width: 50%;
+  width: 80%;
   height: 40px;
   color: rgb(200, 200, 200);
 }
 .textarea-text {
-  width: 50%;
-  height: 140px;
+  width: 80%;
+  height: px;
   color: rgb(200, 200, 200);
+  height: 140px;
 }
 button {
   resize: none;
@@ -85,6 +87,12 @@ button:hover {
   transform: scale(1.025);
 }
 
+.charcounter {
+  text-indent: 8px;
+  font-family: "Oxygen", sans-serif;
+  font-size: 16px;
+  color:rgba(200, 200, 200, 0.5);
+}
 /* Containers */
 
 .container {
@@ -124,7 +132,8 @@ button:hover {
     margin: 5px;
     order: 3;
     transition: transform .2s;
-    width:100vh;
+
+    max-width: 100vh;
 }
 .img-cropped {
   width: 100%;
@@ -189,7 +198,7 @@ button:hover {
   font-weight: bold;
   margin-bottom: 8px;
   font-family: "Oxygen", sans-serif;
-  color: rgb(94, 147, 240);
+  color: rgb(255, 255, 255);
 }
 
 .text-description {
@@ -202,68 +211,4 @@ button:hover {
   font-family: "Oxygen", sans-serif;
   margin: 5px;
   color:rgb(0, 0, 0);
-}
-
-/*Due to this being html and not markdown I had to copy the nav bar code here as well*/
-
-.bigimage {
-  margin: 50px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-
-.link1 {
-background-image: url(images/icons2/home.png);
-background-size: cover;
-}
-.link2 {
-  background-image: url(images/icons2/locationMarker.png);
-  background-size: cover;
-}
-
-.link3 {
-  background-image: url(images/icons2/map.png);
-  background-size: cover;
-}
-
-.link4 {
-  background-image: url(images/icons2/building.png);
-  background-size: cover;
-}
-
-.link5 {
-  background-image: url(images/icons2/airport.png);
-  background-size: cover;
-}
-/* Style for the navigation bar */
-.nav {
-  display: flex;
-  background-image: url(images/icons2/header.gif);
-  justify-content: left;
-  align-items: center;
-  background-color: #f8f8f8;
-  border-radius: 8px;
-  
-}
-
-.nav a {
-  display: inline-block;
-  width: 75px;
-  height: 75px;
-  background-size: cover;
-  margin: 0 10px;
-  text-indent: -9999px;
-}
-
-/* Style for the links */
-.link {
-  text-decoration: none;
-  color: #333;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  display: block;
-  padding-top: 10px;
 }

@@ -1,0 +1,42 @@
+<form class="post-form">
+    <h4>Title</h4>
+    <textarea id="post-title" class="textarea-title"></textarea>
+    <div id="title-char-count">Character count: 0/30</div>
+    <h4>Text Content</h4>
+    <textarea id="post-text" class="textarea-text"></textarea>
+    <div id="text-char-count">Character count: 0/300</div><br>
+    <!--Triggers the creation of a post-->
+    <button type="button" id="Submit Button">Add Post</button>
+  </form>
+  
+  <script>
+    const titleTextArea = document.querySelector('#post-title');
+    const textTextArea = document.querySelector('#post-text');
+    const titleCharCount = document.querySelector('#title-char-count');
+    const textCharCount = document.querySelector('#text-char-count');
+  
+    titleTextArea.addEventListener('input', () => {
+      const charCount = titleTextArea.value.length;
+      titleCharCount.textContent = `Character count: ${charCount}/30`;
+  
+      if (charCount >= 30) {
+        titleTextArea.value = titleTextArea.value.substring(0, 29);
+        titleCharCount.style.color = 'red';
+      } else {
+        titleCharCount.style.color = 'black';
+      }
+    });
+  
+    textTextArea.addEventListener('input', () => {
+      const charCount = textTextArea.value.length;
+      textCharCount.textContent = `Character count: ${charCount}/300`;
+  
+      if (charCount >= 300) {
+        textTextArea.value = textTextArea.value.substring(0, 299);
+        textCharCount.style.color = 'red';
+      } else {
+        textCharCount.style.color = 'black';
+      }
+    });
+  </script>
+  
