@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="uploadstyles.css">
 </head>
 <body>
-  <h1>Uploaded Songs</h1>
+  <h1>Songs List</h1>
   
   <ul id="songList"></ul>
   
