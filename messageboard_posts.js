@@ -8,7 +8,7 @@ $(document).ready(function() {
     '<div class="container">' + 
     '<div class="text-column">' +
     '<div class="title-row">' +
-    '<img class="profile" src="images/profiles/profile_0.jpeg">' +
+    '<img class="profile" src="images/profiles/profile_' + post.image + '.jpeg">' +
     '<div class="text-subtitle">' + post.title + '</div>' +
     '</div>' +
     '<div class="text-details">' + post.username + ' - ' + post.date + '</div>' +
@@ -74,12 +74,14 @@ $(document).ready(function() {
     request.onload = () => { 
       if (request.status == 200) {
         let posts = JSON.parse(request.response);
+        posts = sort(posts);
         Object.entries(posts).forEach((post) => {
           addPost(post[1]);
         });
       } else {
         window.alert("ERROR: Failed to pull posts from API - Try refreshing or check for firewall");
       }
+      posts = sort(posts)
     };
   }
   
@@ -110,3 +112,16 @@ $(document).ready(function() {
       .then((response) => response.json())
     }
 });
+
+function sort(posts) {
+  for (let i = 0; i < posts.length - 1; i++) {
+    for (let j = 0; j < posts.length - i - 1; j++) {
+      if (posts[j].likes < posts[j + 1].likes) {
+        let temp = posts[j];
+        posts[j] = posts[j + 1];
+        posts[j + 1] = temp;
+      }
+    }
+  }
+  return posts
+}
