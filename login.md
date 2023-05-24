@@ -56,7 +56,7 @@
 
                 // Valid response will contain json data
                 response.json().then(data => {
-                    const message = 'Login success: ' + data.name;
+                    const message = 'Login success: ' + username: document.getElementById("username").value;
                     document.getElementById("message").innerHTML = message;
                     localStorage.setItem("username", data.username);
                     localStorage.setItem("visitor", data.name);
