@@ -1,0 +1,63 @@
+---
+layout: default
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <button onclick="info()">Get song info</button>
+</body>
+</html>
+
+<script>
+     function info() {
+ 
+       var getUrl = "https://taylorswifties.duckdns.org/api/users/output";
+
+        var getOptions = {
+            method: 'GET', 
+            mode: 'cors', 
+            cache: 'default', 
+            //credentials: 'include', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        fetch(getUrl, getOptions)
+        .then(response => {
+            //error message
+            if (!response.ok) {
+                const errorMsg = 'Login error: ' + response.status;
+                console.log(errorMsg);
+                return;
+            }
+
+            //if success
+            //console.log("User id successfully obtained");
+
+            response.json().then(data => {
+                console.log(data);
+
+                //console.log(data["albums"]);
+
+                let album = {};
+
+                for (let i = 0; i < data["albums"]["items"].length; i++) {
+                    //console.log(data["albums"]["items"][i]);
+
+                    let info = {"album": data["albums"]["items"][i]["name"], "date": data["albums"]["items"][i]["date"]};
+
+                    album[i] = info;                    
+                }
+
+                console.log(album);
+
+            })
+        }) 
+
+    }
+</script>
