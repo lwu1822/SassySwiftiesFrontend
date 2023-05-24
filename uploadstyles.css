@@ -1,3 +1,5 @@
+/* styles.css */
+
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -53,5 +55,28 @@ input[type="submit"]:hover {
 
 .success-message {
   color: green;
+  margin-top: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.song {
+  display: flex;
+  align-items: center;
+}
+
+.song-name {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+audio {
   margin-top: 5px;
 }

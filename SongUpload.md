@@ -8,7 +8,7 @@
       margin: 20px;
     }
   </style>
-  <link rel="stylesheet" href="uploadstyle.css">
+  <link rel="stylesheet" href="uploadstyles.css">
 </head>
 <body>
   <h1>Song Upload</h1>

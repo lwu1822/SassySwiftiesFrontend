@@ -1,41 +1,38 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>MP3 Player</title>
-  <link rel="stylesheet" type="text/css" href="uploadstyles.css">
+  <title>Song Upload</title>
+  <link rel="stylesheet" href="uploadstyles.css">
 </head>
 <body>
-  <h2>MP3 Player</h2>
+  <h1>Song Upload</h1>
   
-  <ul id="songList"></ul>
+  <form id="uploadForm">
+    <label for="songName">Song Name:</label>
+    <input type="text" id="songName" required><br><br>
+    <label for="artistName">Artist Name:</label>
+    <input type="text" id="artistName" required><br><br>
+    <label for="mp3File">Choose an MP3 file:</label>
+    <input type="file" id="mp3File" accept=".mp3" required><br><br>
+    <input type="submit" value="Upload">
+  </form>
   
   <script>
-    // Retrieve the locally stored MP3 data and display a list of songs
-    function displaySongList() {
-      var songList = document.getElementById('songList');
-      songList.innerHTML = ''; // Clear existing list
+    document.getElementById("uploadForm").addEventListener("submit", function(event) {
+      event.preventDefault();
       
-      for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
-        if (key.startsWith('mp3Data')) {
-          var mp3Data = localStorage.getItem(key);
-          var songTitle = localStorage.getItem('songTitle-' + key.slice(7));
-          var artistName = localStorage.getItem('artistName-' + key.slice(7));
-          
-          var listItem = document.createElement('li');
-          listItem.innerHTML = '<b>' + songTitle + '</b> by ' + artistName + ' <button onclick="playSong(\'' + mp3Data + '\')">Play</button>';
-          
-          songList.appendChild(listItem);
-        }
-      }
-    }
-    
-    // Play the selected song
-    function playSong(mp3Data) {
-      var audio = new Audio(mp3Data);
-      audio.play();
-    }
-    
-    displaySongList(); // Display the initial song list
+      var songName = document.getElementById("songName").value;
+      var artistName = document.getElementById("artistName").value;
+      var mp3File = document.getElementById("mp3File").files[0];
+      
+      // Save the form data to localStorage
+      localStorage.setItem("songName", songName);
+      localStorage.setItem("artistName", artistName);
+      localStorage.setItem("mp3File", mp3File.name);
+      
+      // Perform any additional actions or display a success message
+      console.log("Form data saved to localStorage.");
+    });
   </script>
 </body>
 </html>
