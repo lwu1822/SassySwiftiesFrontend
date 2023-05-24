@@ -53,7 +53,7 @@
     </label></p>
     <p><label>
         Password:
-        <input type="text" name="password" id="password" required>
+        <input type="password" name="password" id="password" required>
     </label></p>
     <p><button>Create Account</button></p>
     <p id="message"></p>
@@ -104,7 +104,7 @@
             // Valid response will contain json data
 
             response.json().then(data => {
-                const message = 'Account creation success: ' + document.getElementById("username");
+                const message = 'Account creation success: ' + document.getElementById("username").value;
                 document.getElementById("message").innerHTML = message;
                 localStorage.setItem("username", data.username);
                 localStorage.setItem("password", data.password)
