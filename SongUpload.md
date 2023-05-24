@@ -36,14 +36,24 @@
           mp3File: base64Data
         };
         
-        // Retrieve the uploaded songs from localStorage or initialize an empty array
-        var uploadedSongs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
+        // Generate a unique key for the batch
+        var batchKey = "uploadedSongs_" + Date.now();
         
-        // Push the new song data to the array
-        uploadedSongs.push(songData);
+        // Retrieve the previously stored batches or initialize an empty array
+        var storedBatches = JSON.parse(localStorage.getItem("uploadedBatches")) || [];
         
-        // Save the updated uploaded songs array to localStorage
-        localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
+        // Push the new song data to the current batch
+        var currentBatch = storedBatches.find(function(batch) {
+          return batch.key === batchKey;
+        });
+        if (!currentBatch) {
+          currentBatch = { key: batchKey, songs: [] };
+          storedBatches.push(currentBatch);
+        }
+        currentBatch.songs.push(songData);
+        
+        // Save the updated batches to localStorage
+        localStorage.setItem("uploadedBatches", JSON.stringify(storedBatches));
         
         // Perform any additional actions or display a success message
         console.log("Form data saved to localStorage.");
