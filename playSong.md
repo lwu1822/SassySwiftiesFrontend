@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>Uploaded Songs</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="uploadstyles.css">
 </head>
 <body>
   <h1>Uploaded Songs</h1>
