@@ -56,6 +56,28 @@ layout: default
 
                 console.log(album);
 
+                console.log(Object.keys(album).length);
+
+                for (let i = 0; i < Object.keys(album).length; i++) {
+                    let index = i; 
+                    let leastValue = album[i]["date"];
+
+                    for (let j = i + 1; j < Object.keys(album).length; j++) {
+                        let currentValue = album[j]["date"];
+                        if (leastValue.localeCompare(currentValue) === 1) {
+                            index = j;
+                            leastValue = currentValue;
+                        }
+                    }
+
+                    let info = {"album": album[index]["album"], "date": album[index]["date"]};
+                    let originalInfo = {"album": album[i]["album"], "date": album[i]["date"]};
+                    album[i] = info;
+                    album[index] = originalInfo;
+                }
+
+                console.log(album);
+
             })
         }) 
 
