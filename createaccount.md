@@ -67,7 +67,7 @@
         // URL for deployment
         // var url = "https://lwu1822.github.io/SassySwiftiesFrontend"
         // Comment out next line for local testing
-        url = "http://taylorswifties.duckdns.org"
+        url = "https://taylorswifties.duckdns.org"
         // Authenticate endpoint
         const signup_url = url + '/api/users/';
 
