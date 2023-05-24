@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>Uploaded Songs</title>
@@ -6,15 +5,15 @@
 </head>
 <body>
   <h1>Uploaded Songs</h1>
-
+  
   <ul id="songList"></ul>
-
+  
   <script>
     // Retrieve the uploaded songs from localStorage
-    var uploadedSongs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
-
+    var songs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
+    
     // Sort the songs in alphabetical order by song name
-    uploadedSongs.sort(function(a, b) {
+    songs.sort(function(a, b) {
       var songA = a.songName.toLowerCase();
       var songB = b.songName.toLowerCase();
       if (songA < songB) {
@@ -25,32 +24,32 @@
       }
       return 0;
     });
-
+    
     // Display the songs in the list
     var songList = document.getElementById("songList");
-    for (var i = 0; i < uploadedSongs.length; i++) {
-      var song = uploadedSongs[i];
-
+    for (var i = 0; i < songs.length; i++) {
+      var song = songs[i];
+      
       var li = document.createElement("li");
       var div = document.createElement("div");
       div.className = "song";
-
+      
       var songName = document.createElement("span");
       songName.className = "song-name";
       songName.textContent = song.songName;
-
+      
       var artistName = document.createElement("span");
       artistName.textContent = "by " + song.artistName;
-
+      
       var audio = document.createElement("audio");
       audio.controls = true;
-      audio.src = song.mp3File; // Set the source directly
-
+      audio.src = "uploads/" + song.mp3File;
+      
       div.appendChild(songName);
       div.appendChild(artistName);
       li.appendChild(div);
       li.appendChild(audio);
-
+      
       songList.appendChild(li);
     }
   </script>
