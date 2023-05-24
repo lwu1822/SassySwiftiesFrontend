@@ -1,12 +1,6 @@
 <html>
 <head>
   <title>Song Upload</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-  </style>
   <link rel="stylesheet" href="uploadstyles.css">
 </head>
 <body>
@@ -30,10 +24,21 @@
       var artistName = document.getElementById("artistName").value;
       var mp3File = document.getElementById("mp3File").files[0];
       
-      // Save the form data to localStorage
-      localStorage.setItem("songName", songName);
-      localStorage.setItem("artistName", artistName);
-      localStorage.setItem("mp3File", mp3File.name);
+      // Create an object to store the uploaded song data
+      var songData = {
+        songName: songName,
+        artistName: artistName,
+        mp3File: mp3File.name
+      };
+      
+      // Retrieve the uploaded songs from localStorage or initialize an empty array
+      var uploadedSongs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
+      
+      // Push the new song data to the array
+      uploadedSongs.push(songData);
+      
+      // Save the updated uploaded songs array to localStorage
+      localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
       
       // Perform any additional actions or display a success message
       console.log("Form data saved to localStorage.");
