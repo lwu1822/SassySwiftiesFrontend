@@ -9,10 +9,8 @@
   <ul id="songList"></ul>
   
   <script>
-    // Retrieve the uploaded songs from localStorage
     var songs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
     
-    // Sort the songs in alphabetical order by song name
     songs.sort(function(a, b) {
       var songA = a.songName.toLowerCase();
       var songB = b.songName.toLowerCase();
@@ -24,8 +22,7 @@
       }
       return 0;
     });
-    
-    // Display the songs in the list
+
     var songList = document.getElementById("songList");
     for (var i = 0; i < songs.length; i++) {
       var song = songs[i];
