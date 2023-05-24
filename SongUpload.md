@@ -1,46 +1,43 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>MP3 Upload</title>
-  <link rel="stylesheet" type="text/css" href="uploadstyles.css">
+  <title>Song Upload</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+  </style>
+  <link rel="stylesheet" href="uploadstyle.css">
 </head>
 <body>
-  <h2>Upload MP3 File</h2>
+  <h1>Song Upload</h1>
   
-  <form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" id="mp3File" accept=".mp3"><br>
-    <input type="text" id="songTitle" placeholder="Song Title">
-    <input type="text" id="artistName" placeholder="Artist Name">
-    <button type="submit">Upload</button>
+  <form id="uploadForm">
+    <label for="songName">Song Name:</label>
+    <input type="text" id="songName" required><br><br>
+    <label for="artistName">Artist Name:</label>
+    <input type="text" id="artistName" required><br><br>
+    <label for="mp3File">Choose an MP3 file:</label>
+    <input type="file" id="mp3File" accept=".mp3" required><br><br>
+    <input type="submit" value="Upload">
   </form>
-
+  
   <script>
-    document.getElementById('uploadForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent form submission
+    document.getElementById("uploadForm").addEventListener("submit", function(event) {
+      event.preventDefault();
       
-      var fileInput = document.getElementById('mp3File');
-      var file = fileInput.files[0];
+      var songName = document.getElementById("songName").value;
+      var artistName = document.getElementById("artistName").value;
+      var mp3File = document.getElementById("mp3File").files[0];
       
-      if (file) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          var mp3Data = e.target.result;
-          var songTitle = document.getElementById('songTitle').value;
-          var artistName = document.getElementById('artistName').value;
-
-          // Store the MP3 data and additional data locally
-          localStorage.setItem('mp3File', mp3Data);
-          localStorage.setItem('songTitle', songTitle);
-          localStorage.setItem('artistName', artistName);
-
-          // Clear form fields
-          fileInput.value = '';
-          document.getElementById('songTitle').value = '';
-          document.getElementById('artistName').value = '';
-
-          console.log('MP3 file and data stored locally');
-        }
-        reader.readAsDataURL(file);
-      }
+      // Save the form data to localStorage
+      localStorage.setItem("songName", songName);
+      localStorage.setItem("artistName", artistName);
+      localStorage.setItem("mp3File", mp3File.name);
+      
+      // Perform any additional actions or display a success message
+      console.log("Form data saved to localStorage.");
     });
   </script>
 </body>
