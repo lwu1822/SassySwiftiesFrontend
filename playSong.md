@@ -1,38 +1,57 @@
-<!DOCTYPE html>
 <html>
 <head>
-  <title>Song Upload</title>
-  <link rel="stylesheet" href="uploadstyles.css">
+  <title>Uploaded Songs</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Song Upload</h1>
+  <h1>Uploaded Songs</h1>
   
-  <form id="uploadForm">
-    <label for="songName">Song Name:</label>
-    <input type="text" id="songName" required><br><br>
-    <label for="artistName">Artist Name:</label>
-    <input type="text" id="artistName" required><br><br>
-    <label for="mp3File">Choose an MP3 file:</label>
-    <input type="file" id="mp3File" accept=".mp3" required><br><br>
-    <input type="submit" value="Upload">
-  </form>
+  <ul id="songList"></ul>
   
   <script>
-    document.getElementById("uploadForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      
-      var songName = document.getElementById("songName").value;
-      var artistName = document.getElementById("artistName").value;
-      var mp3File = document.getElementById("mp3File").files[0];
-      
-      // Save the form data to localStorage
-      localStorage.setItem("songName", songName);
-      localStorage.setItem("artistName", artistName);
-      localStorage.setItem("mp3File", mp3File.name);
-      
-      // Perform any additional actions or display a success message
-      console.log("Form data saved to localStorage.");
+    // Retrieve the uploaded songs from localStorage
+    var songs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
+    
+    // Sort the songs in alphabetical order by song name
+    songs.sort(function(a, b) {
+      var songA = a.songName.toLowerCase();
+      var songB = b.songName.toLowerCase();
+      if (songA < songB) {
+        return -1;
+      }
+      if (songA > songB) {
+        return 1;
+      }
+      return 0;
     });
+    
+    // Display the songs in the list
+    var songList = document.getElementById("songList");
+    for (var i = 0; i < songs.length; i++) {
+      var song = songs[i];
+      
+      var li = document.createElement("li");
+      var div = document.createElement("div");
+      div.className = "song";
+      
+      var songName = document.createElement("span");
+      songName.className = "song-name";
+      songName.textContent = song.songName;
+      
+      var artistName = document.createElement("span");
+      artistName.textContent = "by " + song.artistName;
+      
+      var audio = document.createElement("audio");
+      audio.controls = true;
+      audio.src = "uploads/" + song.mp3File;
+      
+      div.appendChild(songName);
+      div.appendChild(artistName);
+      li.appendChild(div);
+      li.appendChild(audio);
+      
+      songList.appendChild(li);
+    }
   </script>
 </body>
 </html>
