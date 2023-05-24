@@ -43,7 +43,11 @@
       
       var audio = document.createElement("audio");
       audio.controls = true;
-      audio.src = "uploads/" + song.mp3File;
+      
+      // Create a Blob URL from the base64-encoded data
+      var blob = base64ToBlob(song.mp3File, "audio/mpeg");
+      var url = URL.createObjectURL(blob);
+      audio.src = url;
       
       div.appendChild(songName);
       div.appendChild(artistName);
@@ -51,6 +55,27 @@
       li.appendChild(audio);
       
       songList.appendChild(li);
+    }
+    
+    // Convert base64 to Blob object
+    function base64ToBlob(base64Data, contentType) {
+      var sliceSize = 1024;
+      var byteCharacters = atob(base64Data);
+      var byteArrays = [];
+      
+      for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        var slice = byteCharacters.slice(offset, offset + sliceSize);
+        
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+        }
+        
+        var byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+      }
+      
+      return new Blob(byteArrays, { type: contentType });
     }
   </script>
 </body>

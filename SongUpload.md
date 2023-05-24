@@ -24,24 +24,32 @@
       var artistName = document.getElementById("artistName").value;
       var mp3File = document.getElementById("mp3File").files[0];
       
-      // Create an object to store the uploaded song data
-      var songData = {
-        songName: songName,
-        artistName: artistName,
-        mp3File: mp3File.name
+      // Read the MP3 file as base64 data
+      var reader = new FileReader();
+      reader.onload = function() {
+        var base64Data = reader.result.split(",")[1];
+        
+        // Create an object to store the uploaded song data
+        var songData = {
+          songName: songName,
+          artistName: artistName,
+          mp3File: base64Data
+        };
+        
+        // Retrieve the uploaded songs from localStorage or initialize an empty array
+        var uploadedSongs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
+        
+        // Push the new song data to the array
+        uploadedSongs.push(songData);
+        
+        // Save the updated uploaded songs array to localStorage
+        localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
+        
+        // Perform any additional actions or display a success message
+        console.log("Form data saved to localStorage.");
       };
       
-      // Retrieve the uploaded songs from localStorage or initialize an empty array
-      var uploadedSongs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
-      
-      // Push the new song data to the array
-      uploadedSongs.push(songData);
-      
-      // Save the updated uploaded songs array to localStorage
-      localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
-      
-      // Perform any additional actions or display a success message
-      console.log("Form data saved to localStorage.");
+      reader.readAsDataURL(mp3File);
     });
   </script>
 </body>
