@@ -1,17 +1,30 @@
-<form method="POST" action="javascript:login_user()">
-    <center>
-        <p><label>
-            Username:
-            <input type="text" name="username" id="username" required>
-        </label></p>
-        <p><label>
-            Password:
-            <input type="password" name="password" id="password" required>
-        </label></p>
-        <p><button>Login</button></p>
-        <p id="message"></p>
-     </center>
-</form>
+---
+layout: default
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <form method="POST" action="javascript:login_user()">
+        <center>
+            <p><label>
+                Username:
+                <input type="text" name="username" id="username" required>
+            </label></p>
+            <p><label>
+                Password:
+                <input type="password" name="password" id="password" required>
+            </label></p>
+            <p><button>Login</button></p>
+            <p id="message"></p>
+        </center>
+    </form>
+</body>
+</html>
+
 
 <script>
 
@@ -56,7 +69,7 @@
 
                 // Valid response will contain json data
                 response.json().then(data => {
-                    const message = 'Login success: ' + username: document.getElementById("username").value;
+                    const message = 'Login success: ' +  document.getElementById("username").value;
                     document.getElementById("message").innerHTML = message;
                     localStorage.setItem("username", data.username);
                     localStorage.setItem("visitor", data.name);
