@@ -79,7 +79,7 @@
   const DISLIKES = "dislike";
 
   // prepare fetch urls
-  const url = "http://localhost:8036/api/songs";
+  const url = "https://taylorswifties.duckdns.org";
   const like_url = url + "/like/";  // haha reaction
   const dislike_url = url + "/dislike/";  // boohoo reaction
 
