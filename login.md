@@ -16,9 +16,9 @@
 <script>
 
         // URL for deployment
-        var url = "https://taylorswifties.duckdns.org"
+         var url = "https://taylorswifties.duckdns.org"
         // Comment out next line for local testing
-        // url = "http://192.168.1.20:8731/"
+        // url = "http://localhost:8036"
         // Authenticate endpoint
         const login_url = url + '/api/users/login';
 
