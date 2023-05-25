@@ -54,19 +54,7 @@
     <th>Dislikes</th>
   </tr>
   </thead>
-  <tbody id="result">
-    <tr>
-      <td>
-        Tim McGraw
-      </td>
-      <td>
-        <button> id="like"</button>
-      </td>
-      <td>
-        <button> id="dislike"</button>
-      </td>
-    </tr>
-  </tbody>
+  <tbody id="result"></tbody>
 </table>
 
 <!-- Script is layed out in a sequence (without a function) and will execute when page is loaded -->
@@ -75,12 +63,12 @@
   // prepare HTML defined "result" container for new output
   const resultContainer = document.getElementById("result");
 
-  // keys for joke reactions
+  // keys for song reactions
   const LIKES = "like";
   const DISLIKES = "dislike";
 
   // prepare fetch urls
-  const url = "http://localhost:8036/api/songs/";
+  const url = "https://taylorswifties.duckdns.org/api/songs";
   const like_url = url + "/like/";  // haha reaction
   const dislike_url = url + "/dislike/";  // boohoo reaction
 
@@ -116,7 +104,7 @@
             
             // td for joke cell
             const song = document.createElement("td");
-              joke.innerHTML = row.id + ". " + row.song;  // add fetched data to innerHTML
+              song.innerHTML = row.id + ". " + row.song;  // add fetched data to innerHTML
 
             // td for haha cell with onclick actions
             const like = document.createElement("td");

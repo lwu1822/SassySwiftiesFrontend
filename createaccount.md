@@ -96,7 +96,10 @@
         .then(response => {
             // trap error response from Web API
             if (response.status !== 200) {
-                const message = 'Account creation error: ' + response.status + " " + response.statusText;
+                var message = 'Account creation error: ' + response.status + " " + response.statusText;
+                if (response.status == 400 ) {
+                  var message = 'HTTP Error 400. You likely either have a duplicate username or a username less than 2 characters.'
+                }
                 document.getElementById("message").innerHTML = message;
                 localStorage.removeItem("username");
                 return;
@@ -104,7 +107,7 @@
             // Valid response will contain json data
 
             response.json().then(data => {
-                const message = 'Account creation success: ' + document.getElementById("username").value;
+                var message = 'Account creation success: ' + document.getElementById("username").value;
                 document.getElementById("message").innerHTML = message;
                 localStorage.setItem("username", data.username);
                 localStorage.setItem("password", data.password)

@@ -2,6 +2,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="songGuessing.css">
 
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Sassy Swifties - The Official Del Norte Taylor Swift Fan Club | A community with love and support for Taylor Swift</title>
@@ -45,6 +46,19 @@
     </div>
 
 <!-- HTML table fragment for page -->
+<div>Total song count:</div>
+<p id="str(countSongs())"></p>
+
+<div>Most liked song:</div>
+<br>
+<div>Least liked song:</div>
+<br>
+<script>
+  def countSongs():
+    return len(song_data)
+
+  str(countSongs())
+</script>
 <table>
   <thead>
   <tr>
@@ -53,19 +67,7 @@
     <th>Dislikes</th>
   </tr>
   </thead>
- <tbody id="result">
-    <tr>
-      <td>
-        Tim McGraw
-      </td>
-      <td>
-        <button id="like">#</button>
-      </td>
-      <td>
-        <button id="dislike">#</button>
-      </td>
-    </tr>
-  </tbody>
+ <tbody id="result"></tbody>
 </table>
 
 <!-- Script is layed out in a sequence (without a function) and will execute when page is loaded -->
@@ -79,9 +81,9 @@
   const DISLIKES = "dislike";
 
   // prepare fetch urls
-  const url = "http://localhost:8036/api/songs/";
-  const like_url = url + "/like/";  // haha reaction
-  const dislike_url = url + "/dislike/";  // boohoo reaction
+  const url = "https://taylorswifties.duckdns.org/api/songs";
+  const like_url = url + "/like/";  // like reaction
+  const dislike_url = url + "/dislike/";  // dislike reaction
 
   // prepare fetch GET options
   const options = {
@@ -115,13 +117,13 @@
             
             // td for joke cell
             const song = document.createElement("td");
-              joke.innerHTML = row.id + ". " + row.song;  // add fetched data to innerHTML
+              song.innerHTML = row.id+1 + ". " + row.song;  // add fetched data to innerHTML
 
             // td for haha cell with onclick actions
             const like = document.createElement("td");
               const like_but = document.createElement('button');
               like_but.id = LIKES+row.id   // establishes a HAHA JS id for cell
-              like_but.innerHTML = row.likea;  // add fetched "haha count" to innerHTML
+              like_but.innerHTML = row.like;  // add fetched "haha count" to innerHTML
               like_but.onclick = function () {
                 // onclick function call with "like parameters"
                 reaction(LIKES, like_url+row.id, like_but.id);  

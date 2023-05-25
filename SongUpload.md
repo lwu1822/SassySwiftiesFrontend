@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="uploadstyles.css">
 </head>
 <body>
-  <h1>Upload Your Own Song(mp3 only)</h1>
+  <h1>Upload Your Own Song (mp3 only)</h1>
   
   <form id="uploadForm">
     <label for="songName">Song Name:</label>
