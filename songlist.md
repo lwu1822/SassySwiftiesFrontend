@@ -80,7 +80,7 @@
   const DISLIKES = "dislike";
 
   // prepare fetch urls
-  const url = "https://taylorswifties.duckdns.org/api/jokes";
+  const url = "https://taylorswifties.duckdns.org/api/songs";
   const like_url = url + "/like/";  // like reaction
   const dislike_url = url + "/dislike/";  // dislike reaction
 
