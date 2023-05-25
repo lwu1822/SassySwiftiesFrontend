@@ -28,54 +28,73 @@ layout: default
 
 <script>
 
-        // URL for deployment
-         var url = "https://taylorswifties.duckdns.org"
-        // Comment out next line for local testing
-        // url = "http://localhost:8036"
-        // Authenticate endpoint
-        const login_url = url + '/api/users/login';
+    function login_user() {
 
-        function login_user(){
 
-        // Set body to include login data
-            const body = {
-                username: document.getElementById("username").value,
-                password: document.getElementById("password").value,
-            };    
+        var baseurl = "https://taylorswifties.duckdns.org/api/users/login";
+
+       
+        const body = {
+            username: "a",
+            password: "a",
+           
+        };
+
+       
 
         // Set Headers to support cross origin
-            const requestOptions = {
-                method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                // credentials: 'include', // include, *same-origin, omit
-                body: JSON.stringify(body),
-                headers: {
-                    "content-type": "application/json",
-                },
-            };
+        //IMPORTANT!!!!!!! TO SUCCESSFULLY POST, YOU NEED TO REMOVE
+        // credentials:'include'
+        const requestOptions = {
+            method: 'POST',
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            //credentials: 'include', // include, *same-origin, omit
+            body: JSON.stringify(body),
+            headers: {
+                "content-type": "application/json"
+            },
+        };
 
         // Fetch JWT
-            fetch(login_url, requestOptions)
+        /*
+        fetch(login_url, requestOptions);
+        */
+
+        // Fetch JWT
+            fetch(baseurl, requestOptions)
             .then(response => {
                 // trap error response from Web API
-                if (response.status !== 200) {
-                    const message = 'Login error: ' + response.status + " " + response.statusText;
-                    document.getElementById("message").innerHTML = message;
-                    localStorage.removeItem("username");
-                    localStorage.removeItem("visitor");
+                if (!response.ok) {
+                    const errorMsg = 'Login error: ' + response.status;
+                    console.log(errorMsg);
+
+                    if (response.status == 400) {
+                        console.log("Incorrect username or password");
+                    }
+                
                     return;
                 }
 
-                // Valid response will contain json data
                 response.json().then(data => {
-                    const message = 'Login success: ' +  document.getElementById("username").value;
-                    document.getElementById("message").innerHTML = message;
-                    localStorage.setItem("username", data.username);
-                    localStorage.setItem("visitor", data.name);
+
+
+                console.log(data);
+
+                document.cookie = "session=" + data["id"];
+
                 })
+
+
+               
+
+                //window.location.href = "{{ site.baseurl }}/homepage";
             })
-        }
+
+
+      
+
+    }  
 
 
 </script>
