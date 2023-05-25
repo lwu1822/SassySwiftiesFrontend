@@ -54,19 +54,7 @@
     <th>Dislikes</th>
   </tr>
   </thead>
- <tbody id="result">
-    <tr>
-      <td>
-        Tim McGrawwww
-      </td>
-      <td>
-        <button id="like">#</button>
-      </td>
-      <td>
-        <button id="dislike">#</button>
-      </td>
-    </tr>
-  </tbody>
+ <tbody id="result"></tbody>
 </table>
 
 <!-- Script is layed out in a sequence (without a function) and will execute when page is loaded -->
@@ -116,12 +104,12 @@
             
             // td for joke cell
             const song = document.createElement("td");
-              song.innerHTML = row.id + ". " + row.song;  // add fetched data to innerHTML
+              song.innerHTML = row.id+1 + ". " + row.song;  // add fetched data to innerHTML
 
             // td for haha cell with onclick actions
             const like = document.createElement("td");
               const like_but = document.createElement('button');
-              like_but.id = LIKES+row.id   // establishes a HAHA JS id for cell
+              like_but.id = LIKES+row.id+1   // establishes a HAHA JS id for cell
               like_but.innerHTML = row.likes;  // add fetched "haha count" to innerHTML
               like_but.onclick = function () {
                 // onclick function call with "like parameters"
