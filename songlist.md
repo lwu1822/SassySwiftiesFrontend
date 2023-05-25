@@ -46,6 +46,19 @@
     </div>
 
 <!-- HTML table fragment for page -->
+<div>Total song count:</div>
+<p id="str(countSongs())"></p>
+
+<div>Most liked song:</div>
+<br>
+<div>Least liked song:</div>
+<br>
+<script>
+  def countSongs():
+    return len(song_data)
+
+  str(countSongs())
+</script>
 <table>
   <thead>
   <tr>
