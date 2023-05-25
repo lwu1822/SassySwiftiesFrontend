@@ -5,7 +5,7 @@ $(document).ready(function() {
   // Function to add post HTML to the page
   function addPost(post) {
     var postHTML = 
-    '<div class="container">' + 
+    '<div class="container" id=' + post.id + '>' +  
     '<div class="text-column">' +
     '<div class="title-row">' +
     '<img class="profile" src="images/profiles/profile_' + post.image + '.jpeg">' +
@@ -45,24 +45,25 @@ $(document).ready(function() {
     method: "DELETE"
     })
     .then((response) => response.json())
-    location.reload();
+    .then(location.reload())
   }
 
   // Function to like a post
   function like(id, likeChange) {
-    var url = "http://127.0.0.1:8036/api/messageboard/update?id=" + id;
+    var url = "http://127.0.0.1:8036/api/posts/update?id=" + id;
     fetch(url, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      imageURL: likeChange
-    })
-    })
-    .then((response) => response.json())
-
-    location.reload();
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        likes: likeChange
+      })
+      })
+      .then((response) => response.json())
+      .then(() => {
+        location.reload();
+      })
   }
 
   // Function to get all posts from API
@@ -81,7 +82,6 @@ $(document).ready(function() {
       } else {
         window.alert("ERROR: Failed to pull posts from API - Try refreshing or check for firewall");
       }
-      posts = sort(posts)
     };
   }
   
@@ -90,7 +90,6 @@ $(document).ready(function() {
   document.getElementById("Submit Button").addEventListener("click", function(e) {
     e.preventDefault();
     sendPost();
-    location.reload();
   });
 
   function sendPost() {
@@ -110,6 +109,7 @@ $(document).ready(function() {
       })
       })
       .then((response) => response.json())
+      .then(() => { location.reload()})
     }
 });
 
