@@ -57,7 +57,7 @@
  <tbody id="result">
     <tr>
       <td>
-        Tim McGraw
+        Tim McGrawwww
       </td>
       <td>
         <button id="like">#</button>
@@ -81,8 +81,8 @@
 
   // prepare fetch urls
   const url = "https://taylorswifties.duckdns.org";
-  const like_url = url + "/like/";  // haha reaction
-  const dislike_url = url + "/dislike/";  // boohoo reaction
+  const like_url = url + "/like/";  // like reaction
+  const dislike_url = url + "/dislike/";  // dislike reaction
 
   // prepare fetch GET options
   const options = {
