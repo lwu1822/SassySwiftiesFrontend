@@ -53,8 +53,18 @@
     <th>Dislikes</th>
   </tr>
   </thead>
-  <tbody id="result">
-    <!-- javascript generated data -->
+ <tbody id="result">
+    <tr>
+      <td>
+        Tim McGraw
+      </td>
+      <td>
+        <button id="like">#</button>
+      </td>
+      <td>
+        <button id="dislike">#</button>
+      </td>
+    </tr>
   </tbody>
 </table>
 

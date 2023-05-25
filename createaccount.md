@@ -65,7 +65,7 @@
     function signup_user(){
 
         // URL for deployment
-        // var url = "https://lwu1822.github.io/SassySwiftiesFrontend"
+        // var url = "https://localhost:8036"
         // Comment out next line for local testing
         url = "https://taylorswifties.duckdns.org"
         // Authenticate endpoint

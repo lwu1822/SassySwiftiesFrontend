@@ -16,9 +16,9 @@
 <script>
 
         // URL for deployment
-        var url = "https://taylorswifties.duckdns.org"
+         var url = "https://taylorswifties.duckdns.org"
         // Comment out next line for local testing
-        // url = "http://192.168.1.20:8731/"
+        // url = "http://localhost:8036"
         // Authenticate endpoint
         const login_url = url + '/api/users/login';
 
@@ -56,7 +56,7 @@
 
                 // Valid response will contain json data
                 response.json().then(data => {
-                    const message = 'Login success: ' + data.name;
+                    const message = 'Login success: ' + username: document.getElementById("username").value;
                     document.getElementById("message").innerHTML = message;
                     localStorage.setItem("username", data.username);
                     localStorage.setItem("visitor", data.name);
