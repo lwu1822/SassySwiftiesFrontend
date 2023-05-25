@@ -2,6 +2,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="songGuessing.css">
 
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Sassy Swifties - The Official Del Norte Taylor Swift Fan Club | A community with love and support for Taylor Swift</title>
