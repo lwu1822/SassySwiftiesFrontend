@@ -10,7 +10,6 @@ titleTextArea.addEventListener('input', () => {
   if (charCount >= 50) {
     titleTextArea.value = titleTextArea.value.substring(0, 49);
   } else {
-    titleCharCount.style.color = rgba(200, 200, 200, 0.5);
   }
 });
 
@@ -21,6 +20,5 @@ textTextArea.addEventListener('input', () => {
   if (charCount >= 300) {
     textTextArea.value = textTextArea.value.substring(0, 299);
   } else {
-    textCharCount.style.color = rgba(200, 200, 200, 0.5);
   }
 });

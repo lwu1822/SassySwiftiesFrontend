@@ -86,7 +86,8 @@ $(document).ready(function() {
   }
   
   // Function to send post to API
-  $("#post-form").submit(function(e) {
+ // $("#post-form").submit(function(e) {
+  document.getElementById("Submit Button").addEventListener("click", function(e) {
     e.preventDefault();
     sendPost();
     location.reload();
@@ -96,7 +97,6 @@ $(document).ready(function() {
     // Get post title and text from form
     var title = $("#post-title").val();
     var text = $("#post-text").val();
-    
     var url = "http://127.0.0.1:8036/api/posts/post";
     fetch(url, {
       method: "POST",
