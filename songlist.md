@@ -79,7 +79,7 @@
   const DISLIKES = "dislike";
 
   // prepare fetch urls
-  const url = "http://localhost:8036/api/songs/";
+  const url = "http://localhost:8036/api/songs";
   const like_url = url + "/like/";  // haha reaction
   const dislike_url = url + "/dislike/";  // boohoo reaction
 
@@ -115,7 +115,7 @@
             
             // td for joke cell
             const song = document.createElement("td");
-              joke.innerHTML = row.id + ". " + row.song;  // add fetched data to innerHTML
+              song.innerHTML = row.id + ". " + row.song;  // add fetched data to innerHTML
 
             // td for haha cell with onclick actions
             const like = document.createElement("td");
