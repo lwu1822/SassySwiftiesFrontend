@@ -122,7 +122,7 @@
             const like = document.createElement("td");
               const like_but = document.createElement('button');
               like_but.id = LIKES+row.id   // establishes a HAHA JS id for cell
-              like_but.innerHTML = row.likea;  // add fetched "haha count" to innerHTML
+              like_but.innerHTML = row.likes;  // add fetched "haha count" to innerHTML
               like_but.onclick = function () {
                 // onclick function call with "like parameters"
                 reaction(LIKES, like_url+row.id, like_but.id);  
