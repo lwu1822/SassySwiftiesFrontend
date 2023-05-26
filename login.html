@@ -32,25 +32,14 @@ layout: default
 
     function test() {
 
-        //console.log("abcc".match(/(a|b)/));
-
         console.log(document.cookie);
 
-        let value = document.cookie + ";";
-        let expression = value.match(/(session=.*; |; session=.*;$|; session=.*; )/);
-        console.log(expression);
+        let cookie = document.cookie + ";";
+        let correctCookie = cookie.match(/(session=.*; |; session=.*;$|; session=.*; )/);
+        correctCookie = correctCookie[0].replace(/;/g, '');
+        console.log(correctCookie);
 
-        //could be useful
-        /*
-        let value = "; " + document.cookie + ";";
-        console.log(value);
-        let parts = value.split("; session=");
-        console.log("parts: " + parts);
-        if (parts.length === 2) {
-            parts = parts.pop().split(';').shift();
-        }
-        console.log("final: " + parts);
-        */
+        
         
     }
 
