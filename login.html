@@ -22,11 +22,38 @@ layout: default
             <p id="message"></p>
         </center>
     </form>
+
+    <button onclick="test()">send cookie</button>
 </body>
 </html>
 
 
 <script>
+
+    function test() {
+
+        //console.log("abcc".match(/(a|b)/));
+
+        console.log(document.cookie);
+
+        let value = document.cookie + ";";
+        let expression = value.match(/(session=.*; |; session=.*;$|; session=.*; )/);
+        console.log(expression);
+
+        //could be useful
+        /*
+        let value = "; " + document.cookie + ";";
+        console.log(value);
+        let parts = value.split("; session=");
+        console.log("parts: " + parts);
+        if (parts.length === 2) {
+            parts = parts.pop().split(';').shift();
+        }
+        console.log("final: " + parts);
+        */
+        
+    }
+
 
     function login_user() {
 
@@ -37,7 +64,7 @@ layout: default
         const body = {
             username: "a",
             password: "a",
-           
+
         };
 
        
