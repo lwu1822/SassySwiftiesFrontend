@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="messageboard.css">
 </head>
 <body>
+  <div id="header"></div>
   <!--Holds nav bar; mostly for css-->
    <!--<div class="nav">
 		<a class="link1" href="/RECS-repo/" title="Link 1"><span class="text">Link 1</span></a>
@@ -11,7 +12,7 @@
 		<a class="link5" href="/RECS-repo/nearest_airport" title="Link 5"><span class="text">Link 5</span></a>
   </div>-->
 
-  <h1>Discussion Board<h1></h1>
+  <h1>Discussion Board</h1>
   <form class="post-form">
       <h4>Title</h4>
       <textarea id="post-title" class="textarea-title"></textarea> 
@@ -27,6 +28,10 @@
    
   <div id="posts"></div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="messageboard_posts.js"></script>
-  <script src="messageboard_charcounter.js"></script>
+  
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>$("#header").load("header.html");</script>
+<script src="messageboard_posts.js"></script>
+<script src="messageboard_charcounter.js"></script>

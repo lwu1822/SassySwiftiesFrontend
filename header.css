@@ -16,6 +16,7 @@ header h1 {
   font-size: 90px;
   font-family: 'Lobster', cursive;
   font-weight: lighter;
+  color:white;
 }
 header nav ul {
   list-style: none;
