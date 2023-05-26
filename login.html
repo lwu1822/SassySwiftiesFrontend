@@ -37,7 +37,72 @@ layout: default
         let cookie = document.cookie + ";";
         let correctCookie = cookie.match(/(session=.*; |; session=.*;$|; session=.*; )/);
         correctCookie = correctCookie[0].replace(/;/g, '');
+        correctCookie = correctCookie.replace('session=', '');
+        correctCookie = correctCookie.replace(/ /g, '');
         console.log(correctCookie);
+
+
+
+        var baseurl = "https://taylorswifties.duckdns.org/api/users/info";
+
+       
+        const body = {
+            token: correctCookie,
+        };
+
+       
+
+        // Set Headers to support cross origin
+        //IMPORTANT!!!!!!! TO SUCCESSFULLY POST, YOU NEED TO REMOVE
+        // credentials:'include'
+        const requestOptions = {
+            method: 'POST',
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            //credentials: 'include', // include, *same-origin, omit
+            body: JSON.stringify(body),
+            headers: {
+                "content-type": "application/json"
+            },
+        };
+
+        // Fetch JWT
+        /*
+        fetch(login_url, requestOptions);
+        */
+
+        // Fetch JWT
+            fetch(baseurl, requestOptions)
+            .then(response => {
+                // trap error response from Web API
+                if (!response.ok) {
+                    const errorMsg = 'Login error: ' + response.status;
+                    console.log(errorMsg);
+
+                    if (response.status == 400) {
+                        console.log("Incorrect username or password");
+                    }
+                
+                    return;
+                }
+
+                response.json().then(data => {
+
+
+                console.log(data);
+
+
+                })
+
+
+               
+
+                //window.location.href = "{{ site.baseurl }}/homepage";
+            })
+
+
+      
+
 
         
         
