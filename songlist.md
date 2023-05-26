@@ -199,4 +199,5 @@
     resultContainer.appendChild(tr);
   }
 
+  function sortLikes()
 </script>
