@@ -1,0 +1,13 @@
+:root {
+    --main-color: #b19cd9;
+  }
+  
+  body {
+    background-color: #222;
+    color: #fff;
+    font-family: sans-serif;
+  }
+
+  p {
+    margin-left: 10px;
+  }
