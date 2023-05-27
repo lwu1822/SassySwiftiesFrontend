@@ -23,6 +23,8 @@ layout: default
         </center>
     </form>
 
+    <div id="error"></div>
+
 </body>
 </html>
 
@@ -31,6 +33,9 @@ layout: default
 
 
     function login_user() {
+        document.getElementById("error").innerHTML = "";
+
+
         var baseurl = "https://taylorswifties.duckdns.org/api/users/login";
        
         const body = {
@@ -57,11 +62,16 @@ layout: default
         .then(response => {
             // trap error response from Web API
             if (!response.ok) {
-                const errorMsg = 'Login error: ' + response.status;
+                const errorMsg = response.status + " error";
                 console.log(errorMsg);
 
-                if (response.status == 400) {
+                if (response.status === 400) {
                     console.log("Incorrect username or password");
+                    
+                    let p = document.createElement("p");
+                    let text = document.createTextNode("Incorrect username or password.");
+                    p.appendChild(text);
+                    document.getElementById("error").appendChild(p);
                 }
             
                 return;
