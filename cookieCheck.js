@@ -7,7 +7,7 @@ if (correctCookie === null) {
     let a = document.createElement("a");
     let text = document.createTextNode("Log In");
     a.appendChild(text);
-    a.href = "/login";
+    a.href = window.location.origin + "/login";
 
     let li = document.createElement("li");
     li.appendChild(a);
@@ -17,7 +17,7 @@ if (correctCookie === null) {
     let a = document.createElement("a");
     let text = document.createTextNode("Log Out");
     a.appendChild(text);
-    a.href = "/logout";
+    a.href = window.location.origin + "/logout";
 
     let li = document.createElement("li");
     li.appendChild(a);
