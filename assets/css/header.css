@@ -38,6 +38,11 @@ header nav li a {
     font-family: "Oxygen", sans-serif;
     font-size: 20px;
 }
+
+header nav li a:hover {
+    color:rgb(236, 200, 229);
+}
+
 .dropdown {
     position:relative;
 }
