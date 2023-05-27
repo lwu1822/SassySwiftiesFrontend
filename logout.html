@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+    <button onclick="logout()">Logout</button>
+</body>
+</html>
+
+
+<script>
+
+    function logout() {
+        document.cookie = "session=;expires=Thu, 01 Jan 1970 00:00:00 UTC";
+
+        window.location.href = "{{ site.baseurl }}/";
+    }
+</script>
+
