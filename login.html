@@ -92,7 +92,7 @@
     }  
 
     function test() {
-
+        // retrieve cookie's value
         console.log(document.cookie);
 
         let cookie = document.cookie + ";";
@@ -102,16 +102,12 @@
         correctCookie = correctCookie.replace(/ /g, '');
         console.log(correctCookie);
 
-
-
+        // send fetch to backend's endpoint for user info
         var baseurl = "https://taylorswifties.duckdns.org/api/users/info";
-
        
         const body = {
             token: correctCookie,
         };
-
-       
 
         // Set Headers to support cross origin
         //IMPORTANT!!!!!!! TO SUCCESSFULLY POST, YOU NEED TO REMOVE
@@ -127,44 +123,23 @@
             },
         };
 
-        // Fetch JWT
-        /*
-        fetch(login_url, requestOptions);
-        */
+        fetch(baseurl, requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                const errorMsg = 'Login error: ' + response.status;
+                console.log(errorMsg);
 
-        // Fetch JWT
-            fetch(baseurl, requestOptions)
-            .then(response => {
-                // trap error response from Web API
-                if (!response.ok) {
-                    const errorMsg = 'Login error: ' + response.status;
-                    console.log(errorMsg);
-
-                    if (response.status == 400) {
-                        console.log("Incorrect username or password");
-                    }
-                
-                    return;
+                if (response.status == 400) {
+                    console.log("Incorrect username or password");
                 }
+                return;
+            }
 
-                response.json().then(data => {
-
-
+            response.json().then(data => {
                 console.log(data);
-
-
-                })
-
-
-               
-
-                //window.location.href = "{{ site.baseurl }}/homepage";
             })
 
-
-      
-
-
+        })
         
         
     }
