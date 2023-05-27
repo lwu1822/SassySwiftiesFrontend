@@ -36,7 +36,7 @@
       
       localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
 
-      console.log("Form data saved to localStorage.");
+      alert("Form data saved to localStorage.");
     });
   </script>
 </body>
