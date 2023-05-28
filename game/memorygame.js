@@ -84,7 +84,7 @@ function updateMoney() {
         document.getElementById("time").innerHTML = "Congrats on Finishing! Play again to see how close you can get to 25 Swifties!";
         gameOver = true;
     }
-    // console.log(money);
+    console.log(money);
     document.getElementById("swifties").innerHTML = "Swifties Earned: " + money + " Swifties";
 }
 
