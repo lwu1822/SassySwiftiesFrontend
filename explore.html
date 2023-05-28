@@ -91,7 +91,7 @@
         for (let i = 0; i < data["albums"]["items"].length; i++) {
             //console.log(data["albums"]["items"][i]);
 
-            let info = {"album": data["albums"]["items"][i]["name"], "date": data["albums"]["items"][i]["date"], "img": data["albums"]["items"][i]["cover"][0]["url"]};
+            let info = {"album": data["albums"]["items"][i]["name"], "date": data["albums"]["items"][i]["date"], "img": data["albums"]["items"][i]["cover"][0]["url"], "id": data["albums"]["items"][i]["id"]};
 
             album[i] = info;                    
         }
@@ -115,8 +115,8 @@
                     }
                 }
 
-                let info = {"album": album[index]["album"], "date": album[index]["date"], "img": album[index]["img"]};
-                let originalInfo = {"album": album[i]["album"], "date": album[i]["date"], "img": album[i]["img"]};
+                let info = {"album": album[index]["album"], "date": album[index]["date"], "img": album[index]["img"], "id": album[index]["id"]};
+                let originalInfo = {"album": album[i]["album"], "date": album[i]["date"], "img": album[i]["img"], "id": album[i]["id"]};
                 album[i] = info;
                 album[index] = originalInfo;
             }
@@ -138,8 +138,8 @@
                     }
                 }
 
-                let info = {"album": album[index]["album"], "date": album[index]["date"], "img": album[index]["img"]};
-                let originalInfo = {"album": album[i]["album"], "date": album[i]["date"], "img": album[i]["img"]};
+                let info = {"album": album[index]["album"], "date": album[index]["date"], "img": album[index]["img"], "id": album[index]["id"]};
+                let originalInfo = {"album": album[i]["album"], "date": album[i]["date"], "img": album[i]["img"], "id": album[id]["id"]};
                 album[i] = info;
                 album[index] = originalInfo;
             }
@@ -164,6 +164,7 @@
             let img = document.createElement("img");
             img.setAttribute("class", "imgResponse");
             img.setAttribute("src", album[i]["img"]);
+            //img.setAttribute("id", album[i]["album"]);
             document.getElementById("albumImg").appendChild(img);
         }        
 
