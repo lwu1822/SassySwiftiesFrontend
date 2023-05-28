@@ -4,7 +4,32 @@
     justify-content: center;
 }
 
-img {
+
+.imgResponse {
+    /* max-width: 10%; */
+    width: 20%;
     margin-right: 1em;
-    max-width: 100%;
+}
+
+
+@media only screen and (min-width: 550px) {
+    .imgResponse {
+        width: 33%;
+        margin-right: 1em;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .imgResponse {
+        width: 25%;
+        margin-right: 1em;
+    }
+}
+
+
+@media only screen and (min-width: 1500px) {
+    .imgResponse {
+        width: 15%;
+        margin-right: 1em;
+    }
 }
