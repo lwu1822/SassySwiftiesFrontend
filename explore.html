@@ -1,5 +1,4 @@
 ---
-layout: default
 ---
 
 <!DOCTYPE html>
@@ -8,14 +7,17 @@ layout: default
 	<title></title>
 </head>
 <body>
-    <button onclick="info()">Get song info</button>
+    <div id="header"></div>
 </body>
 </html>
 
 <script>
-     function info() {
- 
-       var getUrl = "https://taylorswifties.duckdns.org/api/users/output";
+
+    let album = {};
+
+
+    async function info() {
+        var getUrl = "https://taylorswifties.duckdns.org/api/users/output";
 
         var getOptions = {
             method: 'GET', 
@@ -27,59 +29,64 @@ layout: default
             },
         };
 
-        fetch(getUrl, getOptions)
-        .then(response => {
-            //error message
-            if (!response.ok) {
-                const errorMsg = 'Login error: ' + response.status;
-                console.log(errorMsg);
-                return;
+
+        let response = await fetch(getUrl, getOptions)
+        
+        if (!response["ok"]) {
+            console.log("Error");
+            return;
+        }
+
+        let data = await response.json();
+        console.log(response.status);
+        return data; 
+    }
+
+
+    // selection sort
+    async function sort() {
+        let data = await info();
+        console.log(data);
+
+        //console.log(data["albums"]);
+
+        //let album = {};
+
+        for (let i = 0; i < data["albums"]["items"].length; i++) {
+            //console.log(data["albums"]["items"][i]);
+
+            let info = {"album": data["albums"]["items"][i]["name"], "date": data["albums"]["items"][i]["date"]};
+
+            album[i] = info;                    
+        }
+
+        console.log(album);
+
+        console.log(Object.keys(album).length);
+
+        for (let i = 0; i < Object.keys(album).length; i++) {
+            let index = i; 
+            let leastValue = album[i]["date"];
+
+            for (let j = i + 1; j < Object.keys(album).length; j++) {
+                let currentValue = album[j]["date"];
+                if (leastValue.localeCompare(currentValue) === 1) {
+                    index = j;
+                    leastValue = currentValue;
+                }
             }
 
-            //if success
-            //console.log("User id successfully obtained");
+            let info = {"album": album[index]["album"], "date": album[index]["date"]};
+            let originalInfo = {"album": album[i]["album"], "date": album[i]["date"]};
+            album[i] = info;
+            album[index] = originalInfo;
+        }
 
-            response.json().then(data => {
-                console.log(data);
-
-                //console.log(data["albums"]);
-
-                let album = {};
-
-                for (let i = 0; i < data["albums"]["items"].length; i++) {
-                    //console.log(data["albums"]["items"][i]);
-
-                    let info = {"album": data["albums"]["items"][i]["name"], "date": data["albums"]["items"][i]["date"]};
-
-                    album[i] = info;                    
-                }
-
-                console.log(album);
-
-                console.log(Object.keys(album).length);
-
-                for (let i = 0; i < Object.keys(album).length; i++) {
-                    let index = i; 
-                    let leastValue = album[i]["date"];
-
-                    for (let j = i + 1; j < Object.keys(album).length; j++) {
-                        let currentValue = album[j]["date"];
-                        if (leastValue.localeCompare(currentValue) === 1) {
-                            index = j;
-                            leastValue = currentValue;
-                        }
-                    }
-
-                    let info = {"album": album[index]["album"], "date": album[index]["date"]};
-                    let originalInfo = {"album": album[i]["album"], "date": album[i]["date"]};
-                    album[i] = info;
-                    album[index] = originalInfo;
-                }
-
-                console.log(album);
-
-            })
-        }) 
-
+        console.log(album);
     }
+
+    sort();
 </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>$("#header").load("{{ site.baseurl }}/header.html");</script>
