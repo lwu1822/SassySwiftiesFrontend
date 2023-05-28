@@ -100,9 +100,8 @@
     }  
 
 
-    showUsername();
 
-    function showUsername() {
+    async function fetchUsername() {
         // retrieve cookie's value
         console.log(document.cookie);
 
@@ -161,6 +160,14 @@
 
         })
     }
+
+    async function showUsername() {
+        await fetchUsername();
+    }
+
+    showUsername();
+
+ 
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
