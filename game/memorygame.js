@@ -84,7 +84,7 @@ function updateMoney() {
         document.getElementById("time").innerHTML = "Congrats on Finishing! Play again to see how close you can get to 25 Swifties!";
         gameOver = true;
     }
-    console.log(money);
+    //console.log(money);
     document.getElementById("swifties").innerHTML = "Swifties Earned: " + money + " Swifties";
 }
 
@@ -107,6 +107,12 @@ function timedExecutables() {
     if (gameOver) return;
     detectCheating(); 
     timer();
+
+    if (gameOver) {
+        console.log("over");
+        // uncomment once backend is up
+        //sendMoney();
+    }
 }
 
 // run the function every ___ milliseconds according to second argument
@@ -152,5 +158,55 @@ function flipCard() {
         // console.log(secondCard);
         checkMatching()
     }
+}
+
+function sendMoney() {
+        document.getElementById("error").innerHTML = "";
+
+
+        var baseurl = "https://taylorswifties.duckdns.org/api/users/updateTokens";
+       
+        const body = {
+            username: document.getElementById("username").value,
+            token: money
+        };
+
+        // Set Headers to support cross origin
+        //IMPORTANT!!!!!!! TO SUCCESSFULLY POST, YOU NEED TO REMOVE
+        // credentials:'include'
+        const requestOptions = {
+            method: 'POST',
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            //credentials: 'include', // include, *same-origin, omit
+            body: JSON.stringify(body),
+            headers: {
+                "content-type": "application/json"
+            },
+        };
+
+        // Fetch JWT
+        fetch(baseurl, requestOptions)
+        .then(response => {
+            // trap error response from Web API
+            if (!response.ok) {
+                const errorMsg = response.status + " error";
+                console.log(errorMsg);
+
+                if (response.status === 400) {
+                    console.log("Incorrect username or password");
+                    
+                   
+                }
+            
+                return;
+            }
+
+            response.json().then(data => {
+                console.log(data);
+
+            })
+
+        })
 }
 
