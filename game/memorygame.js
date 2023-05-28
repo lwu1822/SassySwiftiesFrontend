@@ -83,6 +83,7 @@ function updateMoney() {
         money += 1;
         document.getElementById("time").innerHTML = "Congrats on Finishing! Play again to see how close you can get to 25 Swifties!";
         gameOver = true;
+        sendMoney();
     }
     //console.log(money);
     document.getElementById("swifties").innerHTML = "Swifties Earned: " + money + " Swifties";
@@ -94,6 +95,7 @@ function timer() {
     if (sec == 29) {
         document.getElementById("time").innerHTML = "Time's up!";
         gameOver = true;
+        sendMoney();
     }
     if (gameOver) return;
     var currentTime = new Date().getTime();
@@ -111,7 +113,7 @@ function timedExecutables() {
     if (gameOver) {
         console.log("over");
         // uncomment once backend is up
-        //sendMoney();
+        sendMoney();
     }
 }
 
@@ -160,7 +162,23 @@ function flipCard() {
     }
 }
 
-function sendMoney() {
+
+/*
+    function sendMoney() {
+        fetchUsername().then(data => {
+            console.log(data);
+        })
+    }
+
+async function sendMoney3() {
+    let data = await fetchUsername();
+
+    console.log(data["sub"]);
+}
+
+function sendMoney2() {
+
+    console.log(data);
         document.getElementById("error").innerHTML = "";
 
 
@@ -209,4 +227,5 @@ function sendMoney() {
 
         })
 }
+*/
 

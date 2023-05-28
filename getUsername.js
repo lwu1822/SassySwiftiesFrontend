@@ -77,7 +77,7 @@ async function showUsername() {
     let data = await fetchUsername();
 
     // debugging
-    console.log("data: " + JSON.stringify(data));
+    console.log(data);
 
 
     let p = document.createElement("p");
@@ -86,4 +86,6 @@ async function showUsername() {
     p.appendChild(text);
     document.getElementById("username").appendChild(p);
 }
+
+
 
