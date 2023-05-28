@@ -16,6 +16,20 @@
 
     <center><h1>Albums</h1></center>
 
+
+    <!-- sort albums -->
+    <form style="display: inline;">
+        <label for="albumSort">Sort albums:</label>
+        <select name="albumSort" id="albumSort">
+            <option value="new">Date (Newest)</option>
+            <option value="old">Date (Oldest)</option>
+            <option value="name">Name</option>
+        </select>
+    </form>
+
+    <button style="display: inline;" onclick="sort()">Sort</button>
+
+    <!-- show Taylor Swift albums -->
     <div id="albumImg"></div>
 
 </body>
@@ -25,7 +39,7 @@
 
     let album = {};
 
-
+    // retrieve taylor swift album info from backend
     async function info() {
         var getUrl = "https://taylorswifties.duckdns.org/api/users/output";
 
@@ -54,7 +68,7 @@
 
 
     // selection sort
-    async function sort() {
+    async function sortOld() {
         let data = await info();
         console.log(data);
 
@@ -97,9 +111,11 @@
         
     }
 
+    // show taylor swift albums on frontend
     function show() {
         console.log(album);
 
+        document.getElementById("albumImg").innerHTML = "";
 
         for (let i = 0; i < Object.keys(album).length; i++) {
             let img = document.createElement("img");
@@ -108,16 +124,25 @@
             document.getElementById("albumImg").appendChild(img);
         }        
 
-
-
     }
 
     async function init() {
-        await sort();
+        await sortOld();
         await show();
     }
 
+    async function sort() {
+        let albumName = document.getElementById("albumSort").value;
+        console.log(albumName);
+
+        if (albumName == "new") {
+            await sortOld();
+            await show();
+        }
+    }
+
     init();
+
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
