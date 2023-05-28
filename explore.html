@@ -16,17 +16,8 @@
 
     <center><h1>Albums</h1></center>
 
+    <div id="albumImg"></div>
 
-    <img class="imgResponse" src="https://i.scdn.co/image/ab67616d00001e02e0b60c608586d88252b8fbc0">
-    <img class="imgResponse" src="https://i.scdn.co/image/ab67616d00001e02e0b60c608586d88252b8fbc0">
-
-    <!-- <div class="flex">
-        <img src="https://i.scdn.co/image/ab67616d00001e02e0b60c608586d88252b8fbc0">
-        <img src="https://i.scdn.co/image/ab67616d00001e02e0b60c608586d88252b8fbc0">
-        <img src="https://i.scdn.co/image/ab67616d00001e02e0b60c608586d88252b8fbc0">
-        <img src="https://i.scdn.co/image/ab67616d00001e02e0b60c608586d88252b8fbc0">
-        <img src="https://i.scdn.co/image/ab67616d00001e02e0b60c608586d88252b8fbc0">
-    </div> -->
 </body>
 </html>
 
@@ -74,13 +65,14 @@
         for (let i = 0; i < data["albums"]["items"].length; i++) {
             //console.log(data["albums"]["items"][i]);
 
-            let info = {"album": data["albums"]["items"][i]["name"], "date": data["albums"]["items"][i]["date"]};
+            let info = {"album": data["albums"]["items"][i]["name"], "date": data["albums"]["items"][i]["date"], "img": data["albums"]["items"][i]["cover"][0]["url"]};
 
             album[i] = info;                    
         }
 
         console.log(album);
 
+        
         console.log(Object.keys(album).length);
 
         for (let i = 0; i < Object.keys(album).length; i++) {
@@ -95,16 +87,37 @@
                 }
             }
 
-            let info = {"album": album[index]["album"], "date": album[index]["date"]};
-            let originalInfo = {"album": album[i]["album"], "date": album[i]["date"]};
+            let info = {"album": album[index]["album"], "date": album[index]["date"], "img": album[index]["img"]};
+            let originalInfo = {"album": album[i]["album"], "date": album[i]["date"], "img": album[i]["img"]};
             album[i] = info;
             album[index] = originalInfo;
         }
 
         console.log(album);
+        
     }
 
-    sort();
+    function show() {
+        console.log(album);
+
+
+        for (let i = 0; i < Object.keys(album).length; i++) {
+            let img = document.createElement("img");
+            img.setAttribute("class", "imgResponse");
+            img.setAttribute("src", album[i]["img"]);
+            document.getElementById("albumImg").appendChild(img);
+        }        
+
+
+
+    }
+
+    async function init() {
+        await sort();
+        await show();
+    }
+
+    init();
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
