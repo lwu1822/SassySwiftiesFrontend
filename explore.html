@@ -23,11 +23,15 @@
         <select name="albumSort" id="albumSort">
             <option value="new">Date (Newest)</option>
             <option value="old">Date (Oldest)</option>
-            <option value="name">Name</option>
+            <option value="name">Alphabetical</option>
+            <option value="nameReverse">Reverse Alphabetical</option>
         </select>
     </form>
 
     <button style="display: inline;" onclick="sort()">Sort</button>
+
+    <br>
+    <br>
 
     <!-- show Taylor Swift albums -->
     <div id="albumImg"></div>
@@ -70,10 +74,10 @@
     // selection sort, sort by oldest album to newest
     async function sortMethod(method) {
         let compareNum = 0; 
-        if (method === "new") {
+        if (method === "new" || method === "nameReverse") {
             compareNum = -1;
         }
-        if (method === "old") {
+        if (method === "old" || method === "name") {
             compareNum = 1;
         }
         
@@ -97,71 +101,57 @@
         
         console.log(Object.keys(album).length);
 
-        for (let i = 0; i < Object.keys(album).length; i++) {
-            let index = i; 
-            let leastValue = album[i]["date"];
+        if (method === "new" || method === "old") {
+            for (let i = 0; i < Object.keys(album).length; i++) {
+                let index = i; 
+                let leastValue = album[i]["date"];
 
-            for (let j = i + 1; j < Object.keys(album).length; j++) {
-                let currentValue = album[j]["date"];
+                for (let j = i + 1; j < Object.keys(album).length; j++) {
+                    let currentValue = album[j]["date"];
 
-                if (leastValue.localeCompare(currentValue) === compareNum) {
-                    index = j;
-                    leastValue = currentValue;
+                    if (leastValue.localeCompare(currentValue) === compareNum) {
+                        index = j;
+                        leastValue = currentValue;
+                    }
                 }
+
+                let info = {"album": album[index]["album"], "date": album[index]["date"], "img": album[index]["img"]};
+                let originalInfo = {"album": album[i]["album"], "date": album[i]["date"], "img": album[i]["img"]};
+                album[i] = info;
+                album[index] = originalInfo;
             }
 
-            let info = {"album": album[index]["album"], "date": album[index]["date"], "img": album[index]["img"]};
-            let originalInfo = {"album": album[i]["album"], "date": album[i]["date"], "img": album[i]["img"]};
-            album[i] = info;
-            album[index] = originalInfo;
         }
+
+
+        if (method === "name" || method === "nameReverse") {
+            for (let i = 0; i < Object.keys(album).length; i++) {
+                let index = i; 
+                let leastValue = album[i]["album"];
+
+                for (let j = i + 1; j < Object.keys(album).length; j++) {
+                    let currentValue = album[j]["album"];
+
+                    if (leastValue.localeCompare(currentValue) === compareNum) {
+                        index = j;
+                        leastValue = currentValue;
+                    }
+                }
+
+                let info = {"album": album[index]["album"], "date": album[index]["date"], "img": album[index]["img"]};
+                let originalInfo = {"album": album[i]["album"], "date": album[i]["date"], "img": album[i]["img"]};
+                album[i] = info;
+                album[index] = originalInfo;
+            }
+
+        }
+
 
         console.log(album);
         
     }
 
-    async function sortNew() {
-        let data = await info();
-        console.log(data);
-
-        //console.log(data["albums"]);
-
-        //let album = {};
-
-        for (let i = 0; i < data["albums"]["items"].length; i++) {
-            //console.log(data["albums"]["items"][i]);
-
-            let info = {"album": data["albums"]["items"][i]["name"], "date": data["albums"]["items"][i]["date"], "img": data["albums"]["items"][i]["cover"][0]["url"]};
-
-            album[i] = info;                    
-        }
-
-        console.log(album);
-
-        
-        console.log(Object.keys(album).length);
-
-        for (let i = 0; i < Object.keys(album).length; i++) {
-            let index = i; 
-            let leastValue = album[i]["date"];
-
-            for (let j = i + 1; j < Object.keys(album).length; j++) {
-                let currentValue = album[j]["date"];
-                if (leastValue.localeCompare(currentValue) === -1) {
-                    index = j;
-                    leastValue = currentValue;
-                }
-            }
-
-            let info = {"album": album[index]["album"], "date": album[index]["date"], "img": album[index]["img"]};
-            let originalInfo = {"album": album[i]["album"], "date": album[i]["date"], "img": album[i]["img"]};
-            album[i] = info;
-            album[index] = originalInfo;
-        }
-
-        console.log(album);
-        
-    }
+   
 
 
     // show taylor swift albums on frontend
