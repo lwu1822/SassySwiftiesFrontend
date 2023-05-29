@@ -30,10 +30,10 @@
       for (const row of data) {
         // BUG warning/resolution - DataTable requires row to be single append
         $('#swiftBody').append('<tr><td>' + 
-            row.id + '</td><td>' + 
-            row.name + '</td><td>' + 
-            row.dob + '</td><td>' + 
-            row.age + '</td></tr>');
+            row.username + '</td><td>' + 
+            row.current_swifties + '</td><td>' + 
+            row.all_time_swifties + '</td><td>' + 
+            row.matching_max_swifties + '</td></tr>');
       }
       // BUG warning - Jupyter does not show Datatable controls, works on deployed GitHub pages
       $("#flaskTable").DataTable();
