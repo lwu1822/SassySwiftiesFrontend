@@ -15,6 +15,18 @@ if (correctCookie === null) {
 
     document.getElementById("loginStatus").appendChild(li);
 
+
+    // show "Create Account" in navbar
+    a = document.createElement("a");
+    text = document.createTextNode("Create Account");
+    a.appendChild(text);
+    a.href = window.location.origin + "/createaccount";
+
+    li = document.createElement("li");
+    li.appendChild(a);
+
+    document.getElementById("createAccount").appendChild(li);
+
     // hide "Settings" in navbar
     document.getElementById("settings").innerHTML = "";
 } else {
@@ -40,6 +52,9 @@ if (correctCookie === null) {
     li.appendChild(a);
 
     document.getElementById("settings").appendChild(li);
+
+    // hide "Create Account" in navbar
+    document.getElementById("createAccount").innerHTML = "";
 
 }
 
