@@ -6,50 +6,77 @@
         display: inline;
     }
 
-    p {
-        color: white;
+    .spacing {
+        position: absolute;
+        left: 15px;
     }
 
-    h1 {
+    .deleteAccount {
+        background-color: red;
         color: white;
+        border-radius: 10px;
+        border: 0;
+        height: 30px;
+        cursor: pointer;
     }
+
 </style>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/darkmode.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/explore.css">
 </head>
 <body>
 
     <div id="header"></div>
 
-    <h1>Profile</h1>
+    <div class="spacing" id="spacing">
 
-    <p>Profile picture</p>
+        <h1>Profile</h1>
 
-    <div id="username">
-        <p style="display: inline;">Username: </p>
+        <p>Profile picture</p>
+
+        <div id="username">
+            <p style="display: inline;">Username: </p>
+        </div>
+
+
+        <h1>Account</h1>
+
+
+        <form action="javascript:changePass()">
+            <p><label>
+                Password:
+                <input type="password" name="password" id="password" required>
+            </label></p>
+            <p><label>
+                Confirm password:
+                <input type="password" name="password" id="confirmPassword" required>
+            </label></p>
+            <p><button>Change password</button></p>
+            <p id="message"></p>
+        </form>
+
+        <div id="passwordMsg"></div>
+
+        <h2>Delete Account</h2>
+
+        <button class="deleteAccount" onclick="deleteAccountConfirm()">Delete</button>
+
+        
     </div>
 
 
-    <h1>Account</h1>
-
-
-    <form action="javascript:changePass()">
-        <p><label>
-            Password:
-            <input type="password" name="password" id="password" required>
-        </label></p>
-        <p><label>
-            Confirm password:
-            <input type="password" name="password" id="confirmPassword" required>
-        </label></p>
-        <p><button>Change password</button></p>
-        <p id="message"></p>
-    </form>
-
-    <div id="passwordMsg"></div>
+    <div class="popupFlex">
+        <div class="popup" id="popup">
+            <div class="popupText" id="popupText"></div>
+            <button onclick="deleteAccount()" style="left: 23% !important;">Yes</button>
+            <button onclick="closePopup()" style="left: 63% !important;">No</button>
+        </div>
+    </div>
 
 </body>
 </html>
@@ -60,11 +87,57 @@
 <script>
 
 
-    async function getUsername() {
-        let data = await fetchUsername();
-        let username = data["sub"];
 
-        return username;
+    function deleteAccountConfirm() {
+        openPopup();
+    }
+
+    function openPopup() {
+        document.getElementById("popupText").innerHTML = "";
+
+        let h2 = document.createElement("h2");
+        let text = document.createTextNode("Are you sure you want to delete your account?");
+        h2.appendChild(text);
+        document.getElementById("popupText").appendChild(h2);
+
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("spacing").style.display = "none";
+        
+    }
+
+    function closePopup() {
+        document.getElementById("spacing").style.display = "block";
+        document.getElementById("popup").style.display = "none";
+    }
+
+    async function deleteAccount() {
+
+        let username = await fetchUsernameOnly();
+
+        // send fetch to backend's endpoint for user info
+        var getUrl = "https://taylorswifties.duckdns.org/api/users/delete/" + username;
+
+        var getOptions = {
+            method: 'GET', 
+            mode: 'cors', 
+            cache: 'default', 
+            //credentials: 'include', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        let response = await fetch(getUrl, getOptions)
+        
+        if (!response["ok"]) {
+            console.log("Error");
+            return;
+        }
+
+
+        if (response["status"] === 200) {
+            window.location.href = "{{ site.baseurl }}/logout";
+        }
     }
 
 

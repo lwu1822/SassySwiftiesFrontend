@@ -1,10 +1,12 @@
-<html lang="en-US">
+---
+---
+<!-- <html lang="en-US">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
 
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Sassy Swifties - The Official Del Norte Taylor Swift Fan Club | A community with love and support for Taylor Swift</title>
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<!-- <title>Sassy Swifties - The Official Del Norte Taylor Swift Fan Club | A community with love and support for Taylor Swift</title>
 <meta name="generator" content="Jekyll v3.9.2" />
 <meta property="og:title" content="Sassy Swifties - The Official Del Norte Taylor Swift Fan Club" />
 <meta property="og:locale" content="en_US" />
@@ -17,34 +19,42 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Sassy Swifties - The Official Del Norte Taylor Swift Fan Club" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"A community with love and support for Taylor Swift","headline":"Sassy Swifties - The Official Del Norte Taylor Swift Fan Club","url":"http://localhost:4000/login.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"A community with love and support for Taylor Swift","headline":"Sassy Swifties - The Official Del Norte Taylor Swift Fan Club","url":"http://localhost:4000/login.html"}</script> -->
 <!-- End Jekyll SEO tag -->
 
-<link rel="stylesheet" href="/assets/css/style.css?v=b1dc66176689dcb290cf9d2d0cd46b8ab1096a5e">
+<!-- <link rel="stylesheet" href="/assets/css/style.css?v=b1dc66176689dcb290cf9d2d0cd46b8ab1096a5e">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="/assets/js/respond.js"></script>
+<script src="/assets/js/respond.js"></script> -->
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <!--[if lt IE 8]>
 <link rel="stylesheet" href="/assets/css/ie.css">
 <![endif]-->
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> -->
 <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup theme-color -->
 <!-- start theme color meta headers -->
-<meta name="theme-color" content="#353535">
+<!-- <meta name="theme-color" content="#353535">
 <meta name="msapplication-navbutton-color" content="#353535">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
 <!-- end theme color meta headers -->
 
-  </head>
-  <body> 
-    <div class="wrapper">
-    </div>
 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Account</title>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/darkmode.css">
+</head>
 <body>
+
+    <div id="header"></div>
+
+    <center><h1>Create account</h1></center>
+
+
 <form action="javascript:signup_user()">
     <center>
     <p><label>
@@ -55,14 +65,38 @@
         Password:
         <input type="password" name="password" id="password" required>
     </label></p>
+    <p><label>
+        Confirm password:
+        <input type="password" name="password" id="confirmPassword" required>
+    </label></p>
     <p><button>Create Account</button></p>
     <p id="message"></p>
     </center>
 </form>
+</body>
+</html>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>$("#header").load("{{ site.baseurl }}/header.html");</script>
+
+
+
+
 
 <script>
 
     function signup_user(){
+
+        document.getElementById("message").innerHTML = "";
+
+        if (document.getElementById("password").value != document.getElementById("confirmPassword").value) {
+            let p = document.createElement("p");
+            let text = document.createTextNode("Passwords do not match. Try again.");
+            p.appendChild(text);
+            document.getElementById("message").appendChild(p);
+            return;
+        }
 
         // URL for deployment
         // var url = "https://localhost:8036"
@@ -98,7 +132,7 @@
             if (response.status !== 200) {
                 var message = 'Account creation error: ' + response.status + " " + response.statusText;
                 if (response.status == 400 ) {
-                  var message = 'HTTP Error 400. You likely either have a duplicate username or a username less than 2 characters.'
+                  var message = 'HTTP Error 400. You likely either have a duplicate username or a username less than 1 character.'
                 }
                 document.getElementById("message").innerHTML = message;
                 localStorage.removeItem("username");

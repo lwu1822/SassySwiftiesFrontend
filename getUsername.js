@@ -39,44 +39,14 @@ async function fetchUsername() {
     let data = await response.json();
     return data; 
 
-    /*
-    .then(response => {
-        if (!response.ok) {
-            const errorMsg = 'Login error: ' + response.status;
-            console.log(errorMsg);
-
-            if (response.status == 400) {
-                console.log("Incorrect username or password");
-            }
-            return;
-        }
-
-        response.json().then(data => {
-            console.log(data);
-           
-           
-            
-            // show username
-            let p = document.createElement("p");
-            p.setAttribute("class", "inline");
-            let text = document.createTextNode(data["sub"]);
-            p.appendChild(text);
-            document.getElementById("username").appendChild(p);
-            
-            
-
-        })
-        
-
-    })
-    */
 }
 
-/*
-fetchUsername().then(data => {
-    console.log("data: " + JSON.stringify(data));
-});
-*/
+
+
+async function fetchUsernameOnly() {
+    let data = await fetchUsername();
+    return data["sub"];
+}
 
 async function showUsername() {
     let data = await fetchUsername();
