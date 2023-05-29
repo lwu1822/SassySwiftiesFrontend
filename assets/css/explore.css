@@ -19,3 +19,48 @@
         margin-right: 1em;
     }
 }
+
+img:hover {
+    cursor: pointer;
+}
+
+.popupFlex {
+    display: flex;
+    justify-content: center;
+}
+
+.popup {
+    background: white;
+    width: 21%;
+    height: 35%;
+    border-radius: 6px;
+    top: 50%;
+    position: absolute;
+    display: none;
+    text-align: center;
+    /* left: 35%; */
+    /* padding: 0 30px 30px; */
+}
+
+.popup button {
+    position: absolute;
+    top: 90%;
+    left: 45%;
+    background: rgb(235, 180, 235);
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+    height: 10%;
+    width: 15%;
+    cursor: pointer;
+    
+}
+
+
+h1 {
+    color: white;
+}
+
+label {
+    color: white;
+}

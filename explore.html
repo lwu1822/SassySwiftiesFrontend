@@ -33,8 +33,16 @@
     <br>
     <br>
 
+    <div class="popupFlex">
+        <div class="popup" id="popup">
+            <div id="popupText"></div>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
+
     <!-- show Taylor Swift albums -->
-    <div id="albumImg"></div>
+    <div id="albumImg" class="albumImg"></div>
 
 </body>
 </html>
@@ -164,11 +172,42 @@
             let img = document.createElement("img");
             img.setAttribute("class", "imgResponse");
             img.setAttribute("src", album[i]["img"]);
-            //img.setAttribute("id", album[i]["album"]);
+            img.setAttribute("id", album[i]["id"]);
+            let funcAlbumId = "openPopup(\"" + album[i]["id"] + "\")";
+            img.setAttribute("onclick", funcAlbumId);
             document.getElementById("albumImg").appendChild(img);
         }        
 
     }
+
+
+    function openPopup(albumId) {
+        console.log(albumId);
+
+        document.getElementById("popupText").innerHTML = "";
+
+        let albumName = "";
+        for (let i = 0; i < Object.keys(album).length; i++) {
+            if (album[i]["id"] === albumId) {
+                albumName = album[i]["album"];
+            }
+        }
+
+        let h2 = document.createElement("h2");
+        let albumNameText = document.createTextNode(albumName);
+        h2.appendChild(albumNameText);
+        document.getElementById("popupText").appendChild(h2);
+
+        document.getElementById("albumImg").style.display = "none";
+        document.getElementById("popup").style.display = "block";
+        
+    }
+
+    function closePopup() {
+        document.getElementById("albumImg").style.display = "block";
+        document.getElementById("popup").style.display = "none";
+    }
+
 
     async function init() {
         await sortMethod("new");
