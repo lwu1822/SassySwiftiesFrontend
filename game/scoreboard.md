@@ -31,9 +31,9 @@
         // BUG warning/resolution - DataTable requires row to be single append
         $('#swiftBody').append('<tr><td>' + 
             row.username + '</td><td>' + 
-            row.currentTokens + '</td><td>' + 
-            row.allTimeTokens + '</td><td>' + 
-            row.matchingMaxTokens + '</td></tr>');
+            row.current_swifties + '</td><td>' + 
+            row.all_time_swifties + '</td><td>' + 
+            row.matching_max_swifties + '</td></tr>');
       }
       // BUG warning - Jupyter does not show Datatable controls, works on deployed GitHub pages
       $("#flaskTable").DataTable();
