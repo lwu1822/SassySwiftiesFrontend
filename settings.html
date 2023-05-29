@@ -41,9 +41,15 @@
             Password:
             <input type="password" name="password" id="password" required>
         </label></p>
+        <p><label>
+            Confirm password:
+            <input type="password" name="password" id="confirmPassword" required>
+        </label></p>
         <p><button>Change password</button></p>
         <p id="message"></p>
     </form>
+
+    <div id="passwordMsg"></div>
 
 </body>
 </html>
@@ -54,14 +60,31 @@
 <script>
 
 
-    function changePass() {
-        //document.getElementById("error").innerHTML = "";
+    async function getUsername() {
+        let data = await fetchUsername();
+        let username = data["sub"];
+
+        return username;
+    }
+
+
+
+    async function changePass() {
+        document.getElementById("passwordMsg").innerHTML = ""; 
+
+        if (document.getElementById("password").value != document.getElementById("confirmPassword").value) {
+            let p = document.createElement("p");
+            let text = document.createTextNode("Passwords do not match. Try again.");
+            p.appendChild(text);
+            document.getElementById("passwordMsg").appendChild(p);
+            return;
+        }
 
 
         var baseurl = "https://taylorswifties.duckdns.org/api/users/update";
        
         const body = {
-            username: "a",
+            username: await getUsername(),
             password: document.getElementById("password").value
         };
 
@@ -103,6 +126,11 @@
 
             response.json().then(data => {
                 console.log(data);
+
+                let p = document.createElement("p");
+                let text = document.createTextNode("Password successfully updated!");
+                p.appendChild(text);
+                document.getElementById("passwordMsg").appendChild(p);
 
             })
 
