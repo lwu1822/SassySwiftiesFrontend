@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "confetti-js": "^0.0.18",
+    "fireworks-js": "^2.10.4"
+  }
+}

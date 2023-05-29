@@ -1,9 +1,147 @@
-<html>
+<body>
+
+<div class = "button-wrapper">
+</div>
+
+
+<head>
+    <link rel="stylesheet" href="QuizGame.css">
+</head>
+
+<div id="quiz-container"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <script>
 
+const quiz_container = document.getElementById("quiz-container")
+
+// initialize dictionary
+const questions = {
+	"When was Taylor Swift born?":
+		[1, 2, ["(a) November 2, 1982", "(b) December 13, 1989", "(c) January 18, 1991", "(d) March 22, 1985"]],
+	"As of May 2023, how old is Taylor Swift?":
+		[2, 4, ["(a) 31", "(b) 38", "(c) 40", "(d) 33"]],
+	"Does Taylor Swift have a brother or a sister? What is this sibling’s name?":
+		[3, 3, ["(a) Brother: Billy Swift", "(b) Sister: Jessica Swift", "(c) Brother: Austin Swift", "(d) Sister: Jennie Swift"]],
+	"When did Taylor Swift release her first song?":
+		[4, 1, ["(a) 2006", "(b) 2010", "(c) 2012", "(d) 2009"]],
+	"Which of the following is not a Taylor Swift album?":
+		[5, 4, ["(a) 1989", "(b) Red", "(c) Speak Now", "(d) Lemonade"]],
+	"Which of the following is the name of a Taylor Swift song?":
+		[6, 1, ["(a) You Belong With Me", "(b) You Belong To Me", "(c) You Belong In Me", "(d) You Belong By Me"]],
+	"How many Grammy Awards has Taylor Swift won?":
+		[7, 3, ["(a) 10", "(b) 20", "(c) 30", "(d) 40"]],
+	"What is the title of Taylor Swift's debut album?":
+		[8, 1, ["(a) Taylor Swift", "(b) Fearless", "(c) Speak Now", "(d) Red"]],
+	"Which actor did Taylor Swift date in 2016?":
+		[9, 1, ["(a) Tom Hiddleston", "(b) Zac Efron", "(c) Chris Hemsworth", "(d) Liam Hemsworth"]],
+	"What is the name of the Netflix documentary about Taylor Swift?":
+		[10, 1, ["(a) Miss Americana", "(b) Taylor Swift: The Story of My Life", "(c) Lover", "(d) Reputation"]],
+    "Which of the following is not a Taylor Swift single?":
+		[11, 4, ["(a) Blank Space", "(b) Shake it Off", "(c) Look What You Made Me Do", "(d) I Will Always Love You"]],
+    "What is the name of the character Taylor Swift played in the 2019 movie Cats?":
+		[12, 1, ["(a) Bombalurina", "(b) Grizabella", "(c) Rum Tum Tugger", "(d) Mungojerrie"]],
+    "In what year did Taylor Swift release her album 'Folklore'?":
+		[13, 3, ["(a) 2018", "(b) 2019", "(c) 2020", "(d) 2021"]]
+}
+
+for (let question in questions) {
+
+	// question wrapper
+	let question_container = document.createElement("div")
+	question_container.style.backgroundColor = "#f5f5f5"
+	question_container.style.marginTop = "10px"
+	question_container.style.marginBottom = "10px"
+	question_container.style.padding = "15px"
+	question_container.style.borderRadius = "18px"
+
+	quiz_container.appendChild(question_container)
+
+	// key in questions
+	let prompt = document.createElement("h3")
+	prompt.innerHTML = "#" + questions[question][0] + ") " + question
+	prompt.style.marginBottom = "2px"
+	prompt.style.marginTop = ""
+
+	question_container.appendChild(prompt)
+
+	// ul for answers
+	let answers = document.createElement("ul")
+	answers.style.listStyle = "none"
+	answers.style.margin = "4px"
+	answers.style.paddingLeft = "12px"
+	answers.setAttribute("id", "answer-container-" + questions[question][0])
+
+	question_container.appendChild(answers)
+
+	let answer_num = 0
+
+	for (let answer_choice in questions[question][2]) {
+
+		answer_num += 1
+
+		// creates answer choice 
+		let answer_option = document.createElement("li")
+		answer_option.style = "display:flex; align-items:center;"
+		answer_option.style.cursor = "pointer";
+		answer_option.style.borderRadius = "8px"
+		answer_option.style.backgroundColor = "#e7e5e4"
+		answer_option.style.marginTop = "8px"
+		answer_option.setAttribute("id", answer_num)
 
 
-<script>
+		let answer_text = document.createElement("p")
+		answer_text.style.marginLeft = "8px"
+        answer_text.style.color = "black"
+		answer_text.innerHTML = questions[question][2][answer_choice]
 
-</html>
+		answer_option.append(answer_text)
+
+		// adds to DOM
+		answers.appendChild(answer_option)
+
+		// passes in question num & answer num
+		answer_option.onclick = () => checkAnswer(questions[question][0], answer_option.id)
+	}
+
+}
+
+function checkAnswer(question_num, answer_num) {
+  let answer_container = document.getElementById("answer-container-" + question_num);
+  let selected_answer = answer_container.children[answer_num - 1];
+
+  if (Object.values(questions)[question_num - 1][1] == answer_num) {
+
+    selected_answer.style.backgroundColor = "#79fc8b"; // Correct answer background color (green)
+    selected_answer.style.animation = "fireworks 1s ease-in-out"; // Add fireworks animation
+    selected_answer.style.animationIterationCount = "3"; // Repeat the animation 3 times
+    selected_answer.style.animationFillMode = "forwards"; // Keep the final state of the animation
+
+    let canvas = document.createElement("canvas");
+    let container = document.getElementsByClassName("button-wrapper")[0];
+    canvas.width = 600;
+    canvas.height = 600;
+    canvas.style.position = "fixed";
+    canvas.style.top = "50%";
+    canvas.style.left = "50%";
+    canvas.style.transform = "translate(-50%, -50%)";
+
+
+    container.appendChild(canvas);
+
+    let confetti_button = confetti.create(canvas);
+    confetti_button().then(() => container.removeChild(canvas));
+
+   
+        
+  } else {
+    selected_answer.style.backgroundColor = "#f25565"; // Incorrect answer background color (red)
+    selected_answer.style.animation = "jiggle 0.5s ease-in-out"; // Add jiggle animation with a duration of 0.5 seconds
+    selected_answer.style.animationIterationCount = "2"; // Set the animation iteration count to 2
+  }
+}
+
+</script>
+
+</body>
