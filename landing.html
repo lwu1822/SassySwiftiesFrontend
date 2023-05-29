@@ -10,13 +10,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Homepage</title>
+
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/header.css">
 </head>
 <body>
 
     <div id="header"></div>
 
-    <center><h1>Welcome!</h1></center>
+
+    <div id="welcome"></div>
 
 </body>
 </html>
@@ -24,3 +27,30 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>$("#header").load("{{ site.baseurl }}/header.html");</script>
+
+<script type="text/javascript" src="{{ site.baseurl }}/getUsername.js"></script>
+<script type="text/javascript" src="{{ site.baseurl }}/cookieCheckNotNav.js"></script>
+
+<script>
+    async function init() {
+
+        document.getElementById("welcome").innerHTML = "";
+
+        let h1 = document.createElement("h1");
+        let text = "";
+        if (correctCookie2 === null) {
+            text = document.createTextNode("Welcome, Guest!");
+            h1.appendChild(text);
+        } else {
+            let msg = "Welcome, " + await fetchUsernameOnly() + "!";
+            text = document.createTextNode(msg);
+            h1.appendChild(text);
+        }
+
+        let center = document.createElement("center");
+        center.appendChild(h1);
+        document.getElementById("welcome").appendChild(center);
+    }
+
+    init();
+</script>
