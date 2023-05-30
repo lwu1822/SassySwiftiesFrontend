@@ -46,6 +46,32 @@
     </div>
 
 <!-- HTML table fragment for page -->
+
+<div>Total song count:</div>
+<p id="str(countSongs())"></p>
+
+<div>Most liked song:</div>
+<br>
+<div>Least liked song:</div>
+<br>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Sort by</button>
+  <button
+    type="button"
+    class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+    data-mdb-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <span class="visually-hidden">▼</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Most to least liked</a></li>
+    <li><a class="dropdown-item" href="#">Least to most liked</a></li>
+    <li><a class="dropdown-item" href="#">Chronologically released</a></li>
+  </ul>
+</div>
+
 <table>
   <thead>
   <tr>
