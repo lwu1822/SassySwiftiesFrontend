@@ -55,22 +55,16 @@
 <div>Least liked song:</div>
 <br>
 
-<div class="btn-group">
-  <button type="button" class="btn btn-primary">Sort by</button>
-  <button
-    type="button"
-    class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-    data-mdb-toggle="dropdown"
-    aria-expanded="false"
-  >
-    <span class="visually-hidden">▼</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Most to least liked</a></li>
-    <li><a class="dropdown-item" href="#">Least to most liked</a></li>
-    <li><a class="dropdown-item" href="#">Chronologically released</a></li>
-  </ul>
+<div>Sort by...</div>
+<select id="dropdown">Sort by...
+    <option value="A" data-number="1">Chronologically released</option>
+    <option value="B" data-number="2">Most to least likes</option>
+    <option value="C" data-number="3">Least to most likes</option>
+</select>
+<div id="textBoxContainer">
+    
 </div>
+<br>
 
 <table>
   <thead>
