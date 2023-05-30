@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Uploaded Songs</title>
@@ -40,7 +41,7 @@
       
       var audio = document.createElement("audio");
       audio.controls = true;
-      audio.src = song.mp3File;
+      audio.src = "data:audio/mp3;base64," + song.mp3Data;
       
       var deleteButton = document.createElement("button");
       deleteButton.textContent = "Delete";
