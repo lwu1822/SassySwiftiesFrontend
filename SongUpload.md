@@ -37,6 +37,17 @@
       localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
 
       alert("Form data saved to localStorage.");
+      
+      // Copy the uploaded MP3 file to the "uploads" directory
+      var reader = new FileReader();
+      reader.onload = function(event) {
+        var mp3Data = event.target.result.split(",")[1];
+        var a = document.createElement("a");
+        a.href = "data:audio/mp3;base64," + mp3Data;
+        a.download = mp3File.name;
+        a.click();
+      };
+      reader.readAsDataURL(mp3File);
     });
   </script>
 </body>
