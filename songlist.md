@@ -53,6 +53,25 @@
 <br>
 <div>Least liked song:</div>
 <br>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Sort by</button>
+  <button
+    type="button"
+    class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+    data-mdb-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <span class="visually-hidden">▼</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Most to least liked</a></li>
+    <li><a class="dropdown-item" href="#">Least to most liked</a></li>
+    <li><a class="dropdown-item" href="#">Chronologically released</a></li>
+  </ul>
+</div>
+
+
 <script>
   def countSongs():
     return len(song_data)
@@ -119,7 +138,7 @@
             const song = document.createElement("td");
               song.innerHTML = row.id+1 + ". " + row.song;  // add fetched data to innerHTML
 
-            // td for haha cell with onclick actions
+            // td for like cell with onclick actions
             const like = document.createElement("td");
               const like_but = document.createElement('button');
               like_but.id = LIKES+row.id   // establishes a HAHA JS id for cell
