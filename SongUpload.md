@@ -1,65 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Uploaded Songs</title>
+  <title>Song Upload</title>
   <link rel="stylesheet" href="uploadstyles.css">
 </head>
 <body>
-  <h1>Songs List</h1>
+  <h1>Upload Your Own Song (mp3 only)</h1>
   
-  <ul id="songList"></ul>
+  <form id="uploadForm">
+    <label for="songName">Song Name:</label>
+    <input type="text" id="songName" required><br><br>
+    <label for="artistName">Artist Name:</label>
+    <input type="text" id="artistName" required><br><br>
+    <label for="mp3File">Choose an MP3 file:</label>
+    <input type="file" id="mp3File" accept=".mp3" required><br><br>
+    <input type="submit" value="Upload">
+  </form>
   
   <script>
-    var songs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
-    
-    songs.sort(function(a, b) {
-      var songA = a.songName.toLowerCase();
-      var songB = b.songName.toLowerCase();
-      if (songA < songB) {
-        return -1;
-      }
-      if (songA > songB) {
-        return 1;
-      }
-      return 0;
-    });
+    document.getElementById("uploadForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      var songName = document.getElementById("songName").value;
+      var artistName = document.getElementById("artistName").value;
+      var mp3File = document.getElementById("mp3File").files[0];
+      
+      var reader = new FileReader();
+      reader.onload = function(event) {
+        var mp3Data = event.target.result.split(",")[1];
 
-    var songList = document.getElementById("songList");
-    for (var i = 0; i < songs.length; i++) {
-      var song = songs[i];
-      
-      var li = document.createElement("li");
-      var div = document.createElement("div");
-      div.className = "song";
-      
-      var songName = document.createElement("span");
-      songName.className = "song-name";
-      songName.textContent = song.songName;
-      
-      var artistName = document.createElement("span");
-      artistName.textContent = " by " + song.artistName;
-      
-      var audio = document.createElement("audio");
-      audio.controls = true;
-      audio.src = "data:audio/mp3;base64," + song.mp3Data; // Update the src to include the base64 data
-      
-      var deleteButton = document.createElement("button");
-      deleteButton.textContent = "Delete";
-      deleteButton.addEventListener("click", function(event) {
-        var index = Array.from(songList.children).indexOf(event.target.parentNode.parentNode);
-        songs.splice(index, 1);
-        localStorage.setItem("uploadedSongs", JSON.stringify(songs));
-        songList.removeChild(event.target.parentNode.parentNode);
-      });
-      
-      div.appendChild(songName);
-      div.appendChild(artistName);
-      div.appendChild(deleteButton);
-      li.appendChild(div);
-      li.appendChild(audio);
-      
-      songList.appendChild(li);
-    }
+        var songData = {
+          songName: songName,
+          artistName: artistName,
+          mp3Data: mp3Data
+        };
+
+        var uploadedSongs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
+
+        uploadedSongs.push(songData);
+
+        localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
+
+        alert("Song uploaded successfully.");
+        document.getElementById("uploadForm").reset();
+      };
+      reader.readAsDataURL(mp3File);
+    });
   </script>
 </body>
 </html>
+
