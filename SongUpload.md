@@ -23,30 +23,25 @@
       var songName = document.getElementById("songName").value;
       var artistName = document.getElementById("artistName").value;
       var mp3File = document.getElementById("mp3File").files[0];
-
-      var songData = {
-        songName: songName,
-        artistName: artistName,
-        mp3File: mp3File.name
-      };
       
-      var uploadedSongs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
-      
-      uploadedSongs.push(songData);
-      
-      localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
-
-      alert("Form data saved to localStorage.");
-      
-      // Copy the uploaded MP3 file to the "uploads" directory
       var reader = new FileReader();
-      reader.onload = function(event) {
-        var mp3Data = event.target.result.split(",")[1];
-        var a = document.createElement("a");
-        a.href = "data:audio/mp3;base64," + mp3Data;
-        a.download = mp3File.name;
-        a.click();
+      reader.onload = function(e) {
+        var mp3Data = e.target.result.split(',')[1];
+        
+        var songData = {
+          songName: songName,
+          artistName: artistName,
+          mp3File: mp3Data
+        };
+        
+        var uploadedSongs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
+        uploadedSongs.push(songData);
+        localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
+        
+        alert("Song uploaded successfully.");
+        document.getElementById("uploadForm").reset();
       };
+      
       reader.readAsDataURL(mp3File);
     });
   </script>

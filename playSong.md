@@ -24,21 +24,6 @@
     });
 
     var songList = document.getElementById("songList");
-
-    function playSong(mp3File) {
-      var audio = new Audio("uploads/" + mp3File);
-      audio.play();
-    }
-  
-    function deleteSong(songName, artistName) {
-      var updatedSongs = songs.filter(function(song) {
-        return song.songName !== songName || song.artistName !== artistName;
-      });
-      
-      localStorage.setItem("uploadedSongs", JSON.stringify(updatedSongs));
-      location.reload(); 
-    }
-
     for (var i = 0; i < songs.length; i++) {
       var song = songs[i];
       
@@ -55,26 +40,22 @@
       
       var audio = document.createElement("audio");
       audio.controls = true;
-      audio.src = "uploads/" + song.mp3File;
-      
-      var playButton = document.createElement("button");
-      playButton.textContent = "Play";
-      playButton.addEventListener("click", function() {
-        playSong(song.mp3File);
-      });
+      audio.src = song.mp3File;
       
       var deleteButton = document.createElement("button");
       deleteButton.textContent = "Delete";
-      deleteButton.addEventListener("click", function() {
-        deleteSong(song.songName, song.artistName);
+      deleteButton.addEventListener("click", function(event) {
+        var index = Array.from(songList.children).indexOf(event.target.parentNode.parentNode);
+        songs.splice(index, 1);
+        localStorage.setItem("uploadedSongs", JSON.stringify(songs));
+        songList.removeChild(event.target.parentNode.parentNode);
       });
       
       div.appendChild(songName);
       div.appendChild(artistName);
+      div.appendChild(deleteButton);
       li.appendChild(div);
       li.appendChild(audio);
-      li.appendChild(playButton);
-      li.appendChild(deleteButton);
       
       songList.appendChild(li);
     }
