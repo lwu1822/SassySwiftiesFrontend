@@ -57,4 +57,3 @@ if (correctCookie === null) {
     document.getElementById("createAccount").innerHTML = "";
 
 }
-
