@@ -33,7 +33,7 @@ async function fetchUsername() {
     let response = await fetch(baseurl, requestOptions)
 
     if (!response["ok"]) {
-        window.location.href = window.location.origin + "/logout";
+        window.location.href = "https://lwu1822.github.io/SassySwiftiesFrontend/logout";
     }
 
     let data = await response.json();
