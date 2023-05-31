@@ -287,10 +287,16 @@ async function sendMoney() {
 
     let username = data["sub"];
     console.log(username)
+    return username;
 }
   
 const url = "https://taylorswifties.duckdns.org/api/users/updateTokens"
 
+const body = {
+              username: username,
+              token: money
+              };
+  
 const requestOptions = {
             method: 'POST',
             mode: 'cors', // no-cors, *cors, same-origin
