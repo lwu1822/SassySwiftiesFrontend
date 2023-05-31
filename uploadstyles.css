@@ -1,59 +1,83 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  margin: 0;
   padding: 20px;
 }
 
 h1 {
   text-align: center;
-  color: #333;
 }
 
-form {
-  margin: 0 auto;
+#uploadForm {
   max-width: 400px;
+  margin: 0 auto;
 }
 
 label {
   display: block;
   margin-bottom: 10px;
-  font-weight: bold;
-  color: #333;
 }
 
 input[type="text"],
-input[type="file"],
-input[type="submit"] {
-  display: block;
+input[type="file"] {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 5px;
   font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 input[type="submit"] {
-  background-color: #4caf50;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4CAF50;
   color: #fff;
+  border: none;
+  border-radius: 3px;
   cursor: pointer;
 }
 
 ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
 }
 
-.song-container {
-  border: 1px solid #ccc;
-  padding: 20px;
+.song {
   margin-bottom: 20px;
-  background-color: #fff;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 3px;
 }
 
 .song-name {
   font-size: 18px;
   font-weight: bold;
+}
+
+audio {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.delete-button {
+  padding: 8px 16px;
+  background-color: #c82333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  float: right;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.song-container {
+  border: 1px solid #ccc;
+  padding: 10px;
   margin-bottom: 10px;
 }
 
@@ -61,20 +85,5 @@ ul {
   max-width: 100%;
   height: auto;
   margin-bottom: 10px;
-}
-
-.delete-button {
-  background-color: #f44336;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.audio-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
