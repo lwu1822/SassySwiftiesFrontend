@@ -19,7 +19,6 @@ form {
   margin: 5px;
 }
 
-
 body {
   background-color: rgb(30, 30, 30);
 }
@@ -36,7 +35,12 @@ h2 {
   font-size: 36px;
   color: rgb(94, 147, 240);
 }
-h4 {
+p {
+  font-family: "Oxygen", sans-serif;
+  font-size: 100px;
+  color: rgb(94, 147, 240);
+}
+label{
   font-family: "Oxygen", sans-serif;
   font-size: 32px;
   margin: 5px;
@@ -54,6 +58,7 @@ textarea {
   border: 1px solid rgb(0, 0, 0);
   transition: transform .2s;
   padding: 8px;
+  width: 500px;
 }
 textarea:hover {
   transform: scale(1.005);
@@ -63,6 +68,22 @@ textarea:hover {
   height: 40px;
   color: rgb(200, 200, 200);
 }
+.post-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #4f4f4f2f;
+  border-radius: 8px;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 16px;
+  padding: 20px;
+  margin: 5px;
+  order: 3;
+  transition: transform .2s;
+  transform = translateX(-50%);
+  max-width: 100vh;
+}
+
 .textarea-text {
   width: 50%;
   height: 140px;
