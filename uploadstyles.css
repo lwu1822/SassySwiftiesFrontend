@@ -38,7 +38,6 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-
 #songList {
   list-style-type: none;
   padding: 0;
@@ -69,25 +68,25 @@ audio {
   border: none;
   border-radius: 4px;
   font-size: 14px;
-  float: right
+  float: right;
 }
 
 .delete-button:hover {
-  background-color: #c82333
+  background-color: #c82333;
 }
 
 .song-name {
   font-weight: bold;
-  font-size: 18px
+  font-size: 18px;
 }
 
 .artist-name {
   font-style: italic;
-  font-size: 16px
+  font-size: 16px;
 }
 
 .song-container {
   border: 1px solid #ccc;
   padding: 10px;
-  margin-bottom: 10px
-
+  margin-bottom: 10px;
+}
