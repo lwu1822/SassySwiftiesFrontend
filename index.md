@@ -1,3 +1,6 @@
+<head>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
 ## Location
 > Browse [Coram Ranch Site](https://www.coramranch.com/) to learn about reunion location and surrounding community. 
 - [Video Tour](https://youtu.be/kX24Zv1CJZA)
