@@ -36,6 +36,8 @@ Your 30 seconds will begin when you flip the first card. If the board size doesn
 
 <p id="swifties">Swifties Earned: 0 Swifties</p>
 
+<p>Username:</p>
+<p id="username"></p>
 
 <body class="MemBoard">
   <section class="board">
@@ -293,7 +295,7 @@ async function sendMoney() {
 const url = "https://taylorswifties.duckdns.org/api/users/updateTokens"
 
 const body = {
-              username: username,
+              username: document.getElementById("username").value,
               token: money
               };
   
