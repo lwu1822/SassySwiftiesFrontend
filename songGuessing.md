@@ -13,7 +13,7 @@
 </div>
 <div class='form-sub'>
     <button id='subButton' type='button' onclick = "checkAnswer()">Guess!</button>
-    <button onclick = "startGame(0,0)" >Reset Game</button>
+    <button onclick = "startGame(0,0)">Reset Game</button>
 </div>
 </form>
 
@@ -28,30 +28,18 @@
 
 const songList = ["Blank Space", "Shake it Off", "Bad Blood", "Love Story", "Anti-Hero", "All Too Well", "Look What You Made Me Do", "I Knew You Were Trouble", "ME!", "Style", "We Are Never Ever Getting Back Together", "Lover", "Delicate", "Gorgeous", "The Great War", "Back to December", "Karma", "Enchanted", "You Belong With Me", "Bejeweled", "You Need to Calm Down"];
 
-let answer = ""
-let attempts = 0
-let correct = 0
+let answer = "";
+let attempts = 0;
+let correct = 0;
 
 function chooseSong() {
     return songList[Math.floor(Math.random() * songList.length)];
 }
 
-// function stringToList(string) {
-//   // list to store the characters
-//   const characters = [];
-
-//   // Loops through each character in the string and appends them to the list
-//   for (let i = 0; i < string.length; i++) {
-//     characters.push(string[i]);
-//   }
-
-//   // Returns the list of characters
-//   return characters;
-// }
 function startGame(attempts, correct) {
     // attempts = 0
     // correct = 0
-    answer = chooseSong()
+    answer = chooseSong();
     const newList = [...answer];
 
     let change = Math.floor(Math.random() * newList.length);
@@ -71,28 +59,28 @@ function startGame(attempts, correct) {
     for (let i = 0; i < newList.length; i++) {
     joined += newList[i];
     }
-    document.getElementById("randomWord").innerHTML = joined
+    document.getElementById("randomWord").innerHTML = joined;
 }
 
 function checkAnswer() {
-    let guess = document.getElementById("guessText").value
-    attempts++
-    let elem = document.getElementById('resultText')
+    let guess = document.getElementById("guessText").value;
+    document.getElementById("guessText").value = ""; // Clear the input text box
+    attempts++;
+    let elem = document.getElementById('resultText');
     if (guess.toLowerCase() === answer.toLowerCase()) {
-        elem.style.color = '#00ff00'
-        elem.innerHTML = "'" + answer + "'" + " is the correct answer!"
-        correct++
-        startGame(attempts, correct)
+        elem.style.color = '#00ff00';
+        elem.innerHTML = "'" + answer + "'" + " is the correct answer!";
+        correct++;
+        startGame(attempts, correct);
     }
     else {
-        elem.style.color = '#ff0000'
-        elem.innerHTML = "'" + guess + "'" + " is incorrect. Try again."
+        elem.style.color = '#ff0000';
+        elem.innerHTML = "'" + guess + "'" + " is incorrect. Try again.";
     }
-    document.getElementById("attemptsText").innerHTML = "Attempts: " + attempts
-    document.getElementById("correctText").innerHTML = "Songs Guessed Correctly: " + correct
+    document.getElementById("attemptsText").innerHTML = "Attempts: " + attempts;
+    document.getElementById("correctText").innerHTML = "Songs Guessed Correctly: " + correct;
 }
 
-startGame(0,0)
-
+startGame(0, 0);
 
 </script>
