@@ -31,12 +31,23 @@
       var audioWrapper = document.createElement("div"); // New div to wrap audio and delete button
       audioWrapper.className = "audio-wrapper";
       
+      var songDetails = document.createElement("div"); // New div to hold song name and artist name
+      songDetails.className = "song-details";
+      
+      var songName = document.createElement("span");
+      songName.className = "song-name";
+      songName.textContent = song.songName;
+      
+      var artistName = document.createElement("span");
+      artistName.textContent = " by " + song.artistName;
+      
       var audio = document.createElement("audio");
       audio.controls = true;
       audio.src = "data:audio/mp3;base64," + song.mp3Data;
       
       var deleteButton = document.createElement("button");
       deleteButton.textContent = "Delete";
+      deleteButton.className = "delete-button";
       deleteButton.addEventListener("click", function(event) {
         var index = Array.from(songList.children).indexOf(event.target.parentNode.parentNode);
         songs.splice(index, 1);
@@ -44,6 +55,10 @@
         songList.removeChild(event.target.parentNode.parentNode);
       });
       
+      songDetails.appendChild(songName);
+      songDetails.appendChild(artistName);
+      
+      audioWrapper.appendChild(songDetails);
       audioWrapper.appendChild(audio);
       audioWrapper.appendChild(deleteButton); // Append delete button after audio
       li.appendChild(audioWrapper); // Append audio wrapper to the list item
