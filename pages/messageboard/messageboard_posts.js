@@ -8,14 +8,14 @@ $(document).ready(function() {
     '<div class="container" id=' + post.id + '>' +  
     '<div class="text-column">' +
     '<div class="title-row">' +
-    '<img class="profile" src="images/profiles/profile_' + post.image + '.jpeg">' +
+    '<img class="profile" src="/images/profiles/profile_' + post.image + '.jpeg">' +
     '<div class="text-subtitle">' + post.title + '</div>' +
     '</div>' +
     '<div class="text-details">' + post.username + ' - ' + post.date + '</div>' +
     '<div class="text-description">' + post.note + '</div>' +
     '</div>' +
     '<div class="likes-row">' +
-    '<div class="like-button" data-liked="' + post.liked + '"></div>' +
+    '<div class="like-button" data-liked="' + post.liked + 'data-likedby="' + post.likedby + '></div>' +
     '<div class="dislike-button"></div>' +
     '<div class="text-likes">' + post.likes + ' upvotes</div>' +
     '<div class="report-button"></div>' +

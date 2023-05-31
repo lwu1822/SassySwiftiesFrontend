@@ -45,6 +45,7 @@ function getStatus(id) {
         body: JSON.stringify({})
     })
     .then((response) => response.json())
+    .then(console.log(response.json()))
 
     //Get new updated user
     var url = "https://taylorswifties.duckdns.org/api/nfts/";
@@ -54,6 +55,7 @@ function getStatus(id) {
     request.onload = () => {
         if (request.status == 200) {
             let data = JSON.parse(request.response);
+            console.log(data[id])
             return data[id];
         } else {
             window.alert("ERROR: Failed to pull posts from API - Try refreshing or check for firewall");
