@@ -38,37 +38,28 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-ul {
+
+#songList {
   list-style-type: none;
   padding: 0;
 }
 
-.song-container {
-  border: 1px solid #ccc;
+.song {
+  margin-bottom: 20px;
   padding: 10px;
-  margin-bottom: 10px;
+  background-color: asse;
+  border-radius: 3px;
 }
 
 .song-name {
-  font-weight: bold;
   font-size: 18px;
+  font-weight: bold;
 }
 
-.artist-name {
-  font-style: italic;
-  font-size: 16px;
-}
-
-.cover-image {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.audio-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+audio {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .delete-button {
@@ -78,10 +69,25 @@ ul {
   border: none;
   border-radius: 4px;
   font-size: 14px;
-  margin-top: 10px;
-  cursor: pointer;
+  float: right
 }
 
 .delete-button:hover {
-  background-color: #c82333;
+  background-color: #c82333
 }
+
+.song-name {
+  font-weight: bold;
+  font-size: 18px
+}
+
+.artist-name {
+  font-style: italic;
+  font-size: 16px
+}
+
+.song-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px
+
