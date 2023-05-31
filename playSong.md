@@ -10,7 +10,7 @@
   
   <script>
     var songs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
-    
+    // Sorting by alphabet
     songs.sort(function(a, b) {
       var songA = a.songName.toLowerCase();
       var songB = b.songName.toLowerCase();
@@ -22,21 +22,14 @@
       }
       return 0;
     });
-
+    // get the stored song from localstorage
     var songList = document.getElementById("songList");
     for (var i = 0; i < songs.length; i++) {
       var song = songs[i];
       
       var li = document.createElement("li");
-      var div = document.createElement("div");
-      div.className = "song";
-      
-      var songName = document.createElement("span");
-      songName.className = "song-name";
-      songName.textContent = song.songName;
-      
-      var artistName = document.createElement("span");
-      artistName.textContent = " by " + song.artistName;
+      var audioWrapper = document.createElement("div"); // New div to wrap audio and delete button
+      audioWrapper.className = "audio-wrapper";
       
       var audio = document.createElement("audio");
       audio.controls = true;
@@ -51,11 +44,9 @@
         songList.removeChild(event.target.parentNode.parentNode);
       });
       
-      div.appendChild(songName);
-      div.appendChild(artistName);
-      div.appendChild(deleteButton);
-      li.appendChild(div);
-      li.appendChild(audio);
+      audioWrapper.appendChild(audio);
+      audioWrapper.appendChild(deleteButton); // Append delete button after audio
+      li.appendChild(audioWrapper); // Append audio wrapper to the list item
       
       songList.appendChild(li);
     }
