@@ -158,6 +158,7 @@ Your 30 seconds will begin when you flip the first card. If the board size doesn
       afterTime = new Date().getTime();
       if (afterTime - beforeTime > 100) {
           gameOver = true;
+          money = 0;
           document.getElementById("time").innerHTML = "You have been caught cheating! Please reload the page without inspect element open before playing.";
       }
   }
@@ -225,7 +226,7 @@ Your 30 seconds will begin when you flip the first card. If the board size doesn
 
   function timedExecutables() {
       if (gameOver) return;
-      detectCheating(); 
+      //detectCheating(); 
       timer();
 
       if (gameOver) {

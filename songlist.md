@@ -46,20 +46,32 @@
     </div>
 
 <!-- HTML table fragment for page -->
-<div>Total song count:</div>
+
+<div>Total song count: 227</div>
 <p id="str(countSongs())"></p>
 
 <div>Most liked song:</div>
 <br>
 <div>Least liked song:</div>
 <br>
-<script>
-  def countSongs():
-    return len(song_data)
 
-  str(countSongs())
-</script>
-<table>
+<div>Sort by...</div>
+<select id="dropdown">
+    <option value="default">Chronologically released</option>
+    <option value="most-likes">Most to least likes</option>
+    <option value="least-likes">Least to most likes</option>
+    <option value="alphabetical">Alphabetical</option>
+</select>
+<div id="textBoxContainer">
+    
+</div>
+<br>
+<label>Search:
+  <input type="search" class="" placeholder="" aria-controls="songtable">
+</label> 
+<br>
+
+<table id="songtable" class="table">
   <thead>
   <tr>
     <th>Song</th>
@@ -67,23 +79,32 @@
     <th>Dislikes</th>
   </tr>
   </thead>
- <tbody id="result"></tbody>
+  <tbody id="result"></tbody>
 </table>
+
+<script>
+
+</script>
 
 <!-- Script is layed out in a sequence (without a function) and will execute when page is loaded -->
 <script>
 
+  let songData = {
+    song: "",
+    likes: 0,
+    dislikes: 0
+  };
   // prepare HTML defined "result" container for new output
   const resultContainer = document.getElementById("result");
 
-  // keys for joke reactions
+  // keys for song reactions
   const LIKES = "like";
   const DISLIKES = "dislike";
 
   // prepare fetch urls
   const url = "https://taylorswifties.duckdns.org/api/songs";
-  const like_url = url + "/like/";  // like reaction
-  const dislike_url = url + "/dislike/";  // dislike reaction
+  const like_url = url + "/like/";  // haha reaction
+  const dislike_url = url + "/dislike/";  // boohoo reaction
 
   // prepare fetch GET options
   const options = {
@@ -117,7 +138,7 @@
             
             // td for joke cell
             const song = document.createElement("td");
-              song.innerHTML = row.id+1 + ". " + row.song;  // add fetched data to innerHTML
+              song.innerHTML = row.id + ". " + row.song;  // add fetched data to innerHTML
 
             // td for haha cell with onclick actions
             const like = document.createElement("td");
@@ -148,7 +169,124 @@
 
             // this adds all the tr (row) work above to the HTML "result" container
             resultContainer.appendChild(tr);
+
+            songData[row.song] = {
+              likes: row.like,
+              dislikes: row.dislike
+            };
           }
+          console.log(songData);
+          
+          function sortByMostLikes(songData) {
+            // Create an array of song names from the keys of the songData dictionary
+            const songNames = Object.keys(songData);
+
+            // Sort the songNames array based on the number of likes for each song
+            songNames.sort((songA, songB) => {
+              const likesA = songData[songA].likes;
+              const likesB = songData[songB].likes;
+              return likesB - likesA; // Sort in descending order of likes
+            });
+
+            return songNames;
+          }
+                    // Assuming you have the `songData` dictionary populated
+          const sortedDescending = sortByMostLikes(songData);
+          console.log(sortedDescending);
+
+          function sortByLeastLikes(songData) {
+            // Create an array of song names from the keys of the songData dictionary
+            const songNames = Object.keys(songData);
+
+            // Sort the songNames array based on the number of likes for each song
+            songNames.sort((songA, songB) => {
+              const likesA = songData[songA].likes;
+              const likesB = songData[songB].likes;
+              return likesA - likesB; // Sort in ascending order of likes
+            });
+
+            return songNames;
+          }
+                        // Assuming you have the `songData` dictionary populated
+            const sortedAscending = sortByLeastLikes(songData);
+            console.log(sortedAscending);
+
+          function sortByAlphabetical(songData) {
+            // Create an array of song names from the keys of the songData dictionary
+            const songNames = Object.keys(songData);
+
+            // Sort the songNames array alphabetically
+            songNames.sort((songA, songB) => {
+              return songA.localeCompare(songB); // Sort alphabetically
+            });
+
+            return songNames;
+          }
+                      
+                      // Assuming you have the `songData` dictionary populated
+          const sortedAlphabetic = sortByAlphabetical(songData);
+          console.log(sortedAlphabetic);
+          
+          // Get references to the necessary elements
+          const dropdown = document.getElementById("dropdown");
+
+          // Add event listener to the dropdown
+          dropdown.addEventListener("change", handleSortOptionChange);
+
+          // Event handler for the dropdown change event
+          function handleSortOptionChange(event) {
+            const selectedOption = event.target.value;
+            let sortedSongs;
+
+            // Call the appropriate sorting function based on the selected option
+            switch (selectedOption) {
+              case "most-likes":
+                sortedSongs = sortByMostLikes(songData);
+                break;
+              case "least-likes":
+                sortedSongs = sortByLeastLikes(songData);
+                break;
+              case "alphabetical":
+                sortedSongs = sortByAlphabetical(songData);
+                break;
+              default:
+                // No specific sorting option selected, use default order
+                sortedSongs = Object.keys(songData);
+            }
+            // Clear the existing table rows
+            while (resultContainer.firstChild) {
+              resultContainer.firstChild.remove();
+            }
+
+            // Generate new table rows based on the sorted song order
+            for (const songName of sortedSongs) {
+              const songInfo = songData[songName];
+
+              // Create table row
+              const tr = document.createElement("tr");
+
+              // Create table cells
+              const songCell = document.createElement("td");
+              const likeCell = document.createElement("td");
+              const dislikeCell = document.createElement("td");
+
+               // Set cell content
+              songCell.textContent = songInfo.song;
+              likeCell.textContent = songInfo.likes;
+              dislikeCell.textContent = songInfo.dislikes;
+
+              // Append cells to the row
+              tr.appendChild(songCell);
+              tr.appendChild(likeCell);
+              tr.appendChild(dislikeCell);
+
+              // Append row to the table
+              resultContainer.appendChild(tr);
+            }
+            // Perform further actions with the sortedSongs array
+            console.log(sortedSongs);
+          }
+
       })
   })
   // catch fetch errors (ie Nginx ACCESS to server blocked)
@@ -199,5 +337,5 @@
     resultContainer.appendChild(tr);
   }
 
-  function sortLikes()
 </script>
+

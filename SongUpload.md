@@ -23,21 +23,29 @@
       var songName = document.getElementById("songName").value;
       var artistName = document.getElementById("artistName").value;
       var mp3File = document.getElementById("mp3File").files[0];
+      
+      var reader = new FileReader();
+      reader.onload = function(event) {
+        var mp3Data = event.target.result.split(",")[1];
 
-      var songData = {
-        songName: songName,
-        artistName: artistName,
-        mp3File: mp3File.name
+        var songData = {
+          songName: songName,
+          artistName: artistName,
+          mp3Data: mp3Data
+        };
+
+        var uploadedSongs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
+
+        uploadedSongs.push(songData);
+
+        localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
+
+        alert("Song uploaded successfully.");
+        document.getElementById("uploadForm").reset();
       };
-      
-      var uploadedSongs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
-      
-      uploadedSongs.push(songData);
-      
-      localStorage.setItem("uploadedSongs", JSON.stringify(uploadedSongs));
-
-      alert("Form data saved to localStorage.");
+      reader.readAsDataURL(mp3File);
     });
   </script>
 </body>
 </html>
+

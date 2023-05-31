@@ -40,10 +40,20 @@
       
       var audio = document.createElement("audio");
       audio.controls = true;
-      audio.src = "uploads/" + song.mp3File;
+      audio.src = "data:audio/mp3;base64," + song.mp3Data;
+      
+      var deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.addEventListener("click", function(event) {
+        var index = Array.from(songList.children).indexOf(event.target.parentNode.parentNode);
+        songs.splice(index, 1);
+        localStorage.setItem("uploadedSongs", JSON.stringify(songs));
+        songList.removeChild(event.target.parentNode.parentNode);
+      });
       
       div.appendChild(songName);
       div.appendChild(artistName);
+      div.appendChild(deleteButton);
       li.appendChild(div);
       li.appendChild(audio);
       
