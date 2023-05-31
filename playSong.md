@@ -28,6 +28,8 @@
       var song = songs[i];
       
       var li = document.createElement("li");
+      var container = document.createElement("div");
+      container.className = "song-container"
       var audioWrapper = document.createElement("div"); // New div to wrap audio and delete button
       audioWrapper.className = "audio-wrapper";
       
