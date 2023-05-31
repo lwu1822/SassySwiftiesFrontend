@@ -36,8 +36,7 @@ Your 30 seconds will begin when you flip the first card. If the board size doesn
 
 <p id="swifties">Swifties Earned: 0 Swifties</p>
 
-<p>Username:</p>
-<p id="username">Please log in before playing to save your tokens</p>
+<p>Username:</p><p id="username">Please log in before playing to save your tokens</p>
 
 <body class="MemBoard">
   <section class="board">
