@@ -79,9 +79,9 @@ textarea:hover {
   padding: 20px;
   margin: 5px;
   order: 3;
-  transition: transform .2s;
-  transform = translateX(-50%);
-  max-width: 100vh;
+  align-items: center;
+  margin: 0 auto;
+  height: 502px;
 }
 
 .textarea-text {
