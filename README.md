@@ -1,4 +1,4 @@
-## The Reunion Project
+## Sassy Swifties
 
 Frontend: [Link](https://lwu1822.github.io/SassySwiftiesFrontend/)
 
@@ -66,13 +66,13 @@ Instructions:
 ...Your instructions...
 
 
-Song uploading:
+### Song uploading:
 1. Users will be able to upload their own music with the song-uploading function.
 2. Users enter the song name and its corresponding artist, then upload a cover photo and the mp3 file for the song by choosing the file or drag and drop.
 3. After setting up the song, the user will click the upload button to upload the song, if the song is successfully uploaded, an alert will pop up saying "Song uploaded successfully".
 4. Remember, the songs are stored in local storage and it's only visible to YOU. Since the files are stored in local storage, you might encounter errors when uploading oversized mp3 files or images. Otherwise, enjoy. (We encourage you to upload Taylor Swift's songs)
 
-Song Playing:
+### Song Playing:
 1. Once uploaded your own song, you may navigate to the play tab where you can find all your uploaded songs.
 2. All the uploaded songs are sorted in alphabetical order by song name. 
 3. The mp3 player allows you to play the song.
