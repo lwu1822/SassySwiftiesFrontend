@@ -286,8 +286,46 @@ async function sendMoney() {
     let data = await fetchUsername();
 
     let username = data["sub"];
+    console.log(username)
 }
+  
+const url = https://taylorswifties.duckdns.org/api/users/updateTokens
+console.log(username)
 
+const requestOptions = {
+            method: 'POST',
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            // credentials: 'include', // include, *same-origin, omit
+            body: JSON.stringify(body),
+            headers: {
+                "content-type": "application/json",
+            },
+        };
+
+//        document.getElementById("message").innerHTML ="jsjsjs";
+
+        // Fetch JWT
+        fetch(url, requestOptions)
+        .then(response => {
+            // trap error response from Web API
+            if (response.status !== 200) {
+                var message = 'Update Token error: ' + response.status + " " + response.statusText;
+                if (response.status == 400 ) {
+                  var message = 'HTTP Error 400. We messed up fetch.'
+                }
+                console.log(message);
+                localStorage.removeItem("username");
+                return;
+            }
+  
+            response.json().then(data => {
+                var message = 'Account creation success: ' + document.getElementById("username").value;
+                document.getElementById("message").innerHTML = message;
+                localStorage.setItem("username", data.username);
+                localStorage.setItem("password", data.password)
+            })
+        })
 // alternative way to do async/await that also works
 /*
  function sendMoney() {
