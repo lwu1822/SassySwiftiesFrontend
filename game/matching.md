@@ -320,10 +320,8 @@ const requestOptions = {
             }
   
             response.json().then(data => {
-                var message = 'Account creation success: ' + document.getElementById("username").value;
-                document.getElementById("message").innerHTML = message;
-                localStorage.setItem("username", data.username);
-                localStorage.setItem("password", data.password)
+                var message = "successfully sent the tokens";
+                console.log(message);
             })
         })
 // alternative way to do async/await that also works
