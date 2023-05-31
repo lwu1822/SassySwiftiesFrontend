@@ -89,11 +89,7 @@
 <!-- Script is layed out in a sequence (without a function) and will execute when page is loaded -->
 <script>
 
-  let songData = {
-    song: "",
-    likes: 0,
-    dislikes: 0
-  };
+  let songData = {}; //set up empty dictionary
   // prepare HTML defined "result" container for new output
   const resultContainer = document.getElementById("result");
 
@@ -136,15 +132,15 @@
             // make "tr element" for each "row of data"
             const tr = document.createElement("tr");
             
-            // td for joke cell
+            // td for song cell
             const song = document.createElement("td");
               song.innerHTML = row.id + ". " + row.song;  // add fetched data to innerHTML
 
-            // td for haha cell with onclick actions
+            // td for like cell with onclick actions
             const like = document.createElement("td");
               const like_but = document.createElement('button');
-              like_but.id = LIKES+row.id   // establishes a HAHA JS id for cell
-              like_but.innerHTML = row.like;  // add fetched "haha count" to innerHTML
+              like_but.id = LIKES+row.id   // establishes a like JS id for cell
+              like_but.innerHTML = row.like;  // add fetched "likes count" to innerHTML
               like_but.onclick = function () {
                 // onclick function call with "like parameters"
                 reaction(LIKES, like_url+row.id, like_but.id);  
@@ -154,13 +150,13 @@
             // td for boohoo cell with onclick actions
             const dislike = document.createElement("td");
               const dislike_but = document.createElement('button');
-              dislike_but.id = DISLIKES+row.id  // establishes a BOOHOO JS id for cell
-              dislike_but.innerHTML = row.dislike;  // add fetched "boohoo count" to innerHTML
+              dislike_but.id = DISLIKES+row.id  // establishes a dislikes JS id for cell
+              dislike_but.innerHTML = row.dislike;  // add fetched "dislike count" to innerHTML
               dislike_but.onclick = function () {
                 // onclick function call with "jeer parameters"
                 reaction(DISLIKES, dislike_url+row.id, dislike_but.id);  
               };
-              dislike.appendChild(dislike_but);  // add "boohoo button" to boohoo cell
+              dislike.appendChild(dislike_but);  // add "counting button" to dislikes cell
              
             // this builds ALL td's (cells) into tr (row) element
             tr.appendChild(song);
@@ -174,6 +170,7 @@
               likes: row.like,
               dislikes: row.dislike
             };
+          
           }
           console.log(songData);
           
@@ -259,8 +256,8 @@
             }
 
             // Generate new table rows based on the sorted song order
-            for (const songName of sortedSongs) {
-              const songInfo = songData[songName];
+            for (const songNames of sortedSongs) {
+              const songInfo = songData[songNames];
 
               // Create table row
               const tr = document.createElement("tr");
@@ -271,7 +268,7 @@
               const dislikeCell = document.createElement("td");
 
                // Set cell content
-              songCell.textContent = songInfo.song;
+              songCell.textContent = songNames;
               likeCell.textContent = songInfo.likes;
               dislikeCell.textContent = songInfo.dislikes;
 
