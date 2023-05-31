@@ -6,11 +6,10 @@
 <body>
   <h1>Songs List</h1>
   
-  <ul id="songList"></ul>
+  <div id="songList"></div>
   
   <script>
     var songs = JSON.parse(localStorage.getItem("uploadedSongs")) || [];
-    // Sorting by alphabet
     songs.sort(function(a, b) {
       var songA = a.songName.toLowerCase();
       var songB = b.songName.toLowerCase();
@@ -22,27 +21,21 @@
       }
       return 0;
     });
-    // get the stored song from localstorage
+    
     var songList = document.getElementById("songList");
     for (var i = 0; i < songs.length; i++) {
       var song = songs[i];
       
-      var li = document.createElement("li");
       var container = document.createElement("div");
-      container.className = "song-container"
-      var audioWrapper = document.createElement("div"); // New div to wrap audio and delete button
-      audioWrapper.className = "audio-wrapper";
+      container.className = "song-container";
       
-      var songDetails = document.createElement("div"); // New div to hold song name and artist name
-      songDetails.className = "song-details";
-      
-      var songName = document.createElement("span");
+      var songName = document.createElement("div");
       songName.className = "song-name";
-      songName.textContent = song.songName;
+      songName.textContent = song.songName + " by " + song.artistName;
       
-      var artistName = document.createElement("span");
-      artistName.className = "artist-name";
-      artistName.textContent = " by " + song.artistName;
+      var coverImage = document.createElement("img");
+      coverImage.className = "cover-image";
+      coverImage.src = "data:image/*;base64," + song.coverData;
       
       var audio = document.createElement("audio");
       audio.controls = true;
@@ -52,21 +45,18 @@
       deleteButton.textContent = "Delete";
       deleteButton.className = "delete-button";
       deleteButton.addEventListener("click", function(event) {
-        var index = Array.from(songList.children).indexOf(event.target.parentNode.parentNode);
+        var index = Array.from(songList.children).indexOf(event.target.parentNode);
         songs.splice(index, 1);
         localStorage.setItem("uploadedSongs", JSON.stringify(songs));
-        songList.removeChild(event.target.parentNode.parentNode);
+        songList.removeChild(event.target.parentNode);
       });
       
-      songDetails.appendChild(songName);
-      songDetails.appendChild(artistName);
+      container.appendChild(songName);
+      container.appendChild(coverImage);
+      container.appendChild(deleteButton);
+      container.appendChild(audio);
       
-      audioWrapper.appendChild(songDetails);
-      audioWrapper.appendChild(audio);
-      audioWrapper.appendChild(deleteButton); // Append delete button after audio
-      li.appendChild(audioWrapper); // Append audio wrapper to the list item
-      
-      songList.appendChild(li);
+      songList.appendChild(container);
     }
   </script>
 </body>
