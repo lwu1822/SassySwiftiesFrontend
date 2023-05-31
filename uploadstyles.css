@@ -72,6 +72,6 @@ audio {
   float: right
 }
 
-/* .delete-button:hover {
-  background-color: #c82333;
-} */
+.delete-button:hover {
+  background-color: #c82333
+}
