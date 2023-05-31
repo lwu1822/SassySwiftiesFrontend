@@ -3,7 +3,7 @@ async function fetchUsername() {
     console.log(document.cookie);
 
     let cookie2 = document.cookie + ";";
-    let correctCookie2 = cookie2.match(/(session=.*; |; session=.*;$|; session=.*; )/);
+    let correctCookie2 = cookie2.match(/(session=.*;|; session=.*;$|; session=.*; )/);
     correctCookie2 = correctCookie2[0].replace(/;/g, '');
     correctCookie2 = correctCookie2.replace('session=', '');
     correctCookie2 = correctCookie2.replace(/ /g, '');
