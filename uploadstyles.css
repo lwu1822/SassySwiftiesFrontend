@@ -70,8 +70,8 @@ audio {
   border-radius: 4px;
   font-size: 14px;
   float: right;
-}
 
-.delete-button:hover {
+
+/* .delete-button:hover {
   background-color: #c82333;
-}
+} */
