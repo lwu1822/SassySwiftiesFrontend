@@ -63,5 +63,16 @@ audio {
 }
 
 .delete-button {
-  background-color: red;
+  padding: 8px 16px;
+  background-color: #c82333;
   color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  float: right;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
