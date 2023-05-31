@@ -70,7 +70,6 @@ audio {
   border-radius: 4px;
   font-size: 14px;
   float: right;
-  cursor: pointer;
 }
 
 .delete-button:hover {
