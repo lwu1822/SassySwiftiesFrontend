@@ -256,8 +256,8 @@
             }
 
             // Generate new table rows based on the sorted song order
-            for (const songNames of sortedSongs) {
-              const songInfo = songData[songNames];
+            for (const songName of sortedSongs) {
+              const songInfo = songData[songName];
 
               // Create table row
               const tr = document.createElement("tr");
@@ -267,22 +267,42 @@
               const likeCell = document.createElement("td");
               const dislikeCell = document.createElement("td");
 
-               // Set cell content
-              songCell.textContent = songNames;
-              likeCell.textContent = songInfo.likes;
-              dislikeCell.textContent = songInfo.dislikes;
+              // Set cell content
+              songCell.textContent = songName;
+              
+              // Create like button
+              const likeButton = document.createElement("button");
+              likeButton.textContent = songInfo.likes;
+              likeButton.addEventListener("click", () => {
+                songInfo.likes++;
+                likeButton.textContent = songInfo.likes;
+              });
+
+              // Create dislike button
+              const dislikeButton = document.createElement("button");
+              dislikeButton.textContent = songInfo.dislikes;
+              dislikeButton.addEventListener("click", () => {
+                songInfo.dislikes++;
+                dislikeButton.textContent = songInfo.dislikes;
+              });
 
               // Append cells to the row
               tr.appendChild(songCell);
               tr.appendChild(likeCell);
               tr.appendChild(dislikeCell);
+              
+              // Append buttons to the cells
+              likeCell.appendChild(likeButton);
+              dislikeCell.appendChild(dislikeButton);
 
               // Append row to the table
               resultContainer.appendChild(tr);
             }
+
             // Perform further actions with the sortedSongs array
             console.log(sortedSongs);
           }
+
 
       })
   })
