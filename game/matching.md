@@ -289,16 +289,12 @@ async function sendMoney() {
     let username = data["sub"];
     console.log(username)
     document.getElementById("username").innerHTML = username;
-}
-  
-const url = "https://taylorswifties.duckdns.org/api/users/updateTokens"
-
-const body = {
+    const url = "https://taylorswifties.duckdns.org/api/users/updateTokens"
+    const body = {
               username: document.getElementById("username").value,
               token: money
               };
-  
-const requestOptions = {
+    const requestOptions = {
             method: 'POST',
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -308,11 +304,7 @@ const requestOptions = {
                 "content-type": "application/json",
             },
         };
-
-//        document.getElementById("message").innerHTML ="jsjsjs";
-
-        // Fetch JWT
-        fetch(url, requestOptions)
+     fetch(url, requestOptions)
         .then(response => {
             // trap error response from Web API
             if (response.status !== 200) {
@@ -330,6 +322,18 @@ const requestOptions = {
                 console.log(message);
             })
         })
+  }
+  
+
+  
+
+
+//        document.getElementById("message").innerHTML ="jsjsjs";
+
+        // Fetch JWT
+       
+  
+  
 // alternative way to do async/await that also works
 /*
  function sendMoney() {
