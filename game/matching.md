@@ -225,7 +225,7 @@ Your 30 seconds will begin when you flip the first card. If the board size doesn
 
   function timedExecutables() {
       if (gameOver) return;
-      detectCheating(); 
+      //detectCheating(); 
       timer();
 
       if (gameOver) {
