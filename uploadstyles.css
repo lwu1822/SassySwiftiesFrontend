@@ -43,22 +43,32 @@ ul {
   padding: 0;
 }
 
-.song {
-  margin-bottom: 20px;
+.song-container {
+  border: 1px solid #ccc;
   padding: 10px;
-  background-color: #f2f2f2;
-  border-radius: 3px;
+  margin-bottom: 10px;
 }
 
 .song-name {
-  font-size: 18px;
   font-weight: bold;
+  font-size: 18px;
 }
 
-audio {
-  display: block;
-  margin-top: 10px;
-  width: 100%;
+.artist-name {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.cover-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.audio-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .delete-button {
@@ -68,22 +78,10 @@ audio {
   border: none;
   border-radius: 4px;
   font-size: 14px;
-  float: right;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .delete-button:hover {
   background-color: #c82333;
 }
-
-.song-container {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.cover-image {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
-
