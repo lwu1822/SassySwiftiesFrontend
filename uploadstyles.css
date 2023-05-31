@@ -50,11 +50,6 @@ input[type="submit"] {
   border-radius: 3px;
 }
 
-.song-name {
-  font-size: 18px;
-  font-weight: bold;
-}
-
 audio {
   display: block;
   margin-top: 10px;
@@ -76,6 +71,7 @@ audio {
 }
 
 .song-name {
+  color: aquamarine;
   font-weight: bold;
   font-size: 18px;
 }
