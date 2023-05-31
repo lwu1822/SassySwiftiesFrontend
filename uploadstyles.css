@@ -75,3 +75,13 @@ audio {
 .delete-button:hover {
   background-color: #c82333
 }
+
+.song-name {
+  font-weight: bold;
+  font-size: 18px
+}
+
+.artist-name {
+  font-style: italic;
+  font-size: 16px
+}

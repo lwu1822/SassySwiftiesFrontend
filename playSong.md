@@ -39,6 +39,7 @@
       songName.textContent = song.songName;
       
       var artistName = document.createElement("span");
+      artistName.className = "artist-name";
       artistName.textContent = " by " + song.artistName;
       
       var audio = document.createElement("audio");
