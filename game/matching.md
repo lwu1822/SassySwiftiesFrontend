@@ -198,7 +198,7 @@ Your 30 seconds will begin when you flip the first card. If the board size doesn
       } else {
           money += 1;
       }
-      if (matches == 1) {
+      if (matches == 8) {
           money += 1;
           document.getElementById("time").innerHTML = "Congrats on Finishing! Play again to see how close you can get to 25 Swifties!";
           gameOver = true;
@@ -227,7 +227,7 @@ Your 30 seconds will begin when you flip the first card. If the board size doesn
 
   function timedExecutables() {
       if (gameOver) return;
-      //detectCheating(); 
+      detectCheating(); 
       timer();
 
       if (gameOver) {
