@@ -163,7 +163,7 @@ button:hover {
 }
 
 .like-button {
-  background-image: url(/images/like.png);
+  background-image: url(/SassySwiftiesFrontend/images/like.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
