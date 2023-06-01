@@ -6,6 +6,19 @@ Frontend: [Link to our website](https://lwu1822.github.io/SassySwiftiesFrontend/
 
 ...Your instructions...
 
+### Song Guessing Game:
+
+- A song will be displayed to the user with 2 blanks replacing 2 letters of the song name
+- To guess what you think the song is, type in your guess for the song into the input text box and click the "guess!" button to check your guess
+- The aim of the game is get as many songs guessed correctly as possible
+- The number of total attempts and the number of songs guessed correctly are listed
+- There is also a reset button that changes the song, resets the number of attempts, and resets the number of songs guessed correctly
+
+### Multiple-Choice Quiz:
+
+- There are 13 multiple-choice questions related to Taylor Swift
+- When a questions is answered correctly, the selected answer turns green, enlarges and shrinks, and confetti falls
+- When a question is answered incorrectly, the selected answer turns red and shakes
 
 ### Song uploading:
 1. Users will be able to upload their own music with the song-uploading function.
