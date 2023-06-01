@@ -1,7 +1,37 @@
-$(document).ready(async function() {
-    window.alert("test")
+$(document).ready( function() {
+    id = 1
+    prep(id)
+});
+
+function prep(id) {
+    var url = "https://taylorswifties.duckdns.org/api/nfts/update?id=" + id;
+    fetch(url, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({"id": id})
+    })
+    .then((response) => response.json())
+    .then(getData(id))
+}
+function getData(id) {
+    var url = "https://taylorswifties.duckdns.org/api/nfts/";
+    let request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.send();
+    request.onload = () => { 
+      if (request.status == 200) {
+        let posts = JSON.parse(request.response);
+        updatePage(posts[id-1]);
+      } else {
+        window.alert("ERROR: Failed to pull posts from API - Try refreshing or check for firewall");
+      }
+    };
+}
+
+function updatePage(data) {
     // Run the getStatus method when the page loads
-    let data = await getStatus(1);
     console.log(data);
     let nfts = data["nfts"];
     //console.log(nfts);
@@ -35,7 +65,12 @@ $(document).ready(async function() {
         // Add the container to the page
         $('#nfts').append(container);
     }
-});
+}
+
+
+
+   
+
 
 async function getStatus(id) {
 

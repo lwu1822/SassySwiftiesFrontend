@@ -40,7 +40,7 @@ $(document).ready(function() {
 
   // Function to delete a post
   function remove(id) {
-    var url = "http://127.0.0.1:8036/api/messageboard/delete?id=" + id;
+    var url = "https://taylorswifties.duckdns.org/api/messageboard/delete?id=" + id;
     fetch(url, {
     method: "DELETE"
     })
@@ -50,7 +50,7 @@ $(document).ready(function() {
 
   // Function to like a post
   function like(id, likeChange) {
-    var url = "http://127.0.0.1:8036/api/posts/update?id=" + id;
+    var url = "https://taylorswifties.duckdns.org/api/posts/update?id=" + id;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -68,7 +68,7 @@ $(document).ready(function() {
 
   // Function to get all posts from API
   function getPosts() {
-    var url = "http://127.0.0.1:8036/api/posts/";
+    var url = "https://taylorswifties.duckdns.org/api/posts/";
     let request = new XMLHttpRequest();
     request.open("GET", url);
     request.send();
@@ -96,7 +96,7 @@ $(document).ready(function() {
     // Get post title and text from form
     var title = $("#post-title").val();
     var text = $("#post-text").val();
-    var url = "http://127.0.0.1:8036/api/posts/post";
+    var url = "https://taylorswifties.duckdns.org/api/posts/post";
     fetch(url, {
       method: "POST",
       headers: {
