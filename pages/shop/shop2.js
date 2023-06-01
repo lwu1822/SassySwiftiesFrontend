@@ -1,6 +1,6 @@
-$(document).ready( function() {
-    id = 13
-    createNfts(id)
+$(document).ready(function() {
+    id = 13;
+    createNfts(id);
     //updatePage({"id":1,"nfts":[true,true,false,false,false,false],"profile":0,"userID":13})
 });
 
