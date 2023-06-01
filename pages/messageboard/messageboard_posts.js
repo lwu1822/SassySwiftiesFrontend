@@ -8,7 +8,7 @@ $(document).ready(function() {
     '<div class="container" id=' + post.id + '>' +  
     '<div class="text-column">' +
     '<div class="title-row">' +
-    '<img class="profile" src="/images/profiles/profile_' + post.image + '.jpeg">' +
+    '<img class="profile" src="{{ site.baseurl }}/images/profiles/profile_' + post.image + '.jpeg">' +
     '<div class="text-subtitle">' + post.title + '</div>' +
     '</div>' +
     '<div class="text-details">' + post.username + ' - ' + post.date + '</div>' +
