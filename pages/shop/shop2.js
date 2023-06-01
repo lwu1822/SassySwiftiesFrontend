@@ -1,8 +1,21 @@
 $(document).ready( function() {
     id = 13
-    //prep(id)
-    updatePage({"id":1,"nfts":[true,true,false,false,false,false],"profile":0,"userID":13})
+    createNfts(id)
+    //updatePage({"id":1,"nfts":[true,true,false,false,false,false],"profile":0,"userID":13})
 });
+
+function createNfts(id) {
+    var url = "https://taylorswifties.duckdns.org/api/nfts/post";
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({"id": id})
+    })
+    .then((response) => response.json())
+    .then(prep(id))
+}
 
 function prep(id) {
     var url = "https://taylorswifties.duckdns.org/api/nfts/update?id=" + id;
