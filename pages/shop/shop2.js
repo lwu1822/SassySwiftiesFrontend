@@ -58,10 +58,41 @@ $(document).ready(function() {
 });
 
 async function start() {
-    console.log("username: " + await fetchUsernameOnly());
+    let username = await fetchUsernameOnly();
+    console.log("username: " + username);
 
-    id = 13
-    //createNfts(id)
+    let id = await getId(username);
+
+
+    createNfts(id)
+}
+
+async function getId(username) {
+    var getUrl = "https://taylorswifties.duckdns.org/api/users/userinfo/" + username;
+
+        var getOptions = {
+            method: 'GET', 
+            mode: 'cors', 
+            cache: 'default', 
+            //credentials: 'include', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+
+        let response = await fetch(getUrl, getOptions)
+        
+        if (!response["ok"]) {
+            console.log("Error");
+            return;
+        }
+
+        let data = await response.json();
+        console.log(response.status);
+        console.log(data["id"]);
+        return data["id"]; 
+
 }
 
 function createNfts(id) {
