@@ -105,7 +105,7 @@ $(document).ready(function() {
       body: JSON.stringify({
         title: title,
         text: text,
-        userID: 3
+        userID: 13
       })
       })
       .then((response) => response.json())

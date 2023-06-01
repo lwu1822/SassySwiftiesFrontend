@@ -1,6 +1,7 @@
 $(document).ready( function() {
-    id = 1
-    prep(id)
+    id = 13
+    //prep(id)
+    updatePage({"id":1,"nfts":[true,true,false,false,false,false],"profile":0,"userID":13})
 });
 
 function prep(id) {

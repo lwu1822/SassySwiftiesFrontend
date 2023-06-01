@@ -1,7 +1,7 @@
 console.log(document.cookie);
 
 let cookie = document.cookie + ";";
-let correctCookie = cookie.match(/(session=.*; |; session=.*;$|; session=.*; )/);
+let correctCookie = cookie.match(/(session=.*;|; session=.*;$|; session=.*; )/);
 
 if (correctCookie === null) {
     // show "Log In" in navbar
