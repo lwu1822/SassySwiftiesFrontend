@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 function createNfts(id) {
-    var url = "https://taylorswifties.duckdns.org/api/nfts/post";
+    var url = "https://taylorswifties.duckdns.org/api/nfts/create";
     fetch(url, {
         method: "POST",
         headers: {
