@@ -173,7 +173,7 @@ button:hover {
   margin: 5px;
 }
 .dislike-button {
-  background-image: url(/images/dislike.png);
+  background-image: url(/SassySwiftiesFrontend/images/dislike.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -183,7 +183,7 @@ button:hover {
   margin: 5px;
 }
 .report-button {
-  background-image: url(/images/report.png);
+  background-image: url(/SassySwiftiesFrontend/images/report.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
