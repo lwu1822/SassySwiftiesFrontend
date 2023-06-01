@@ -1,6 +1,6 @@
 ## Sassy Swifties
 
-Frontend: [Link to our website](https://lwu1822.github.io/SassySwiftiesFrontend/index.html)
+Frontend: [Link to our website](https://lwu1822.github.io/SassySwiftiesFrontend/landing.html)
 
 ### Instructions:
 
