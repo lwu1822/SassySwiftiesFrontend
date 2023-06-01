@@ -26,6 +26,12 @@
       var mp3File = document.getElementById("mp3File").files[0];
       var coverFile = document.getElementById("coverFile").files[0];
       
+      var maxSize = 2 * 1024 * 1024;
+
+      if (mp3File.size > axSize || coverFile.size > maxSize) {
+        alert("File too big, choose a smaller file under 2mb");
+        return;
+      }
       var reader = new FileReader();
       reader.onload = function(event) {
         var mp3Data = event.target.result.split(",")[1];
