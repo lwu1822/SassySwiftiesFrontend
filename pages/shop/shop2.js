@@ -11,7 +11,7 @@ function createNfts(id) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({"id": id})
+        body: JSON.stringify({"userID": id})
     })
     .then((response) => response.json())
     .then(prep(id))
