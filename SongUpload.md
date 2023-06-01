@@ -28,7 +28,7 @@
       
       var maxSize = 2 * 1024 * 1024;
 
-      if (mp3File.size > axSize || coverFile.size > maxSize) {
+      if (mp3File.size > maxSize || coverFile.size > maxSize) {
         alert("File too big, choose a smaller file under 2mb");
         return;
       }
