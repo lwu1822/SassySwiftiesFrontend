@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="songGuessing.css">
+    <link rel="stylesheet" href="general.css">
 
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Sassy Swifties - The Official Del Norte Taylor Swift Fan Club | A community with love and support for Taylor Swift</title>
@@ -48,11 +48,10 @@
 <!-- HTML table fragment for page -->
 
 <div>Total song count: 227</div>
-<p id="str(countSongs())"></p>
 
-<div>Most liked song:</div>
+<div id="mostLikedSong">Most liked song:</div>
 <br>
-<div>Least liked song:</div>
+<div id="mostDislikedSong">Most disliked song: </div>
 <br>
 
 <div>Sort by...</div>
@@ -311,7 +310,7 @@
     error(err + " " + url);
   });
 
-  // Reaction function to likes or jeers user actions
+  // Reaction function to likes or dislikes 
   function reaction(type, put_url, elemID) {
 
     // fetch the API
@@ -354,5 +353,29 @@
     resultContainer.appendChild(tr);
   }
 
+displayMostLikedSong(songData);
+
+function displayMostLikedSong(songData) {
+  let mostLikedSong = null;
+  let maxLikes = -1;
+
+  // Iterate over the songData to find the most liked song
+  for (const songName in songData) {
+    const likes = songData[songName].likes;
+    if (likes > maxLikes) {
+      maxLikes = likes;
+      mostLikedSong = songName;
+    }
+  }
+
+  // Display the most liked song and its like count in HTML
+  const mostLikedSongElement = document.getElementById("mostLikedSong");
+
+  if (mostLikedSong) {
+    mostLikedSongElement.textContent = `Most liked song: ${mostLikedSong} (Likes: ${maxLikes})`;
+  } else {
+    mostLikedSongElement.textContent = "Most liked song: No songs found.";
+  }
+}
 </script>
 
