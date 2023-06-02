@@ -32,7 +32,17 @@ Frontend: [Link to our website](https://lwu1822.github.io/SassySwiftiesFrontend/
 3. The mp3 player allows you to play the song.
 4. You will find a delete button near your cover photo, press it if you want to delete the corresponding song.
 
+### Messageboard
 
+A place for Taylor Swift fans to discuss her songs! You can create a post by filling out the title and text forms before clicking the add post button. Every time the page is reloaded, a post is added, or a post is liked, the page pulls from the API and builds each post using jQuery. Additionally, every time a post is created, the API is sent your user ID from your JWT cookie, which allows the backend to get details including your username and selected ‘NFT’ profile.
+
+### Shop
+
+The shop is a place to use your tokens from games elsewhere on the site to unlock ‘NFTs,’ which are profiles you can use elsewhere on the site. The page displays all profiles and tells you if you own them, and if not how many tokens are required to unlock them. You can switch between NFTs by clicking on any owned profile. To improve scalability, this page is built entirely using jQuery. Therefore, adding new NFTs is trivial and only requires updating some basic information in the code.
+
+### Header
+
+The header displays links to every page on the site as well as some decorative elements. Importantly, it is built when the page loads using jQuery onto every page on the website, meaning you only have to update one file to change all the headers.
 
 Usage
 
