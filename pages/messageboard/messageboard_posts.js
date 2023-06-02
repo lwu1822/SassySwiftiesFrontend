@@ -89,7 +89,11 @@ $(document).ready(function() {
  // $("#post-form").submit(function(e) {
   document.getElementById("Submit Button").addEventListener("click", async function(e) {
     e.preventDefault();
-    await sendPost();
+    let username = await fetchUsernameOnly();
+    console.log("username: " + username);
+
+    let id = await getId(username);
+    await sendPost(id);
   });
 
   async function sendPost() {
@@ -122,7 +126,7 @@ $(document).ready(function() {
           body: JSON.stringify({
             title: title,
             text: text,
-            userID: 12
+            userID: id
           })
       };
 
@@ -151,4 +155,93 @@ function sort(posts) {
     }
   }
   return posts
+}
+async function fetchUsername() {
+  // retrieve cookie's value
+  console.log(document.cookie);
+
+  let cookie2 = document.cookie + ";";
+  let correctCookie2 = cookie2.match(/(session=.*;|; session=.*;$|; session=.*; )/);
+  correctCookie2 = correctCookie2[0].replace(/;/g, '');
+  correctCookie2 = correctCookie2.replace('session=', '');
+  correctCookie2 = correctCookie2.replace(/ /g, '');
+  console.log(correctCookie2);
+
+  // send fetch to backend's endpoint for user info
+  var baseurl = "https://taylorswifties.duckdns.org/api/users/info";
+  
+  const body = {
+      token: correctCookie2,
+  };
+
+  // Set Headers to support cross origin
+  //IMPORTANT!!!!!!! TO SUCCESSFULLY POST, YOU NEED TO REMOVE
+  // credentials:'include'
+  const requestOptions = {
+      method: 'POST',
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      //credentials: 'include', // include, *same-origin, omit
+      body: JSON.stringify(body),
+      headers: {
+          "content-type": "application/json"
+      },
+  };
+
+  let response = await fetch(baseurl, requestOptions)
+
+  if (!response["ok"]) {
+      window.location.href = "https://lwu1822.github.io/SassySwiftiesFrontend/logout";
+  }
+
+  let data = await response.json();
+  return data; 
+
+}
+
+
+
+async function fetchUsernameOnly() {
+  let data = await fetchUsername();
+  return data["sub"];
+}
+async function getId(username) {
+  var getUrl = "https://taylorswifties.duckdns.org/api/users/userinfo/" + username;
+
+      var getOptions = {
+          method: 'GET', 
+          mode: 'cors', 
+          cache: 'default', 
+          //credentials: 'include', 
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      };
+
+
+      let response = await fetch(getUrl, getOptions)
+      
+      if (!response["ok"]) {
+          console.log("Error");
+          return;
+      }
+
+      let data = await response.json();
+      console.log(response.status);
+      console.log(data["id"]);
+      return data["id"]; 
+
+}
+
+function createNfts(id) {
+  var url = "https://taylorswifties.duckdns.org/api/nfts/create";
+  fetch(url, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({"userID": id})
+  })
+  .then((response) => response.json())
+  .then(prep(id))
 }
