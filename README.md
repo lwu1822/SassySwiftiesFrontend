@@ -34,11 +34,11 @@ Frontend: [Link to our website](https://lwu1822.github.io/SassySwiftiesFrontend/
 
 ### Messageboard
 
-A place for Taylor Swift fans to discuss her songs! You can create a post by filling out the title and text forms before clicking the add post button. Every time the page is reloaded, a post is added, or a post is liked, the page pulls from the API and builds each post using jQuery. Additionally, every time a post is created, the API is sent your user ID from your JWT cookie, which allows the backend to get details including your username and selected ‘NFT’ profile.
+A place for Taylor Swift fans to discuss her songs! You can create a post by filling out the title and text forms before clicking the add post button. Every time the page is reloaded, a post is added, or a post is liked, the page pulls from the API and builds each post using jQuery. Additionally, every time a post is created, the API is sent your user ID from your JWT cookie. On the backend, this id allows the api to get details including your username and selected ‘NFT’ profile from the users model. The backend also includes the date at which the post was created. 
 
 ### Shop
 
-The shop is a place to use your tokens from games elsewhere on the site to unlock ‘NFTs,’ which are profiles you can use elsewhere on the site. The page displays all profiles and tells you if you own them, and if not how many tokens are required to unlock them. You can switch between NFTs by clicking on any owned profile. To improve scalability, this page is built entirely using jQuery. Therefore, adding new NFTs is trivial and only requires updating some basic information in the code.
+The shop is a place to use your tokens from games elsewhere on the site to unlock ‘NFTs,’ which are profiles you can use elsewhere on the site. The page displays all profiles and tells you if you own them, and if not how many tokens are required to unlock them. You can switch between NFTs by clicking on any owned profile. To improve scalability, this page is built entirely using jQuery. Therefore, adding new NFTs is trivial and only requires updating some basic information in the code. For security reasons, the update functions is special here. Because a malicious user could send a request misreporting their owned NFTs, the backend actually refrences the users tokens directly from the token model agianst the requirements to unlock each NFT. 
 
 ### Header
 
