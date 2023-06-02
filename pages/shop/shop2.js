@@ -214,5 +214,5 @@ function update(id, profile) {
         body: JSON.stringify({"id": id, "profile": profile})
     })
     .then((response) => response.json())
-    .then(location.reload())
+    .then(getData(id))
 }
