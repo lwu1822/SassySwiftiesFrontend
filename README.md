@@ -2,6 +2,11 @@
 
 Frontend: [Link to our website](https://lwu1822.github.io/SassySwiftiesFrontend/landing.html)
 
+### Building Site
+
+## Backend - sudo docker-compose up -d --build (Make sure port 8036 is free)
+## Frontend - bundle exec jekyll serve 0.0.0.0:4000
+
 ### Instructions:
 
 ...Your instructions...
