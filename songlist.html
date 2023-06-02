@@ -53,7 +53,6 @@
 <br>
 <div id="mostDislikedSong">Most disliked song: </div>
 <br>
-
 <div>Sort by...</div>
 <select id="dropdown">
     <option value="default">Chronologically released</option>
@@ -61,9 +60,7 @@
     <option value="least-likes">Least to most likes</option>
     <option value="alphabetical">Alphabetical</option>
 </select>
-<div id="textBoxContainer">
-    
-</div>
+<div id="textBoxContainer"></div>
 <br>
 <label>Search:
   <input type="search" class="" placeholder="" aria-controls="songtable">
@@ -82,13 +79,7 @@
 </table>
 
 <script>
-
-</script>
-
-<!-- Script is layed out in a sequence (without a function) and will execute when page is loaded -->
-<script>
-
-  let songData = {}; //set up empty dictionary
+ let songData = {}; //set up empty dictionary
   // prepare HTML defined "result" container for new output
   const resultContainer = document.getElementById("result");
 
@@ -165,7 +156,8 @@
             // this adds all the tr (row) work above to the HTML "result" container
             resultContainer.appendChild(tr);
 
-            songData[row.song] = {
+            songData[row.id] = {
+              song: row.song,
               likes: row.like,
               dislikes: row.dislike
             };
@@ -213,7 +205,9 @@
 
             // Sort the songNames array alphabetically
             songNames.sort((songA, songB) => {
-              return songA.localeCompare(songB); // Sort alphabetically
+              const Asong = songData[songA].song;
+              const Bsong = songData[songB].song;
+              return Asong.localeCompare(Bsong); // Sort alphabetically
             });
 
             return songNames;
@@ -255,8 +249,8 @@
             }
 
             // Generate new table rows based on the sorted song order
-            for (const songName of sortedSongs) {
-              const songInfo = songData[songName];
+            for (const songID of sortedSongs) {
+              const songInfo = songData[songID];
 
               // Create table row
               const tr = document.createElement("tr");
@@ -267,20 +261,24 @@
               const dislikeCell = document.createElement("td");
 
               // Set cell content
-              songCell.textContent = songName;
+              songCell.textContent = songID + ". " + songData[songID].song;
               
               // Create like button
               const likeButton = document.createElement("button");
+              likeButton.id = LIKES+songID   // establishes a like JS id for cell
               likeButton.textContent = songInfo.likes;
               likeButton.addEventListener("click", () => {
+                reaction(LIKES, like_url+songID, likeButton.id);  
                 songInfo.likes++;
                 likeButton.textContent = songInfo.likes;
               });
 
               // Create dislike button
               const dislikeButton = document.createElement("button");
+              dislikeButton.id = DISLIKES+songID
               dislikeButton.textContent = songInfo.dislikes;
               dislikeButton.addEventListener("click", () => {
+                reaction(DISLIKES, dislike_url+songID, dislikeButton.id);
                 songInfo.dislikes++;
                 dislikeButton.textContent = songInfo.dislikes;
               });
@@ -340,42 +338,54 @@
     });
     
   }
+   // Reaction function to likes or dislikes 
+  function reactionSorted(type, put_url, songName, buttonElement) {
+            const requestData = { song: songName };
 
-  // Something went wrong with actions or responses
-  function error(err) {
-    // log as Error in console
-    console.error(err);
-    // append error to resultContainer
-    const tr = document.createElement("tr");
-    const td = document.createElement("td");
-    td.innerHTML = err;
-    tr.appendChild(td);
-    resultContainer.appendChild(tr);
-  }
+            // fetch the API
+            fetch(put_url, {
+              ...put_options,
+              method: 'PUT',
+              body: JSON.stringify(requestData)
+            })
+            // response is a RESTful "promise" on any successful fetch
+            .then(response => {
+              // check for response errors
+              if (response.status !== 200) {
+                  error("PUT API response failure: " + response.status);
+                  return;  // api failure
+              }
+              // valid response will have JSON data
+              response.json().then(data => {
+                  console.log(data);
+                  // Likes or Jeers updated/incremented
+                  if (type === LIKES) { // like data element
+                    songData[songName].likes = data.likes;
+                  } else if (type === DISLIKES) { // jeer data element
+                    songData[songName].dislikes = data.dislikes;
+                  } else {
+                    error("unknown type: " + type);  // should never occur
+                  }
 
-displayMostLikedSong(songData);
+                  // Update the button text content
+                  buttonElement.textContent = songData[songName][type];
+              });
+            })
+            // catch fetch errors (ie Nginx ACCESS to server blocked)
+            .catch(err => {
+              error(err + " " + put_url);
+            });
+          }
 
-function displayMostLikedSong(songData) {
-  let mostLikedSong = null;
-  let maxLikes = -1;
 
-  // Iterate over the songData to find the most liked song
-  for (const songName in songData) {
-    const likes = songData[songName].likes;
-    if (likes > maxLikes) {
-      maxLikes = likes;
-      mostLikedSong = songName;
-    }
-  }
-
-  // Display the most liked song and its like count in HTML
-  const mostLikedSongElement = document.getElementById("mostLikedSong");
-
-  if (mostLikedSong) {
-    mostLikedSongElement.textContent = `Most liked song: ${mostLikedSong} (Likes: ${maxLikes})`;
-  } else {
-    mostLikedSongElement.textContent = "Most liked song: No songs found.";
-  }
+// Something went wrong with actions or responses
+function error(err) {
+  console.error(err);
+  const tr = document.createElement("tr");
+  const td = document.createElement("td");
+  td.innerHTML = err;
+  tr.appendChild(td);
+  resultContainer.appendChild(tr);
 }
-</script>
 
+</script>
