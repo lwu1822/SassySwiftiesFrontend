@@ -288,6 +288,7 @@ async function sendMoney() {
 
     let username = data["sub"];
     console.log(username)
+    console.log(money)
     document.getElementById("username").innerHTML = username;
     const url = "https://taylorswifties.duckdns.org/api/users/updateTokens"
     const body = {
