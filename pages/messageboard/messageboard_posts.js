@@ -96,7 +96,7 @@ $(document).ready(function() {
     await sendPost(id);
   });
 
-  async function sendPost() {
+  async function sendPost(id) {
     // Get post title and text from form
     /*fetch(url, {
       method: "POST",
