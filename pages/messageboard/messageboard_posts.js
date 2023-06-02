@@ -94,10 +94,7 @@ $(document).ready(function() {
 
   async function sendPost() {
     // Get post title and text from form
-    /*var title = $("#post-title").val();
-    var text = $("#post-text").val();
-    var url = "https://taylorswifties.duckdns.org/api/posts/post";
-    fetch(url, {
+    /*fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -110,7 +107,9 @@ $(document).ready(function() {
       })
       .then((response) => response.json())
       .then(() => { location.reload()})*/
-      var url = "https://taylorswifties.duckdns.org/api/posts/post/"
+      var title = $("#post-title").val();
+      var text = $("#post-text").val();
+      var url = "https://taylorswifties.duckdns.org/api/posts/post";
 
       var options = {
           method: 'POST', 
@@ -120,6 +119,11 @@ $(document).ready(function() {
           headers: {
               'Content-Type': 'application/json',
           },
+          body: JSON.stringify({
+            title: title,
+            text: text,
+            userID: 12
+          })
       };
 
 
