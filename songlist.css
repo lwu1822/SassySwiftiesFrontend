@@ -1,6 +1,11 @@
-.row {
+
+.table{
+    
+}.row {
     display: flex;
     flex-direction: column;
+    border-color: gray;
+
   }
   
 .col {
@@ -8,6 +13,8 @@
   border: 1px solid rgb(255, 255, 255);
   margin: 5px;
   order: 3;
+  border-color: gray;
+
   }
 span{
     float: right;
@@ -86,3 +93,4 @@ body {
   margin: 0 10px;
   text-indent: -9999px;
 }
+
