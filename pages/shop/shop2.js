@@ -128,14 +128,14 @@ function getData(id) {
     request.onload = () => { 
       if (request.status == 200) {
         let posts = JSON.parse(request.response);
-        updatePage(posts[id-1]);
+        updatePage(posts[id-1], id);
       } else {
         window.alert("ERROR: Failed to pull posts from API - Try refreshing or check for firewall");
       }
     };
 }
 
-function updatePage(data) {
+function updatePage(data, id) {
     // Run the getStatus method when the page loads
     console.log(data);
     let nfts = data["nfts"];
@@ -163,7 +163,7 @@ function updatePage(data) {
         // Add a click handler to update the selected profile
         container.click(function() {
             if (nfts[i]) {
-                update(1, i);
+                update(id, i);
                 location.reload();
             }
         });
