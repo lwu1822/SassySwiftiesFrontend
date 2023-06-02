@@ -13,7 +13,7 @@ $(document).ready(async function() {
         // Create a new container for the profile
         let container = $('<div>').addClass('container');
         // Add the profile image
-        container.append($('<img>').addClass('img').attr('src', '/images/profiles/profile_' + i + '.jpeg'));
+        container.append($('<img>').addClass('img').attr('src', '/SassySwiftiesFrontend/images/profiles/profile_' + i + '.jpeg'));
         // Add the status text
         if (nfts[i]) {
             container.append($('<h4>').text('You Own This!'));
