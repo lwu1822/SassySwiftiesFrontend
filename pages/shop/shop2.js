@@ -204,6 +204,7 @@ async function getStatus(id) {
 
 
 function update(id, profile) {
+    console.log("Updating, id: " + id + ", New Profile: " + profile);
     var url = "https://taylorswifties.duckdns.org/api/nfts/update?id=" + id;
     fetch(url, {
         method: "PUT",
