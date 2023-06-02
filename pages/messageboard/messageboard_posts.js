@@ -87,7 +87,7 @@ $(document).ready(function() {
   
   // Function to send post to API
  // $("#post-form").submit(function(e) {
-  document.getElementById("Submit Button").addEventListener("click", function(e) {
+  document.getElementById("Submit Button").addEventListener("click", async function(e) {
     e.preventDefault();
     sendPost();
   });
