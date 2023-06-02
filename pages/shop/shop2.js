@@ -63,8 +63,8 @@ async function start() {
 
     let id = await getId(username);
 
-
-    createNfts(id)
+    console.log(id);
+    createNfts(id);
 }
 
 async function getId(username) {
