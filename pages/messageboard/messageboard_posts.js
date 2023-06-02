@@ -89,12 +89,12 @@ $(document).ready(function() {
  // $("#post-form").submit(function(e) {
   document.getElementById("Submit Button").addEventListener("click", async function(e) {
     e.preventDefault();
-    sendPost();
+    await sendPost();
   });
 
-  function sendPost() {
+  async function sendPost() {
     // Get post title and text from form
-    var title = $("#post-title").val();
+    /*var title = $("#post-title").val();
     var text = $("#post-text").val();
     var url = "https://taylorswifties.duckdns.org/api/posts/post";
     fetch(url, {
@@ -109,7 +109,30 @@ $(document).ready(function() {
       })
       })
       .then((response) => response.json())
-      .then(() => { location.reload()})
+      .then(() => { location.reload()})*/
+      var url = "https://taylorswifties.duckdns.org/api/posts/post/"
+
+      var options = {
+          method: 'POST', 
+          mode: 'cors', 
+          cache: 'default', 
+          //credentials: 'include', 
+          headers: {
+              'Content-Type': 'application/json',
+          },
+      };
+
+
+      let response = await fetch(url, options)
+      
+      if (!response["ok"]) {
+          console.log("Error");
+          return;
+      }
+
+      let data = await response.json();
+      console.log(response.status);
+      location.reload();
     }
 });
 
