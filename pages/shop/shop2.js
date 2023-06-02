@@ -204,5 +204,14 @@ async function getStatus(id) {
 
 
 function update(id, profile) {
-
+    var url = "https://taylorswifties.duckdns.org/api/nfts/update?id=" + id;
+    fetch(url, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({"id": id, "profile": profile})
+    })
+    .then((response) => response.json())
+    .then(getData(id))
 }
