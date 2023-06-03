@@ -7,9 +7,11 @@ Frontend: [Link to our website](https://lwu1822.github.io/SassySwiftiesFrontend/
 ## Backend - sudo docker-compose up -d --build (Make sure port 8036 is free)
 ## Frontend - bundle exec jekyll serve 0.0.0.0:4000
 
-### Instructions:
+### Taylor Swift Matching Game:
 
-...Your instructions...
+- Match as many album covers as you can in 30 seconds
+- Earn Swifties for making matches and finishing the game (may be used to buy NFTs in the shop)
+- More Swifties will be earned for matches made earlier in the game
 
 ### Song Guessing Game:
 
