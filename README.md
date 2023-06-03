@@ -4,8 +4,10 @@ Frontend: [Link to our website](https://lwu1822.github.io/SassySwiftiesFrontend/
 
 ### Building Site
 
-## Backend - sudo docker-compose up -d --build (Make sure port 8036 is free)
-## Frontend - bundle exec jekyll serve 0.0.0.0:4000
+#### Backend - sudo docker-compose up -d --build (Make sure port 8036 is free)
+#### Frontend - bundle exec jekyll serve 0.0.0.0:4000
+
+## List of Features
 
 ### Taylor Swift Matching Game:
 
